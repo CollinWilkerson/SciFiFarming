@@ -19,14 +19,26 @@ public class RackBehavior : MonoBehaviour
     [SerializeField] private float tankMax = 20;
     [SerializeField] private float fillRate = 5;
     public float tempQuality; //this willl be replaced by the quality of nutrient the player has
-    private int[] crops;
+    public PlantBehavior tempSeed; //this will be replaced by the index of the plant type the player's seed is
+    //this tuple effectivley represents every crop as 3 integers, so they are easy to move around and identify
+    private (int type, int value, int stage) [] crops;
 
     private bool actionBuffer;
 
     private void Awake()
     {
         isUp = false;
-        crops = new int[rackLevels * plantsPerRack];
+        crops = new (int type, int value, int stage)[rackLevels * plantsPerRack];
+        //set each crop to -1 so they are identifiable as empty
+        for (int i = 0; i < crops.Length; i++)
+        {
+            crops[i].type = -1;
+        }
+    }
+
+    private void Start()
+    {
+        tempSeed = PlantLibrary.library[0];
     }
 
     //this currently contains temp inputs that will be replaced by player context
@@ -59,7 +71,7 @@ public class RackBehavior : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.T))
             {
-                PlantSeeds();
+                PlantSeeds(tempSeed.plantIndex);
             }
             if (Input.GetKeyDown(KeyCode.Y))
             {
@@ -91,13 +103,15 @@ public class RackBehavior : MonoBehaviour
         tankLevel += fillRate * Time.deltaTime;
     }
 
-    private void PlantSeeds()//this will eventually take a seed but i just have ints for now
+    private void PlantSeeds(int seed)//seed should be a growth stage 0 crop
     {
-        for(int i = 0; i < crops.Length; i++)
+        Debug.Log("plant");
+        for (int i = 0; i < crops.Length; i++)
         {
-            if (crops[i] == 0) // if there is no crop
+            if (crops[i].type == -1) // if there is no crop
             {
-                crops[i] = 1;
+                crops[i].type = seed;
+                crops[i].value = PlantLibrary.library[seed].value;
             }
         }
     }
@@ -110,10 +124,11 @@ public class RackBehavior : MonoBehaviour
         for (int i = 0; i < crops.Length; i++)
         {
             //don't grow past max crop growth, growth takes 1 tank level
-            if (crops[i] < 4 && crops[i] != 0 && tankLevel >= 1)
+            if (crops[i].type != -1 && crops[i].stage < PlantLibrary.library[crops[i].type].harvestStage && tankLevel >= 1)
             {
-               crops[i]++;
-               tankLevel -= 1;
+                crops[i].stage++;
+                crops[i].value = (int)(crops[i].value * nutrientQuality);
+                tankLevel -= 1;
             }
         }
     }
@@ -121,14 +136,22 @@ public class RackBehavior : MonoBehaviour
     /// <summary>
     /// remove all fully grown crops from the array
     /// </summary>
-    private void Harvest()
+    private void Harvest() // this could be moved to the plant behavior for a more interactive harvest mechanic
     {
         for (int i = 0; i < crops.Length; i++)
         {
-            if(crops[i] == 4) // if the crop is fully grown remove it from the rack and place into the players inventory
+            if(crops[i].type != -1 && crops[i].stage == PlantLibrary.library[crops[i].type].harvestStage) // if the crop is fully grown remove it from the rack and place into the players inventory
             {
-                crops[i] = 0;
+                //add to inventory
+                Debug.Log("Harvest");
+                GameManager.instance.gold += crops[i].value;
+                //remove crop
+                crops[i].type = -1;
+                crops[i].value = 0;
+                crops[i].stage = 0;
             }
         }
     }
+
+
 }
