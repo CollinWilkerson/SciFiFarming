@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlantLibrary : MonoBehaviour
 {
-    public static PlantBehavior[] library;
+    public static PlantData[] library;
 
     private void Awake()
     {
-        library = gameObject.GetComponents<PlantBehavior>();
+        library = gameObject.GetComponents<PlantData>();
     }
 }

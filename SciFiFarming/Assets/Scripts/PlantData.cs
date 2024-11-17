@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlantBehavior : MonoBehaviour
+public class PlantData : MonoBehaviour
 {
     public int plantIndex = 0;
     public int value = 100;

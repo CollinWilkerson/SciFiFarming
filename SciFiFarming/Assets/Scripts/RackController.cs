@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class RackBehavior : MonoBehaviourPun
+public class RackController: MonoBehaviourPun
 {
     [Header("Physical")]
     private bool isUp;
@@ -21,7 +21,7 @@ public class RackBehavior : MonoBehaviourPun
     [SerializeField] private float tankMax = 20;
     [SerializeField] private float fillRate = 5;
     public float tempQuality; //this willl be replaced by the quality of nutrient the player has
-    public PlantBehavior tempSeed; //this will be replaced by the index of the plant type the player's seed is
+    public PlantData tempSeed; //this will be replaced by the index of the plant type the player's seed is
     //this tuple effectivley represents every crop as 3 integers, so they are easy to move around and identify
     private (int type, int value, int stage) [] crops;
     private GameObject[] cropObjects;
