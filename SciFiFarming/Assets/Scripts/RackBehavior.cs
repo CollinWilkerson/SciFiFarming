@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class RackBehavior : MonoBehaviour
+public class RackBehavior : MonoBehaviourPun
 {
     [Header("Physical")]
     private bool isUp;
@@ -12,6 +13,7 @@ public class RackBehavior : MonoBehaviour
     [SerializeField] private GameObject top;
     [SerializeField] private GameObject rack;
     [SerializeField] private GameObject tankConnection;
+    [SerializeField] private Transform[] rackPositions;
 
     [Header("Nutrient Tank")]
     private float nutrientQuality;
@@ -22,6 +24,7 @@ public class RackBehavior : MonoBehaviour
     public PlantBehavior tempSeed; //this will be replaced by the index of the plant type the player's seed is
     //this tuple effectivley represents every crop as 3 integers, so they are easy to move around and identify
     private (int type, int value, int stage) [] crops;
+    private GameObject[] cropObjects;
 
     private bool actionBuffer;
 
@@ -29,6 +32,7 @@ public class RackBehavior : MonoBehaviour
     {
         isUp = false;
         crops = new (int type, int value, int stage)[rackLevels * plantsPerRack];
+        cropObjects = new GameObject[rackLevels * plantsPerRack];
         //set each crop to -1 so they are identifiable as empty
         for (int i = 0; i < crops.Length; i++)
         {
@@ -103,6 +107,7 @@ public class RackBehavior : MonoBehaviour
         tankLevel += fillRate * Time.deltaTime;
     }
 
+    [PunRPC]
     private void PlantSeeds(int seed)//seed should be a growth stage 0 crop
     {
         Debug.Log("plant");
@@ -112,6 +117,13 @@ public class RackBehavior : MonoBehaviour
             {
                 crops[i].type = seed;
                 crops[i].value = PlantLibrary.library[seed].value;
+
+                //Mesh instantiation, replace with photon
+                Vector3 spawnPos = new Vector3(rackPositions[i % rackPositions.Length].position.x, 
+                    rackPositions[i%rackPositions.Length].position.y +  i/rackPositions.Length * 1.1f,
+                    rackPositions[i%rackPositions.Length].position.z);
+                GameObject spawnObj = Resources.Load(PlantLibrary.library[seed].stageModels[0]) as GameObject;
+                cropObjects[i] = Instantiate(spawnObj, spawnPos, Quaternion.identity);
             }
         }
     }
@@ -129,6 +141,12 @@ public class RackBehavior : MonoBehaviour
                 crops[i].stage++;
                 crops[i].value = (int)(crops[i].value * nutrientQuality);
                 tankLevel -= 1;
+
+                //updating the mesh
+                Vector3 spawnPos = cropObjects[i].transform.position;
+                GameObject spawnObj = Resources.Load(PlantLibrary.library[crops[i].type].stageModels[crops[i].stage]) as GameObject;
+                Destroy(cropObjects[i]);
+                cropObjects[i] = Instantiate(spawnObj, spawnPos, Quaternion.identity);
             }
         }
     }
@@ -149,6 +167,7 @@ public class RackBehavior : MonoBehaviour
                 crops[i].type = -1;
                 crops[i].value = 0;
                 crops[i].stage = 0;
+                Destroy(cropObjects[i]);
             }
         }
     }
