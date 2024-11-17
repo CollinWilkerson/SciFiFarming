@@ -156,19 +156,27 @@ public class RackController: MonoBehaviourPun
     /// </summary>
     private void Harvest() // this could be moved to the plant behavior for a more interactive harvest mechanic
     {
+        int quantity = 0;
+        int type = 0;
+        int value = 0;
         for (int i = 0; i < crops.Length; i++)
         {
             if(crops[i].type != -1 && crops[i].stage == PlantLibrary.library[crops[i].type].harvestStage) // if the crop is fully grown remove it from the rack and place into the players inventory
             {
                 //add to inventory
-                Debug.Log("Harvest");
-                GameManager.instance.gold += crops[i].value;
+                quantity++;
+                value = crops[i].value;
+                type = crops[i].type;
                 //remove crop
                 crops[i].type = -1;
                 crops[i].value = 0;
                 crops[i].stage = 0;
                 Destroy(cropObjects[i]);
             }
+        }
+        if (quantity != 0)
+        {
+            TempInventory.ListAdd((type, quantity, value));
         }
     }
 
