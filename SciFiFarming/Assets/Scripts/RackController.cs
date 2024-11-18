@@ -73,9 +73,10 @@ public class RackController: MonoBehaviourPun
             {
                 FillTank(tempQuality);
             }
-            if (Input.GetKeyDown(KeyCode.T))
+            if (Input.GetKeyDown(KeyCode.T) && TempInventory.seedInventory.Count > 0)
             {
-                PlantSeeds(tempSeed.plantIndex);
+                PlantSeeds(TempInventory.seedInventory[0]);
+                TempInventory.seedInventory.RemoveAt(0);
             }
             if (Input.GetKeyDown(KeyCode.Y))
             {
