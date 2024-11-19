@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -24,6 +25,9 @@ public class PlayerController : MonoBehaviour
     private float dashCooldownTimer;
     private Camera playerCamera;
     private float xRotation = 0f;
+
+    [SerializeField] private LayerMask interactables;
+    [SerializeField] private GameObject toolTip;
 
     void Start()
     {
@@ -56,6 +60,7 @@ public class PlayerController : MonoBehaviour
         {
             playerCamera.fieldOfView = fieldOfView;
         }
+        CheckInteractable();
     }
 
     void FixedUpdate()
@@ -155,6 +160,18 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
+        }
+    }
+
+    private void CheckInteractable()
+    {
+        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, 4, interactables))
+        {
+            toolTip.SetActive(true);
+        }
+        else
+        {
+            toolTip.SetActive(false);
         }
     }
 }

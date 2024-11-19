@@ -27,6 +27,7 @@ public class RackController: MonoBehaviourPun
     private GameObject[] cropObjects;
 
     private bool actionBuffer;
+    private bool inRange = false;
 
     private void Awake()
     {
@@ -53,7 +54,7 @@ public class RackController: MonoBehaviourPun
             //moves rack up
             rack.transform.position = new Vector3(rack.transform.position.x, (Mathf.Lerp(rack.transform.position.y, rackLevels * -1.1f, riseSpeed)), rack.transform.position.z);
             //rack changes position on interaction with top
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && inRange)
             {
                 //this prevents the rack from going up and down in one frame
                 actionBuffer = true;
@@ -65,7 +66,7 @@ public class RackController: MonoBehaviourPun
             //moves rack down
             rack.transform.position = new Vector3(rack.transform.position.x, (Mathf.Lerp(rack.transform.position.y, 0, riseSpeed)), rack.transform.position.z);
             //rack changes position on interaction with top
-            if (Input.GetKeyDown(KeyCode.E) && !actionBuffer)
+            if (Input.GetKeyDown(KeyCode.E) && !actionBuffer && inRange)
             {
                 isUp = false;
             }
@@ -178,6 +179,22 @@ public class RackController: MonoBehaviourPun
         if (quantity != 0)
         {
             TempInventory.ListAdd((type, quantity, value));
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            inRange = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            inRange = false;
         }
     }
 

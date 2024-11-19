@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SellObjController : MonoBehaviour
 {
-    bool inRange = true;
+    bool inRange = false;
     [SerializeField] private GameObject shippingScreen;
     // Update is called once per frame
     void Update()
     {
-        if (inRange && Input.GetKeyDown(KeyCode.I))
+        if (inRange && Input.GetKeyDown(KeyCode.E))
         {
             shippingScreen.SetActive(!shippingScreen.activeSelf);
         }
@@ -19,7 +19,7 @@ public class SellObjController : MonoBehaviour
         }
     }
 
-    /*
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -35,5 +35,5 @@ public class SellObjController : MonoBehaviour
             inRange = false;
         }
     }
-    */
+    
 }
