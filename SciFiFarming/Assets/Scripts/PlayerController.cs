@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private LayerMask interactables;
     [SerializeField] private GameObject toolTip;
+    public InventoryController inventory;
 
     void Start()
     {
@@ -48,9 +49,14 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        HandleMouseLook();
+        //if the player is not in menu: look around
+        if (Cursor.lockState == CursorLockMode.Locked)
+        {
+            HandleMouseLook();
+        }
         HandleJump();
         HandleDash();
+        CheckInteractable();
         if (dashCooldownTimer > 0)
         {
             dashCooldownTimer -= Time.deltaTime;
@@ -60,7 +66,19 @@ public class PlayerController : MonoBehaviour
         {
             playerCamera.fieldOfView = fieldOfView;
         }
-        CheckInteractable();
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            inventory.gameObject.SetActive(!inventory.gameObject.activeSelf);
+            if (inventory.gameObject.activeSelf)
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+        }
     }
 
     void FixedUpdate()

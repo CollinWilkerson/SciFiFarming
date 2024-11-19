@@ -9,4 +9,5 @@ public class PlantData : MonoBehaviour
     public int harvestStage = 4;
     public string type = "Onion";
     public string[] stageModels;
+    public Sprite inventorySprite;
 }
