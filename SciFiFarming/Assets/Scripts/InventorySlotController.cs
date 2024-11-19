@@ -13,20 +13,23 @@ public class InventorySlotController : MonoBehaviour
 {
     [HideInInspector] public bool isFilled = false;
     [HideInInspector] public int controllerIndex;
-    private ItemType type;
-    private int libraryIndex;
+    public Button button;
+    public ItemType type;
+    private int libraryIndex = -1;
+    private int quantity;
     private Image itemImage;
     public bool DebugFill;
 
     private void Awake()
     {
         itemImage = gameObject.GetComponent<Image>();
+        button = gameObject.GetComponent<Button>();
     }
     private void Start()
     {
         if (DebugFill)
         {
-            SetInventorySlot(ItemType.plant, 0);
+            SetInventorySlot(ItemType.plant, 0, 1);
         }
     }
 
@@ -35,7 +38,8 @@ public class InventorySlotController : MonoBehaviour
     /// </summary>
     /// <param name="addType"></param>
     /// <param name="addIndex"></param>
-    public void SetInventorySlot(ItemType addType, int addIndex)
+    /// <param name="addQuantity"></param>
+    public void SetInventorySlot(ItemType addType, int addIndex, int addQuantity)
     {
         //checks for invalid idex
         if(addIndex < 0)
@@ -44,6 +48,7 @@ public class InventorySlotController : MonoBehaviour
         }
         type = addType;
         libraryIndex = addIndex;
+        quantity = addQuantity;
         isFilled = true;
         if(type == ItemType.plant)
         {
@@ -58,8 +63,13 @@ public class InventorySlotController : MonoBehaviour
     /// <param name="other"></param>
     public void SetInventorySlot(InventorySlotController other)
     {
+        if(other.libraryIndex == -1)
+        {
+            return;
+        }
         type = other.type;
         libraryIndex = other.libraryIndex;
+        quantity = other.quantity;
         isFilled = true;
         if (type == ItemType.plant)
         {
@@ -95,5 +105,15 @@ public class InventorySlotController : MonoBehaviour
                 InventoryController.hand = null;
             }
         }
+    }
+
+    public int GetLibraryIndex()
+    {
+        return libraryIndex;
+    }
+
+    public int GetQuantity()
+    {
+        return quantity;
     }
 }

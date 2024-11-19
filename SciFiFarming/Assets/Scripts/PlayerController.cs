@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask interactables;
     [SerializeField] private GameObject toolTip;
     public InventoryController inventory;
+    public static PlayerController clientPlayer;
 
     void Start()
     {
@@ -45,6 +46,8 @@ public class PlayerController : MonoBehaviour
         }
 
         Cursor.lockState = CursorLockMode.Locked;
+
+        clientPlayer = this; //this is an identifier for other scripts, it will need to be initialized for multiplayer
     }
 
     void Update()
@@ -69,13 +72,15 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.I))
         {
-            inventory.gameObject.SetActive(!inventory.gameObject.activeSelf);
-            if (inventory.gameObject.activeSelf)
+            
+            if (!inventory.gameObject.activeSelf && Cursor.lockState == CursorLockMode.Locked)
             {
                 Cursor.lockState = CursorLockMode.None;
+                inventory.gameObject.SetActive(true);
             }
-            else
+            else if(inventory.gameObject.activeSelf)
             {
+                inventory.gameObject.SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked;
             }
         }
