@@ -74,10 +74,20 @@ public class RackController: MonoBehaviourPun
             {
                 FillTank(tempQuality);
             }
-            if (Input.GetKeyDown(KeyCode.T) && TempInventory.seedInventory.Count > 0)
+            if (Input.GetKeyDown(KeyCode.T))
             {
-                PlantSeeds(TempInventory.seedInventory[0]);
-                TempInventory.seedInventory.RemoveAt(0);
+                foreach(InventorySlotController s in PlayerController.clientPlayer.inventory.slots)
+                {
+                    if (!s.isFilled)
+                    {
+                        continue;
+                    }
+                    else if(s.type == ItemType.seed)
+                    {
+                        PlantSeeds(s.GetLibraryIndex());
+                        s.Use(1);
+                    }
+                }
             }
             if (Input.GetKeyDown(KeyCode.Y))
             {
@@ -178,7 +188,7 @@ public class RackController: MonoBehaviourPun
         }
         if (quantity != 0)
         {
-            TempInventory.ListAdd((type, quantity, value));
+            PlayerController.clientPlayer.inventory.AddItem(ItemType.plant, type, quantity);
         }
     }
 

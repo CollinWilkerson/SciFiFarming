@@ -4,26 +4,45 @@ using UnityEngine;
 
 public class SeedMakerController : MonoBehaviour
 {
+    private bool inRange;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.E) && inRange)
         {
             makeSeed();
         }
     }
     public void makeSeed()
     {
-        if(TempInventory.inventory.Count == 0)
+        //this goes through the players inventory to find plants for now, I'll work on a toolbar for the player soon
+        foreach(InventorySlotController s in PlayerController.clientPlayer.inventory.slots)
         {
-            Debug.Log("Nothing");
-            return;
+            if (!s.isFilled)
+            {
+                continue;
+            }
+            if(s.type == ItemType.plant)
+            {
+                PlayerController.clientPlayer.inventory.AddItem(ItemType.seed, s.GetLibraryIndex(), s.GetQuantity());
+                s.EmptyInventorySlot();
+                break;
+            }
         }
-        for (int i = 1; i < TempInventory.inventory[0].quantity; i++)
-        {
-            Debug.Log("seed added");
-            TempInventory.AddSeed(TempInventory.inventory[0].plantType);
-        }
+    }
 
-        TempInventory.inventory.RemoveAt(0);
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            inRange = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            inRange = false;
+        }
     }
 }

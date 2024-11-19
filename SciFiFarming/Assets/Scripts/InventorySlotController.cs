@@ -52,8 +52,11 @@ public class InventorySlotController : MonoBehaviour
         isFilled = true;
         if(type == ItemType.plant)
         {
-            Debug.Log("Onion");
             itemImage.sprite = PlantLibrary.library[libraryIndex].inventorySprite;
+        }
+        if (type == ItemType.seed)
+        {
+            itemImage.sprite = PlantLibrary.library[libraryIndex].seedSprite;
         }
     }
 
@@ -73,8 +76,25 @@ public class InventorySlotController : MonoBehaviour
         isFilled = true;
         if (type == ItemType.plant)
         {
-            Debug.Log("Onion");
             itemImage.sprite = PlantLibrary.library[libraryIndex].inventorySprite;
+        }
+        if (type == ItemType.seed)
+        {
+            itemImage.sprite = PlantLibrary.library[libraryIndex].seedSprite;
+        }
+    }
+
+    public int Use(int amount = 1)
+    {
+        if (quantity - amount > 0)
+        {
+            quantity -= amount;
+            return amount;
+        }
+        else
+        {
+            EmptyInventorySlot();
+            return quantity;
         }
     }
 

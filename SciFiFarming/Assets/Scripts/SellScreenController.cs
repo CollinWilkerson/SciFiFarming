@@ -61,7 +61,6 @@ public class SellScreenController : MonoBehaviour
 
     public void PullFromInventory()
     {
-        Debug.Log("Pull run");
         //empty the total, then refill it THIS IS INEFFICIENT
         total = 0;
         sellItems.Clear();
@@ -69,12 +68,10 @@ public class SellScreenController : MonoBehaviour
         {
             if (!s.isFilled)
             {
-                Debug.Log("Returned");
                 return;
             }
             else if(s.type == ItemType.plant)
             {
-                Debug.Log("Added " + s.GetLibraryIndex());
                 PlantData tempPlant = PlantLibrary.library[s.GetLibraryIndex()];
                 AddItem((tempPlant.type, s.GetQuantity(), tempPlant.value));
             }

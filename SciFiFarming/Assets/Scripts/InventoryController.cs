@@ -23,6 +23,7 @@ public class InventoryController : MonoBehaviour
             if (!slots[i].isFilled)
             {
                 slots[i].SetInventorySlot(addType, addIndex, addQuantity);
+                return;
             }
         }
         Debug.Log("Inventory Full");
