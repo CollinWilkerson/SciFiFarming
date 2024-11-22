@@ -6,8 +6,9 @@ public class PlantLibrary : MonoBehaviour
 {
     public static PlantData[] library;
 
-    private void Awake()
+    public void Awake()
     {
+        Debug.Log(gameObject.name + " awake");
         library = gameObject.GetComponents<PlantData>();
     }
 }

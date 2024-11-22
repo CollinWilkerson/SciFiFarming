@@ -9,6 +9,7 @@ public class InventoryController : MonoBehaviour
 
     private void Awake()
     {
+        //Debug.Log(gameObject.name + " Initialized");
         slots = gameObject.GetComponentsInChildren<InventorySlotController>();
         for(int i = 0; i < slots.Length; i++)
         {

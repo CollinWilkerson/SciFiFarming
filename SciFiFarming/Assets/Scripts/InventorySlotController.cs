@@ -22,15 +22,17 @@ public class InventorySlotController : MonoBehaviour
 
     private void Awake()
     {
+        //Debug.Log("Initialized");
         itemImage = gameObject.GetComponent<Image>();
         button = gameObject.GetComponent<Button>();
-    }
-    private void Start()
-    {
         if (DebugFill)
         {
             SetInventorySlot(ItemType.plant, 0, 1);
         }
+    }
+    private void Start()
+    {
+        
     }
 
     /// <summary>
@@ -66,6 +68,7 @@ public class InventorySlotController : MonoBehaviour
     /// <param name="other"></param>
     public void SetInventorySlot(InventorySlotController other)
     {
+        //Debug.Log(other.libraryIndex);
         if(other.libraryIndex == -1)
         {
             return;
@@ -76,6 +79,8 @@ public class InventorySlotController : MonoBehaviour
         isFilled = true;
         if (type == ItemType.plant)
         {
+            //Debug.Log("Item Image: " + itemImage.sprite);
+            //Debug.Log("Plant Library sprite: " + PlantLibrary.library[libraryIndex].inventorySprite);
             itemImage.sprite = PlantLibrary.library[libraryIndex].inventorySprite;
         }
         if (type == ItemType.seed)
@@ -105,6 +110,7 @@ public class InventorySlotController : MonoBehaviour
     {
         libraryIndex = -1;
         isFilled = false;
+        //Debug.Log(itemImage.sprite);
         itemImage.sprite = null; 
     }
 

@@ -7,6 +7,7 @@ public class SellScreenController : MonoBehaviour
 {
     private List<(string name, int quantity, int value)> sellItems;
     private int total;
+    private bool firstActive = true;
     [SerializeField] private TextMeshProUGUI totalText;
     [SerializeField] private TextMeshProUGUI partsText;
     [SerializeField] private InventoryController playerInventory;
@@ -22,33 +23,40 @@ public class SellScreenController : MonoBehaviour
 
     private void OnEnable()
     {
-        //the first time the screen is enabled the Inventories won't have anything yet
-        try
+        if (firstActive)
         {
-            Debug.Log(playerInventory.slots[0]);
-            Debug.Log(sellInventory.slots[0]);
-        }
-        catch
-        {
+            Debug.Log("I Quit");
             return;
         }
-        Debug.Log("OnEnable");
+
+        //Debug.Log("OnEnable");
+        Cursor.lockState = CursorLockMode.None;
+
         //pull the players inventory
         foreach (InventorySlotController s in PlayerController.clientPlayer.inventory.slots)
         {
-            playerInventory.slots[s.controllerIndex].SetInventorySlot(s);
             if (!s.isFilled)
             {
                 playerInventory.slots[s.controllerIndex].EmptyInventorySlot();
+                continue;
             }
+            playerInventory.slots[s.controllerIndex].SetInventorySlot(s);
         }
         //put anything in the sell inventory on the display
-        PullFromInventory();
+        //PullFromInventory();
     }
 
     private void OnDisable()
     {
+        if (firstActive)
+        {
+            Debug.Log("I Quit");
+            firstActive = false;
+            return;
+        }
         //push this inventory to the players invetory
+        Cursor.lockState = CursorLockMode.Locked;
+        
         foreach (InventorySlotController s in playerInventory.slots)
         {
             PlayerController.clientPlayer.inventory.slots[s.controllerIndex].SetInventorySlot(s);

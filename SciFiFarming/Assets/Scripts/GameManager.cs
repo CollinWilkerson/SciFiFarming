@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
 	public int gold; 
 	public static GameManager instance;
+	[SerializeField] private GameObject playerInventory;
+	[SerializeField] private GameObject sellScreen;
 
     private void Awake()
     {
@@ -17,6 +19,14 @@ public class GameManager : MonoBehaviour
         {
 			instance = this;
         }
+		
+		//this makes sure that all items are properly initialized before they are needed in game
+		//check with slease about this
+		FindFirstObjectByType<PlantLibrary>().Awake();
+		playerInventory.SetActive(true);
+		playerInventory.SetActive(false);
+		sellScreen.SetActive(true);
+		sellScreen.SetActive(false);
     }
     public static T CopyComponent<T>(T original, GameObject destination) where T : Component
 	{

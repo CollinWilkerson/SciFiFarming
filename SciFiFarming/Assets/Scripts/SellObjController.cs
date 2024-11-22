@@ -11,20 +11,12 @@ public class SellObjController : MonoBehaviour
     {
         if (inRange && Input.GetKeyDown(KeyCode.E))
         {
+            Debug.Log(!shippingScreen.activeSelf);
             shippingScreen.SetActive(!shippingScreen.activeSelf);
-            if (shippingScreen.activeSelf)
-            {
-                Cursor.lockState = CursorLockMode.None;
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-            }
         }
         else if (!inRange && shippingScreen.activeSelf)
         {
             shippingScreen.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
