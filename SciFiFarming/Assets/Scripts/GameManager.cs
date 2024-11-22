@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Android;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
 	public static GameManager instance;
 	[SerializeField] private GameObject playerInventory;
 	[SerializeField] private GameObject sellScreen;
+    public static LayerMask interactables;
 
     private void Awake()
     {
@@ -19,14 +21,15 @@ public class GameManager : MonoBehaviour
         {
 			instance = this;
         }
-		
-		//this makes sure that all items are properly initialized before they are needed in game
-		//check with slease about this
-		FindFirstObjectByType<PlantLibrary>().Awake();
-		playerInventory.SetActive(true);
-		playerInventory.SetActive(false);
-		sellScreen.SetActive(true);
-		sellScreen.SetActive(false);
+    }
+
+    private void Start()
+    {
+        //this makes sure that all items are properly initialized before they are needed in game
+        playerInventory.SetActive(true);
+        playerInventory.SetActive(false);
+        sellScreen.SetActive(true);
+        sellScreen.SetActive(false);
     }
     public static T CopyComponent<T>(T original, GameObject destination) where T : Component
 	{

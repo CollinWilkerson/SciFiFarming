@@ -135,7 +135,7 @@ public class RackController: MonoBehaviourPun
                     rackPositions[i%rackPositions.Length].position.y +  i/rackPositions.Length * 1.1f,
                     rackPositions[i%rackPositions.Length].position.z);
                 GameObject spawnObj = Resources.Load(PlantLibrary.library[seed].stageModels[0]) as GameObject;
-                cropObjects[i] = Instantiate(spawnObj, spawnPos, Quaternion.identity);
+                cropObjects[i] = Instantiate(spawnObj, spawnPos, Quaternion.identity,rack.transform);
             }
         }
     }
@@ -158,7 +158,7 @@ public class RackController: MonoBehaviourPun
                 Vector3 spawnPos = cropObjects[i].transform.position;
                 GameObject spawnObj = Resources.Load(PlantLibrary.library[crops[i].type].stageModels[crops[i].stage]) as GameObject;
                 Destroy(cropObjects[i]);
-                cropObjects[i] = Instantiate(spawnObj, spawnPos, Quaternion.identity);
+                cropObjects[i] = Instantiate(spawnObj, spawnPos, Quaternion.identity, rack.transform);
             }
         }
     }

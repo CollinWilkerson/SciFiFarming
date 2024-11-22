@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
     private Camera playerCamera;
     private float xRotation = 0f;
 
-    [SerializeField] private LayerMask interactables;
     [SerializeField] private GameObject toolTip;
     public InventoryController inventory;
     public static PlayerController clientPlayer;
@@ -188,7 +187,7 @@ public class PlayerController : MonoBehaviour
 
     private void CheckInteractable()
     {
-        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, 4, interactables))
+        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, 4, GameManager.interactables))
         {
             toolTip.SetActive(true);
         }
