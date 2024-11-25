@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 	public static GameManager instance;
 	[SerializeField] private GameObject playerInventory;
 	[SerializeField] private GameObject sellScreen;
+    [SerializeField] private LayerMask initInteractables;
     public static LayerMask interactables;
 
     private void Awake()
@@ -21,15 +22,22 @@ public class GameManager : MonoBehaviour
         {
 			instance = this;
         }
+        interactables = initInteractables;
     }
 
     private void Start()
     {
         //this makes sure that all items are properly initialized before they are needed in game
-        playerInventory.SetActive(true);
-        playerInventory.SetActive(false);
-        sellScreen.SetActive(true);
-        sellScreen.SetActive(false);
+        if (playerInventory != null)
+        {
+            playerInventory.SetActive(true);
+            playerInventory.SetActive(false);
+        }
+        if (sellScreen != null)
+        {
+            sellScreen.SetActive(true);
+            sellScreen.SetActive(false);
+        }
     }
     public static T CopyComponent<T>(T original, GameObject destination) where T : Component
 	{

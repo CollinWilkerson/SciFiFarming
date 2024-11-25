@@ -5,10 +5,11 @@ using UnityEngine;
 public class GooTankController : MonoBehaviour
 {
     // Update is called once per frame
-    
+    [SerializeField] private int gooPerBlob = 100;
 
     void Update()
     {
+        //if the player is looking at goo and presses E they get goo
         if (Input.GetKeyDown(KeyCode.E))
         {
             RaycastHit hit;
@@ -18,7 +19,8 @@ public class GooTankController : MonoBehaviour
             {
                 if (hit.collider.gameObject.CompareTag("Goo"))
                 {
-
+                    PersistentData.goo += gooPerBlob;
+                    Destroy(hit.collider.gameObject);
                 }
             }
         }
