@@ -29,4 +29,12 @@ public class InventoryController : MonoBehaviour
         }
         Debug.Log("Inventory Full");
     }
+
+    public void ClearInventory()
+    {
+        foreach (InventorySlotController slot in slots)
+        {
+            slot.EmptyInventorySlot();
+        }
+    }
 }

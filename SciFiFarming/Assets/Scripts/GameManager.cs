@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
             sellScreen.SetActive(true);
             sellScreen.SetActive(false);
         }
+        playerInventory.GetComponent<InventoryController>().ClearInventory();
+        PersistentData.SetInventoryFromList(playerInventory.GetComponent<InventoryController>());
     }
     public static T CopyComponent<T>(T original, GameObject destination) where T : Component
 	{

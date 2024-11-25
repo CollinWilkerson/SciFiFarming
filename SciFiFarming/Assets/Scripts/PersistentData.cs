@@ -3,27 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //this script stores any data we need to load across scenes
-public class PersistentData : MonoBehaviour
+public class PersistentData
 {
-    public static List<(ItemType type, int index, int quantity)> slotStorage;
+    public static List<(ItemType type, int index, int quantity)> slotStorage = new List<(ItemType type, int index, int quantity)>();
     public static float goo;
     public static int money;
     public static string lastScene;
-    public static PersistentData instance;
-
-    private void Awake()
-    {
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-        }
-        instance = this;
-        if (slotStorage == null)
-        {
-            slotStorage = new List<(ItemType type, int index, int quantity)>();
-        }
-        DontDestroyOnLoad(gameObject);
-    }
 
     /// <summary>
     /// store all items from an inventory to be accessed later in a new scene
