@@ -1074,7 +1074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d0d70c2fea5dc4195e057cc355635e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gooPerBlob: 0
+  gooPerBlob: 100
 --- !u!1001 &1760927073
 PrefabInstance:
   m_ObjectHideFlags: 0

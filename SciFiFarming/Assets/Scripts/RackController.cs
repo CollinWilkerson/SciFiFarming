@@ -114,9 +114,18 @@ public class RackController: MonoBehaviourPun
             tankLevel = tankMax;
             return;
         }
-        //(c1V1 + c2V2)/(V1 + V2) = c3
-        nutrientQuality = (tankLevel * nutrientQuality + fillRate * quality * Time.deltaTime) / (tankLevel + fillRate * Time.deltaTime);
-        tankLevel += fillRate * Time.deltaTime;
+        if (PersistentData.goo > 0 && tankLevel < tankMax)
+        {
+            //(c1V1 + c2V2)/(V1 + V2) = c3
+            nutrientQuality = (tankLevel * nutrientQuality + fillRate * quality * Time.deltaTime) / (tankLevel + fillRate * Time.deltaTime);
+            tankLevel += fillRate * Time.deltaTime;
+            PersistentData.goo = Mathf.Clamp(PersistentData.goo - fillRate * Time.deltaTime, 0, PersistentData.goo);
+        }
+        else
+        {
+            Debug.Log("No goo");
+        }
+        
     }
 
     [PunRPC]
