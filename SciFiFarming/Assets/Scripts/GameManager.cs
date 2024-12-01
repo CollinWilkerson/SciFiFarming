@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private GameObject sellScreen;
     [SerializeField] private LayerMask initInteractables;
     public static LayerMask interactables;
+    [SerializeField] private LayerMask initDestructables;
+    public static LayerMask destructables;
 
     private void Awake()
     {
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
 			instance = this;
         }
         interactables = initInteractables;
+        destructables = initDestructables;
     }
 
     private void Start()

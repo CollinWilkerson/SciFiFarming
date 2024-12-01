@@ -50,3 +50,6 @@ MonoBehaviour:
   initInteractables:
     serializedVersion: 2
     m_Bits: 64
+  initDestructables:
+    serializedVersion: 2
+    m_Bits: 128

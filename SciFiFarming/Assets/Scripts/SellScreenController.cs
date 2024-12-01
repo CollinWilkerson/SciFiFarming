@@ -35,6 +35,11 @@ public class SellScreenController : MonoBehaviour
         //pull the players inventory
         foreach (InventorySlotController s in PlayerController.clientPlayer.inventory.slots)
         {
+            //return when the inventory goes further than the player THIS MAY CAUSE BUGS
+            if(s.controllerIndex > playerInventory.slots.Length)
+            {
+                return;
+            }
             if (!s.isFilled)
             {
                 playerInventory.slots[s.controllerIndex].EmptyInventorySlot();

@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlantLibrary : MonoBehaviour
+public class WeaponLibrary : MonoBehaviour
 {
-    public static PlantData[] library;
+    public static WeaponData[] library;
 
     public void Awake()
     {
         //Debug.Log(gameObject.name + " awake");
-        library = gameObject.GetComponents<PlantData>();
+        library = gameObject.GetComponents<WeaponData>();
     }
 }

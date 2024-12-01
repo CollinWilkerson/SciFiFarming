@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public enum ItemType
 {
     plant,
-    seed
+    seed,
+    weapon,
 }
 
 public class InventorySlotController : MonoBehaviour
@@ -25,14 +26,14 @@ public class InventorySlotController : MonoBehaviour
         //Debug.Log("Initialized");
         itemImage = gameObject.GetComponent<Image>();
         button = gameObject.GetComponent<Button>();
+        
+    }
+    private void Start()
+    {
         if (DebugFill)
         {
             SetInventorySlot(ItemType.plant, 0, 1);
         }
-    }
-    private void Start()
-    {
-        
     }
 
     /// <summary>
@@ -60,6 +61,10 @@ public class InventorySlotController : MonoBehaviour
         {
             itemImage.sprite = PlantLibrary.library[libraryIndex].seedSprite;
         }
+        if (type == ItemType.weapon)
+        {
+            itemImage.sprite = WeaponLibrary.library[libraryIndex].inventroySprite;
+        }
     }
 
     /// <summary>
@@ -86,6 +91,10 @@ public class InventorySlotController : MonoBehaviour
         if (type == ItemType.seed)
         {
             itemImage.sprite = PlantLibrary.library[libraryIndex].seedSprite;
+        }
+        if (type == ItemType.weapon)
+        {
+            itemImage.sprite = WeaponLibrary.library[libraryIndex].inventroySprite;
         }
     }
 
@@ -141,5 +150,10 @@ public class InventorySlotController : MonoBehaviour
     public int GetQuantity()
     {
         return quantity;
+    }
+
+    public void SetColor(Color c)
+    {
+        itemImage.color = c;
     }
 }
