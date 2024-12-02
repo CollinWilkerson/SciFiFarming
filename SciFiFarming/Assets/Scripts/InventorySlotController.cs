@@ -8,18 +8,29 @@ public enum ItemType
     plant,
     seed,
     weapon,
+    helmet,
+    chestArmr,
+    belt,
+    LegArmr,
+    boots,
 }
 
 public class InventorySlotController : MonoBehaviour
 {
+
     [HideInInspector] public bool isFilled = false;
     [HideInInspector] public int controllerIndex;
     public Button button;
+
     public ItemType type;
     private int libraryIndex = -1;
     private int quantity;
+
     private Image itemImage;
-    public bool DebugFill;
+
+    [Header("For armor slots only")]
+    [SerializeField] private bool isArmor;
+    [SerializeField] private ItemType slotType;
 
     private void Awake()
     {
@@ -27,13 +38,6 @@ public class InventorySlotController : MonoBehaviour
         itemImage = gameObject.GetComponent<Image>();
         button = gameObject.GetComponent<Button>();
         
-    }
-    private void Start()
-    {
-        if (DebugFill)
-        {
-            SetInventorySlot(ItemType.plant, 0, 1);
-        }
     }
 
     /// <summary>
@@ -135,9 +139,17 @@ public class InventorySlotController : MonoBehaviour
             //if the player selects an empty slot, place the item there
             if (!isFilled)
             {
+                if (isArmor && slotType != InventoryController.hand.type)
+                {
+                    return;
+                }
                 SetInventorySlot(InventoryController.hand);
                 InventoryController.hand.EmptyInventorySlot();
                 InventoryController.hand = null;
+            }
+            else
+            {
+                InventoryController.hand = this;
             }
         }
     }

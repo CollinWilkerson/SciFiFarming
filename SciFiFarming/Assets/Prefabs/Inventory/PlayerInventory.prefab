@@ -411,6 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a82381290f4131f4a954998bd0c4fbb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  handSpawnPos: {fileID: 0}
 --- !u!1 &4071180949182337561
 GameObject:
   m_ObjectHideFlags: 0
@@ -1222,6 +1223,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5596168921149234164, guid: 60fcd76a0362ab149845bb7ccc01e5c8,
+        type: 3}
+      propertyPath: isArmor
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6410160910124545201, guid: 60fcd76a0362ab149845bb7ccc01e5c8,
         type: 3}
@@ -2403,6 +2409,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5596168921149234164, guid: 60fcd76a0362ab149845bb7ccc01e5c8,
+        type: 3}
+      propertyPath: isArmor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6410160910124545201, guid: 60fcd76a0362ab149845bb7ccc01e5c8,
         type: 3}
       propertyPath: m_Name
@@ -2526,6 +2537,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5596168921149234164, guid: 60fcd76a0362ab149845bb7ccc01e5c8,
+        type: 3}
+      propertyPath: isArmor
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6410160910124545201, guid: 60fcd76a0362ab149845bb7ccc01e5c8,
         type: 3}
@@ -3178,6 +3194,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5596168921149234164, guid: 60fcd76a0362ab149845bb7ccc01e5c8,
+        type: 3}
+      propertyPath: isArmor
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6410160910124545201, guid: 60fcd76a0362ab149845bb7ccc01e5c8,
         type: 3}
@@ -3954,6 +3975,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5596168921149234164, guid: 60fcd76a0362ab149845bb7ccc01e5c8,
+        type: 3}
+      propertyPath: isArmor
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6410160910124545201, guid: 60fcd76a0362ab149845bb7ccc01e5c8,
         type: 3}
