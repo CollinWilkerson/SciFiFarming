@@ -69,6 +69,10 @@ public class InventorySlotController : MonoBehaviour
         {
             itemImage.sprite = WeaponLibrary.library[libraryIndex].inventroySprite;
         }
+        if(type == ItemType.helmet)
+        {
+            itemImage.sprite = EquipmentLibrary.helmetLibrary[libraryIndex].inventroySprite;
+        }
     }
 
     /// <summary>
@@ -99,6 +103,10 @@ public class InventorySlotController : MonoBehaviour
         if (type == ItemType.weapon)
         {
             itemImage.sprite = WeaponLibrary.library[libraryIndex].inventroySprite;
+        }
+        if (type == ItemType.helmet)
+        {
+            itemImage.sprite = EquipmentLibrary.helmetLibrary[libraryIndex].inventroySprite;
         }
     }
 
@@ -133,15 +141,26 @@ public class InventorySlotController : MonoBehaviour
         if (InventoryController.hand == null && isFilled)
         {
             InventoryController.hand = this;
+            if (isArmor)
+            {
+                //update defence
+            }
         }
         else if(InventoryController.hand != null)
         {
             //if the player selects an empty slot, place the item there
             if (!isFilled)
             {
-                if (isArmor && slotType != InventoryController.hand.type)
+                if (isArmor)
                 {
-                    return;
+                    if(slotType != InventoryController.hand.type)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        //update player defence
+                    }
                 }
                 SetInventorySlot(InventoryController.hand);
                 InventoryController.hand.EmptyInventorySlot();

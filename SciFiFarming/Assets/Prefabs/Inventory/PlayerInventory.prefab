@@ -1229,6 +1229,11 @@ PrefabInstance:
       propertyPath: isArmor
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5596168921149234164, guid: 60fcd76a0362ab149845bb7ccc01e5c8,
+        type: 3}
+      propertyPath: slotType
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6410160910124545201, guid: 60fcd76a0362ab149845bb7ccc01e5c8,
         type: 3}
       propertyPath: m_Name
