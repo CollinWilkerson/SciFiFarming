@@ -1,11 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class BugEnemy : MonoBehaviour
 {
-    public Transform player;
+    public Transform player; // Assign this in the Inspector
     public NavMeshAgent agent;
     public Animator anim;
 
@@ -13,7 +12,9 @@ public class BugEnemy : MonoBehaviour
     public float currentHealth;
     public float attackCooldown = 2f;
     public float attackRange = 1.5f;
-    public float deAggroRadius = 10f;
+    public float detectionRadius = 10f; // Added for detection logic
+    public float deAggroRadius = 15f; // Adjusted to match detection logic
+    public float pauseBeforeAttack = 1f; // Pause duration before attacking
 
     private float distanceToPlayer;
     private bool canAttack = true;
@@ -28,55 +29,83 @@ public class BugEnemy : MonoBehaviour
             Debug.LogError($"{gameObject.name} is not on a NavMesh. Check placement or bake settings.");
             enabled = false;
         }
+
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player")?.transform;
+            if (player == null)
+            {
+                Debug.LogError("Player not found in the scene. Assign it in the Inspector.");
+                enabled = false;
+            }
+        }
     }
 
     void Update()
     {
         if (player == null) return;
 
-        distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        // If the spider is aggroed
-        if (isAggro && agent != null && agent.isActiveAndEnabled)
+        if (isAggro && agent.isActiveAndEnabled)
         {
-            if (distanceToPlayer <= attackRange) // Attack if within range
+            if (distanceToPlayer <= attackRange)
             {
                 StartCoroutine(Attack());
             }
             else if (distanceToPlayer > deAggroRadius && currentHealth == maxHealth)
             {
-                isAggro = false; // De-aggro if far enough and full health
+                isAggro = false; // De-aggro
             }
-            else if (distanceToPlayer > 3f) // Chase player until within 3 units
+            else if (distanceToPlayer > 2f)
             {
-                agent.SetDestination(player.transform.position);
+                agent.SetDestination(player.position);
+                if (anim != null) anim.SetBool("IsMoving", true); // Trigger movement animation
             }
             else
             {
-                // Stop the agent when within 3 units to prepare for attack
+                // Stop moving and face the player
                 agent.ResetPath();
+                RotateTowardsPlayer();
+                if (anim != null) anim.SetBool("IsMoving", false); // Stop movement animation
             }
+        }
+        else if (distanceToPlayer <= detectionRadius)
+        {
+            isAggro = true; // Aggro when within detection radius
         }
     }
 
+    private void RotateTowardsPlayer()
+    {
+        Vector3 direction = (player.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f); // Smooth rotation
+    }
 
-    //most recently changed
     private IEnumerator Attack()
     {
-        if (canAttack && distanceToPlayer <= attackRange) // Ensure enemy is close enough to attack
+        if (canAttack && distanceToPlayer <= attackRange)
         {
             canAttack = false;
 
-            // Perform the jump attack logic
-            Debug.Log("SpiderEnemy performs a jump attack!");
-            Vector3 jumpDirection = (player.transform.position - transform.position).normalized;
+            // Pause before attacking
+            agent.isStopped = true; // Ensure agent is stopped
+            RotateTowardsPlayer(); // Ensure facing the player
+            if (anim != null) anim.SetTrigger("PrepareAttack"); // Optional preparation animation
+
+            Debug.Log($"{gameObject.name} is preparing to attack...");
+            yield return new WaitForSeconds(pauseBeforeAttack);
+
+            // Perform jump attack
+            if (anim != null) anim.SetTrigger("Attack"); // Trigger attack animation
+            Debug.Log($"{gameObject.name} performs a jump attack!");
+
+            Vector3 jumpDirection = (player.position - transform.position).normalized;
             Vector3 jumpTarget = transform.position + jumpDirection * 3f; // Jump forward 3 units
 
-            // Simulate a jump using a coroutine (this could be replaced with animation logic)
-            // float jumpSpeed = 5f;
             float elapsedTime = 0f;
             float jumpDuration = 0.5f;
-
             Vector3 initialPosition = transform.position;
 
             while (elapsedTime < jumpDuration)
@@ -91,10 +120,15 @@ public class BugEnemy : MonoBehaviour
                 yield return null;
             }
 
-            // Reset to grounded position after the jump
-            transform.position = new Vector3(transform.position.x, initialPosition.y, transform.position.z);
+            // Reset to NavMesh after jump
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(transform.position, out hit, 1f, NavMesh.AllAreas))
+            {
+                transform.position = hit.position;
+            }
 
-            yield return new WaitForSeconds(attackCooldown); // Wait for cooldown before next attack
+            agent.isStopped = false; // Resume movement after attack
+            yield return new WaitForSeconds(attackCooldown); // Cooldown
             canAttack = true;
         }
     }
@@ -116,8 +150,17 @@ public class BugEnemy : MonoBehaviour
     private void Die()
     {
         Debug.Log($"{gameObject.name} has died.");
-        anim.SetTrigger("Die");
+        if (anim != null) anim.SetTrigger("Die");
         agent.enabled = false;
         Destroy(gameObject, 2f); // Delay to allow death animation
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, deAggroRadius);
     }
 }
