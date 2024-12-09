@@ -59,6 +59,8 @@ public class BugEnemy : MonoBehaviour
         }
     }
 
+
+    //most recently changed
     private IEnumerator Attack()
     {
         if (canAttack && distanceToPlayer <= attackRange) // Ensure enemy is close enough to attack

@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         {
             playerCamera.fieldOfView = fieldOfView;
         }
-
+        //picking up items
         if (Input.GetKeyDown(KeyCode.E) && currentInteractable != null)
         {
             PickUpItem(currentInteractable);
@@ -198,6 +198,7 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 4, GameManager.interactables))
         {
+            Debug.Log("Bingus");
             currentInteractable = hit.collider.gameObject; // track the interactable
             toolTip.SetActive(true);
             toolTip.transform.position = hit.collider.bounds.center + Vector3.up * 0.5f; // position tooltip
