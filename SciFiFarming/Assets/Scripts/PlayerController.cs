@@ -69,6 +69,11 @@ public class PlayerController : MonoBehaviour
             playerCamera.fieldOfView = fieldOfView;
         }
 
+        if (Input.GetKeyDown(KeyCode.E) && currentInteractable != null)
+        {
+            PickUpItem(currentInteractable);
+        }
+
         if (Input.GetKeyDown(KeyCode.I))
         {
             
@@ -185,15 +190,30 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void CheckInteractable()
+
+    private GameObject currentInteractable; // to track the focused item
+
+    void CheckInteractable()
     {
-        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, 4, GameManager.interactables))
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 4, GameManager.interactables))
         {
+            currentInteractable = hit.collider.gameObject; // track the interactable
             toolTip.SetActive(true);
+            toolTip.transform.position = hit.collider.bounds.center + Vector3.up * 0.5f; // position tooltip
         }
         else
         {
+            currentInteractable = null;
             toolTip.SetActive(false);
         }
     }
+
+    void PickUpItem(GameObject item)
+    {
+        //idea is to add item to inventory or deactivate it
+        item.SetActive(false);
+        Debug.Log("Picked up: " + item.name);
+    }
+
 }
