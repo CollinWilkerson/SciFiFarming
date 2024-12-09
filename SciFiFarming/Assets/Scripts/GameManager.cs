@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public static LayerMask interactables;
     [SerializeField] private LayerMask initDestructables;
     public static LayerMask destructables;
+    public static ToolbarController toolbar;
 
     private void Awake()
     {
@@ -43,6 +44,7 @@ public class GameManager : MonoBehaviour
         }
         playerInventory.GetComponent<InventoryController>().ClearInventory();
         PersistentData.SetInventoryFromList(playerInventory.GetComponent<InventoryController>());
+        toolbar = ToolbarController.instance;
     }
     public static T CopyComponent<T>(T original, GameObject destination) where T : Component
 	{

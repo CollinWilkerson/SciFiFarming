@@ -21,6 +21,7 @@ public class ElevatorController : MonoBehaviour
     private void SwitchScenes()
     {
         PersistentData.StoreInList(PlayerController.clientPlayer.inventory);
+        PersistentData.health = PlayerController.clientPlayer.health;
         SceneManager.LoadScene(sceneToLoad);
     }
 

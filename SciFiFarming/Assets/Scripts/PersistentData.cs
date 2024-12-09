@@ -8,6 +8,7 @@ public class PersistentData
     public static List<(ItemType type, int index, int quantity)> slotStorage = new List<(ItemType type, int index, int quantity)>();
     public static float goo;
     public static int money;
+    public static float health = 0;
     public static string lastScene;
 
     /// <summary>

@@ -26,9 +26,6 @@ public class RackController: MonoBehaviourPun
     private (int type, int value, int stage) [] crops;
     private GameObject[] cropObjects;
 
-    private bool actionBuffer;
-    private bool inRange = false;
-
     private void Awake()
     {
         isUp = false;
@@ -54,40 +51,28 @@ public class RackController: MonoBehaviourPun
             //moves rack up
             rack.transform.position = new Vector3(rack.transform.position.x, (Mathf.Lerp(rack.transform.position.y, rackLevels * -1.1f, riseSpeed)), rack.transform.position.z);
             //rack changes position on interaction with top
-            if (Input.GetKeyDown(KeyCode.E) && inRange)
+            if (Input.GetKeyDown(KeyCode.E) && PlayerController.clientPlayer.currentInteractable == rack)
             {
                 //this prevents the rack from going up and down in one frame
-                actionBuffer = true;
                 isUp = true;
             }
         }
-        if (isUp)
+        else if (isUp)
         {
             //moves rack down
             rack.transform.position = new Vector3(rack.transform.position.x, (Mathf.Lerp(rack.transform.position.y, 0, riseSpeed)), rack.transform.position.z);
             //rack changes position on interaction with top
-            if (Input.GetKeyDown(KeyCode.E) && !actionBuffer && inRange)
+            if (Input.GetKeyDown(KeyCode.E) && PlayerController.clientPlayer.currentInteractable == rack &&
+                ToolbarController.instance.activeTool.type != ItemType.seed)
             {
                 isUp = false;
             }
-            if (Input.GetKey(KeyCode.R)) // player will interact wiht the tank connection for this
+            if (Input.GetKeyDown(KeyCode.E) && PlayerController.clientPlayer.currentInteractable == rack &&
+                ToolbarController.instance.activeTool.type == ItemType.seed)
             {
-                FillTank(tempQuality);
-            }
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                foreach(InventorySlotController s in PlayerController.clientPlayer.inventory.slots)
-                {
-                    if (!s.isFilled)
-                    {
-                        continue;
-                    }
-                    else if(s.type == ItemType.seed)
-                    {
-                        PlantSeeds(s.GetLibraryIndex());
-                        s.Use(1);
-                    }
-                }
+                InventorySlotController s = ToolbarController.instance.activeTool;
+                PlantSeeds(s.GetLibraryIndex());
+                s.Use(1);
             }
             if (Input.GetKeyDown(KeyCode.Y))
             {
@@ -99,8 +84,11 @@ public class RackController: MonoBehaviourPun
             }
         }
 
-        //reset buffer on frame end
-        actionBuffer = false;
+        //anything that should execute regardless of rack state should go down here
+        if (Input.GetKey(KeyCode.E) && PlayerController.clientPlayer.currentInteractable == tankConnection) // player will interact wiht the tank connection for this
+        {
+            FillTank(tempQuality);
+        }
     }
 
     /// <summary>
@@ -200,22 +188,4 @@ public class RackController: MonoBehaviourPun
             PlayerController.clientPlayer.inventory.AddItem(ItemType.plant, type, quantity);
         }
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            inRange = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            inRange = false;
-        }
-    }
-
-
 }

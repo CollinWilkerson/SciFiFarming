@@ -10,6 +10,7 @@ public class BugEnemy : MonoBehaviour
 
     public float maxHealth = 100f;
     public float currentHealth;
+    public float damage = 10f;
     public float attackCooldown = 2f;
     public float attackRange = 1.5f;
     public float detectionRadius = 10f; // Added for detection logic
@@ -162,5 +163,13 @@ public class BugEnemy : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, deAggroRadius);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
+        }
     }
 }

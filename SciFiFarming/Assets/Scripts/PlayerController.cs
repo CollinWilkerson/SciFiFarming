@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class PlayerController : MonoBehaviour
     public float mouseSensitivity = 100f;
     public float fieldOfView = 60f;
 
+    [Header("Stats")]
+    [SerializeField] private float maxHealth = 100f;
+    public float health;
+    public int money;
+
     private Rigidbody rb;
     private int jumpCount;
     private bool isGrounded;
@@ -27,6 +33,9 @@ public class PlayerController : MonoBehaviour
     private float xRotation = 0f;
 
     [SerializeField] private GameObject toolTip;
+    [SerializeField] private GameObject damageFilter;
+    [SerializeField] private Vector3 spawnPoint;
+    [SerializeField] private HeaderInfo headerInfo;
     public InventoryController inventory;
     public static PlayerController clientPlayer;
 
@@ -45,7 +54,15 @@ public class PlayerController : MonoBehaviour
         }
 
         Cursor.lockState = CursorLockMode.Locked;
-
+        if (PersistentData.health == 0)
+        {
+            health = maxHealth;
+        }
+        else 
+        {
+            health = PersistentData.health;
+            headerInfo.UpdateHealthBar(health / maxHealth);
+        }
         clientPlayer = this; //this is an identifier for other scripts, it will need to be initialized for multiplayer
     }
 
@@ -69,10 +86,12 @@ public class PlayerController : MonoBehaviour
             playerCamera.fieldOfView = fieldOfView;
         }
         //picking up items
+        /*
         if (Input.GetKeyDown(KeyCode.E) && currentInteractable != null)
         {
             PickUpItem(currentInteractable);
         }
+        */
 
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -191,14 +210,14 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private GameObject currentInteractable; // to track the focused item
+    [HideInInspector] public GameObject currentInteractable; // to track the focused item
 
     void CheckInteractable()
     {
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 4, GameManager.interactables))
         {
-            Debug.Log("Bingus");
+            //Debug.Log("Bingus");
             currentInteractable = hit.collider.gameObject; // track the interactable
             toolTip.SetActive(true);
             toolTip.transform.position = hit.collider.bounds.center + Vector3.up * 0.5f; // position tooltip
@@ -210,11 +229,47 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //the pickup action was moved to individual scripts to allow for more accurate control of actions taken
+    /*
     void PickUpItem(GameObject item)
     {
         //idea is to add item to inventory or deactivate it
         item.SetActive(false);
         Debug.Log("Picked up: " + item.name);
     }
+    */
 
+    public void TakeDamage(float damage)
+    {
+        //modify damage based on armor value
+        //take damage
+        health -= damage;
+
+        if (health <= 0)
+        {
+            Die();
+        }
+        else
+        {
+            //update healthbar
+            headerInfo.UpdateHealthBar(health / maxHealth);
+            StartCoroutine(DamageFlash());
+
+            IEnumerator DamageFlash()
+            {
+                damageFilter.SetActive(true);
+                yield return new WaitForSeconds(0.05f);
+                damageFilter.SetActive(false);
+            }
+        }
+    }
+
+    private void Die()
+    {
+        //this probably needs more functionality
+        PersistentData.money /= 2;
+        transform.position = spawnPoint;
+        health = maxHealth;
+        headerInfo.UpdateHealthBar(health / maxHealth);
+    }
 }

@@ -7,11 +7,24 @@ public class ToolbarController : MonoBehaviour
     [SerializeField] private Transform handSpawnPos;
     private GameObject handObject;
 
+    public static ToolbarController instance;
     private InventorySlotController[] toolbar;
-    private InventorySlotController activeTool;
+    public InventorySlotController activeTool;
     private WeaponData activeWeapon;
     private PlantData activePlant;
     private int activeIndex;
+
+    private void Awake()
+    {
+        if(instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
 
     private void Start()
     {
@@ -76,7 +89,7 @@ public class ToolbarController : MonoBehaviour
                     {
                         if (hit.collider.gameObject.CompareTag("Enemy"))
                         {
-                            Debug.Log("hit enemy. Dealing " + activeWeapon.damage + " damage");
+                            hit.collider.gameObject.GetComponent<BugEnemy>().TakeDamage(activeWeapon.damage);
                         }
                     }
                     break;

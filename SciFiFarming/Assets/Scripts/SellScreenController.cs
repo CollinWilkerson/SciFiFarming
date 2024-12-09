@@ -25,18 +25,19 @@ public class SellScreenController : MonoBehaviour
     {
         if (firstActive)
         {
-            Debug.Log("I Quit");
+            //Debug.Log("I Quit");
             return;
         }
 
         //Debug.Log("OnEnable");
         Cursor.lockState = CursorLockMode.None;
+        GameManager.toolbar.gameObject.SetActive(false);
 
         //pull the players inventory
         foreach (InventorySlotController s in PlayerController.clientPlayer.inventory.slots)
         {
             //return when the inventory goes further than the player THIS MAY CAUSE BUGS
-            if(s.controllerIndex > playerInventory.slots.Length)
+            if(s.controllerIndex > playerInventory.slots.Length - 1)
             {
                 return;
             }
@@ -55,13 +56,14 @@ public class SellScreenController : MonoBehaviour
     {
         if (firstActive)
         {
-            Debug.Log("I Quit");
+            //Debug.Log("I Quit");
             firstActive = false;
             return;
         }
         //push this inventory to the players invetory
         Cursor.lockState = CursorLockMode.Locked;
-        
+        GameManager.toolbar.gameObject.SetActive(true);
+
         foreach (InventorySlotController s in playerInventory.slots)
         {
             PlayerController.clientPlayer.inventory.slots[s.controllerIndex].SetInventorySlot(s);
@@ -81,12 +83,27 @@ public class SellScreenController : MonoBehaviour
         {
             if (!s.isFilled)
             {
-                return;
+                continue;
             }
             else if(s.type == ItemType.plant)
             {
                 PlantData tempPlant = PlantLibrary.library[s.GetLibraryIndex()];
                 AddItem((tempPlant.type, s.GetQuantity(), tempPlant.value));
+            }
+            else if(s.type == ItemType.seed)
+            {
+                PlantData tempPlant = PlantLibrary.library[s.GetLibraryIndex()];
+                AddItem((tempPlant.type + " seed", s.GetQuantity(), tempPlant.value/10));
+            }
+            else if(s.type == ItemType.weapon)
+            {
+                WeaponData tempWeapon = WeaponLibrary.library[s.GetLibraryIndex()];
+                AddItem((tempWeapon.type, s.GetQuantity(), tempWeapon.value));
+            }
+            else if(s.type == ItemType.helmet)
+            {
+                HelmetData tempHelmet = EquipmentLibrary.helmetLibrary[s.GetLibraryIndex()];
+                AddItem((tempHelmet.type, s.GetQuantity(), tempHelmet.value));
             }
         }
     }
@@ -108,7 +125,7 @@ public class SellScreenController : MonoBehaviour
 
     public void Sell()
     {
-        GameManager.instance.gold += total;
+        PersistentData.money += total;
         total = 0;
         sellItems.Clear();
         ScreenUpdate();
