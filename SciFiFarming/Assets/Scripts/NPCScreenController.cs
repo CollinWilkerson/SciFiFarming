@@ -8,7 +8,7 @@ public class NPCScreenController : MonoBehaviour
 {
     [SerializeField] private GameObject interactionScreen;
     private GameObject currentScreen;
-    private InventorySlotController itemToBuy;
+    private float affinity; //from 0 - 100 how much the NPC likes the player
     private RackController[] racks;
 
     private void OnEnable()
@@ -34,6 +34,20 @@ public class NPCScreenController : MonoBehaviour
         currentScreen.SetActive(false);
         currentScreen = screen;
     }
+    //TALK SCREEN CODE
+    [Header("Talk Screen")]
+    [SerializeField] private TextMeshProUGUI TalkDialog;
+
+    public void Chat()
+    {
+        TalkDialog.text = "Captain: Less talking, more working";
+        affinity += 0.01f;
+    }
+
+    public void Gift()
+    {
+
+    }
 
     //BUY SCREEN CODE
     [Header("Buy Screen")]
@@ -50,6 +64,7 @@ public class NPCScreenController : MonoBehaviour
                 case ItemType.plant:
                     PlantData tempPlant = PlantLibrary.library[InventoryController.hand.GetLibraryIndex()];
                     cost = tempPlant.value * 2;
+                    cost -= (int)(cost * affinity / 100);
                     itemDataText.text = "Name: " + tempPlant.type +
                         "\nGrowth Stages: " + (tempPlant.harvestStage + 1) +
                         "\n<b>Price: " + cost + "</b>";
@@ -57,6 +72,7 @@ public class NPCScreenController : MonoBehaviour
                 case ItemType.seed:
                     PlantData tempSeed = PlantLibrary.library[InventoryController.hand.GetLibraryIndex()];
                     cost = tempSeed.value/10 * 2;
+                    cost -= (int)(cost * affinity / 100);
                     itemDataText.text = "Name: " + tempSeed.type +
                         "\nGrowth Stages: " + (tempSeed.harvestStage + 1) +
                         "\n<b>Price: " + cost + "</b>";
@@ -64,6 +80,7 @@ public class NPCScreenController : MonoBehaviour
                 case ItemType.weapon:
                     WeaponData tempWeapon = WeaponLibrary.library[InventoryController.hand.GetLibraryIndex()];
                     cost = tempWeapon.value * 2;
+                    cost -= (int)(cost * affinity / 100);
                     itemDataText.text = "Name: " + tempWeapon.type +
                         "\nType: " + (tempWeapon.weaponType) +
                         "\nDamage: " + tempWeapon.damage +
@@ -73,6 +90,7 @@ public class NPCScreenController : MonoBehaviour
                 case ItemType.helmet:
                     HelmetData tempHelmet = EquipmentLibrary.helmetLibrary[InventoryController.hand.GetLibraryIndex()];
                     cost = tempHelmet.value * 2;
+                    cost -= (int)(cost * affinity / 100);
                     itemDataText.text = "Name: " + tempHelmet.type +
                         "\nDefence: " + tempHelmet.defence +
                         "\n<b>Price: " + cost + "</b>";
@@ -80,6 +98,7 @@ public class NPCScreenController : MonoBehaviour
                 case ItemType.chestArmr:
                     ChestArmorData tempChest = EquipmentLibrary.chestArmorLibrary[InventoryController.hand.GetLibraryIndex()];
                     cost = tempChest.value * 2;
+                    cost -= (int)(cost * affinity / 100);
                     itemDataText.text = "Name: " + tempChest.type +
                         "\nDefence: " + tempChest.defence +
                         "\n<b>Price: " + cost + "</b>";
@@ -87,6 +106,7 @@ public class NPCScreenController : MonoBehaviour
                 case ItemType.belt:
                     BeltData tempBelt = EquipmentLibrary.beltLibrary[InventoryController.hand.GetLibraryIndex()];
                     cost = tempBelt.value  * 2;
+                    cost -= (int)(cost * affinity / 100);
                     itemDataText.text = "Name: " + tempBelt.type +
                         "\nDefence: " + tempBelt.defence +
                         "\n<b>Price: " + cost + "</b>";
@@ -94,6 +114,7 @@ public class NPCScreenController : MonoBehaviour
                 case ItemType.LegArmr:
                     LegArmorData tempLeg = EquipmentLibrary.legArmorLibrary[InventoryController.hand.GetLibraryIndex()];
                     cost = tempLeg.value * 2;
+                    cost -= (int)(cost * affinity / 100);
                     itemDataText.text = "Name: " + tempLeg.type +
                         "\nDefence: " + tempLeg.defence +
                         "\n<b>Price: " + cost + "</b>";
@@ -101,6 +122,7 @@ public class NPCScreenController : MonoBehaviour
                 case ItemType.boots:
                     BootsData tempBoots = EquipmentLibrary.bootsLibrary[InventoryController.hand.GetLibraryIndex()];
                     cost = tempBoots.value * 2;
+                    cost -= (int)(cost * affinity / 100);
                     itemDataText.text = "Name: " + tempBoots.type +
                         "\nDefence: " + tempBoots.defence +
                         "\n<b>Price: " + cost + "</b>";
@@ -186,5 +208,26 @@ public class NPCScreenController : MonoBehaviour
     {
         upgradeRack = true;
         upgradeBed = false;
+    }
+
+    //RACK UPGRADES
+    [Header("Rack Upgrades")]
+    [SerializeField] private TextMeshProUGUI retentionUpgradeText;
+    private int selectedRack = -1;
+    public void SelectRack(int rackNum)
+    {
+        selectedRack = rackNum;
+        retentionUpgradeText.text = "Retention - " + 500 * racks[selectedRack].retentionTier;
+    }
+
+    public void UpgradeRetention()
+    {
+        if(selectedRack > -1 && selectedRack < activeRacks && PersistentData.money >= 500 * racks[selectedRack].retentionTier)
+        {
+            racks[selectedRack].retention += 0.2f;
+            PersistentData.money -= 500 * racks[selectedRack].retentionTier;
+            racks[selectedRack].retentionTier++;
+            selectedRack = -1;
+        }
     }
 }

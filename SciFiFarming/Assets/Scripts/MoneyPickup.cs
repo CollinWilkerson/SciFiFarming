@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class MoneyPickup : MonoBehaviour
 {
-    [SerializeField] private ItemType type = ItemType.plant;
-    [SerializeField] private int libraryIndex = 0;
-    [SerializeField] private int quantity = 1;
-
     private void Update()
     {
         RaycastHit hit;

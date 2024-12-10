@@ -34,9 +34,9 @@ RectTransform:
   - {fileID: 7346711622978409904}
   m_Father: {fileID: 2844220845903150499}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 293.2025, y: -233.71187}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 575.089, y: 90.51401}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5599888304683073311
@@ -167,9 +167,9 @@ RectTransform:
   - {fileID: 398953789347348327}
   m_Father: {fileID: 2422088198744295846}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 799.801, y: -150.9225}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 287.235, y: 111.075}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6221423924828906988
@@ -253,7 +253,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8830263024462338320}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5409968010689015895}
+        m_TargetAssemblyTypeName: NPCScreenController, Assembly-CSharp
+        m_MethodName: SelectRack
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &180204189509797220
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,9 +436,9 @@ RectTransform:
   - {fileID: 5195769256707691956}
   m_Father: {fileID: 2422088198744295846}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479.8806, y: -150.9225}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 287.235, y: 111.075}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &38235249642034708
@@ -510,7 +522,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 964845578507167609}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5409968010689015895}
+        m_TargetAssemblyTypeName: NPCScreenController, Assembly-CSharp
+        m_MethodName: SelectRack
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &475067354121087469
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,9 +569,9 @@ RectTransform:
   - {fileID: 4675486427297027079}
   m_Father: {fileID: 2844220845903150499}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 293.2025, y: -140.22713}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 575.089, y: 90.51401}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8244817475097214126
@@ -952,10 +976,10 @@ RectTransform:
   - {fileID: 8994656003092440679}
   m_Father: {fileID: 5205730034176300685}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 799.801, y: -150.9225}
-  m_SizeDelta: {x: 1599.602, y: 301.845}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 301.845}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1959646099794495065
 MonoBehaviour:
@@ -1634,9 +1658,9 @@ RectTransform:
   - {fileID: 8086881646755740650}
   m_Father: {fileID: 4512824618024282194}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 293.2025, y: -186.9695}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 575.089, y: 90.51401}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5264133741713075633
@@ -1720,7 +1744,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7786171666146067889}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5409968010689015895}
+        m_TargetAssemblyTypeName: NPCScreenController, Assembly-CSharp
+        m_MethodName: UpgradeRetention
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1498118182574501623
 GameObject:
   m_ObjectHideFlags: 0
@@ -2015,9 +2051,9 @@ RectTransform:
   - {fileID: 3813886104662922419}
   m_Father: {fileID: 7788359059959911501}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 799.801, y: -150.9225}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 287.235, y: 111.075}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1342677838187449360
@@ -2101,7 +2137,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 278262796722573308}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5409968010689015895}
+        m_TargetAssemblyTypeName: NPCScreenController, Assembly-CSharp
+        m_MethodName: SelectRack
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 7
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1911588449500915007
 GameObject:
   m_ObjectHideFlags: 0
@@ -2447,10 +2495,10 @@ RectTransform:
   - {fileID: 4723978348615109111}
   m_Father: {fileID: 5205730034176300685}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 799.801, y: -465.04852}
-  m_SizeDelta: {x: 1599.602, y: 301.845}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 301.845}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4805615973072483215
 MonoBehaviour:
@@ -2683,7 +2731,7 @@ MonoBehaviour:
 
     Hydroponics
 
-    4000D'
+    5000D'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2894,9 +2942,9 @@ RectTransform:
   - {fileID: 689268019454446458}
   m_Father: {fileID: 2422088198744295846}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1119.7214, y: -150.9225}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 287.235, y: 111.075}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3840422328394023069
@@ -2980,7 +3028,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 116141401171963393}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5409968010689015895}
+        m_TargetAssemblyTypeName: NPCScreenController, Assembly-CSharp
+        m_MethodName: SelectRack
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2643856580926260284
 GameObject:
   m_ObjectHideFlags: 0
@@ -3449,7 +3509,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1072092035853865703}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5409968010689015895}
+        m_TargetAssemblyTypeName: NPCScreenController, Assembly-CSharp
+        m_MethodName: ScreenChange
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5413234534847570838}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3215129044315043700
 GameObject:
   m_ObjectHideFlags: 0
@@ -3753,9 +3825,9 @@ RectTransform:
   - {fileID: 9046004705348701519}
   m_Father: {fileID: 2844220845903150499}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 293.2025, y: -46.742374}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 575.089, y: 90.51401}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4189117559032137115
@@ -5014,9 +5086,9 @@ RectTransform:
   - {fileID: 3604217456567697897}
   m_Father: {fileID: 4512824618024282194}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 293.2025, y: -62.323166}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 575.089, y: 90.51401}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7505430007289934836
@@ -5343,9 +5415,9 @@ RectTransform:
   - {fileID: 3203710856258706405}
   m_Father: {fileID: 7788359059959911501}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479.8806, y: -150.9225}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 287.235, y: 111.075}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3523967760591273374
@@ -5429,7 +5501,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3524995517534923403}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5409968010689015895}
+        m_TargetAssemblyTypeName: NPCScreenController, Assembly-CSharp
+        m_MethodName: SelectRack
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5327264326490922884
 GameObject:
   m_ObjectHideFlags: 0
@@ -5603,6 +5687,142 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &5608470271999390647
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3390293015040727853}
+  - component: {fileID: 4215558214889236016}
+  - component: {fileID: 4781110089208313310}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3390293015040727853
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5608470271999390647}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7186453806056202978}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4215558214889236016
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5608470271999390647}
+  m_CullTransparentMesh: 1
+--- !u!114 &4781110089208313310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5608470271999390647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Back
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 70
+  m_fontSizeBase: 70
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &5658196907132757554
 GameObject:
   m_ObjectHideFlags: 0
@@ -5855,11 +6075,23 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 6985774403328870439}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5409968010689015895}
+        m_TargetAssemblyTypeName: NPCScreenController, Assembly-CSharp
+        m_MethodName: BedButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6290292713270033105
 GameObject:
   m_ObjectHideFlags: 0
@@ -5894,6 +6126,7 @@ RectTransform:
   - {fileID: 1970616574609931990}
   - {fileID: 4230025049947465452}
   - {fileID: 8658697296088509268}
+  - {fileID: 7186453806056202978}
   m_Father: {fileID: 2772431660279485661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
@@ -6630,6 +6863,139 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &6862834099846031062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7186453806056202978}
+  - component: {fileID: 8272551879019261571}
+  - component: {fileID: 2206814216731717650}
+  - component: {fileID: 238529050338136308}
+  m_Layer: 5
+  m_Name: BackButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7186453806056202978
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6862834099846031062}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3390293015040727853}
+  m_Father: {fileID: 5736120323455813279}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 293.2024, y: -280.45422}
+  m_SizeDelta: {x: 575.089, y: 90.51401}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8272551879019261571
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6862834099846031062}
+  m_CullTransparentMesh: 1
+--- !u!114 &2206814216731717650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6862834099846031062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &238529050338136308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6862834099846031062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 2206814216731717650}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5409968010689015895}
+        m_TargetAssemblyTypeName: NPCScreenController, Assembly-CSharp
+        m_MethodName: ScreenChange
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5413234534847570838}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6881274130920752006
 GameObject:
   m_ObjectHideFlags: 0
@@ -6800,9 +7166,9 @@ RectTransform:
   - {fileID: 2122514756981164405}
   m_Father: {fileID: 4512824618024282194}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 293.2025, y: -311.61584}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 575.089, y: 90.51401}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5006648609036099135
@@ -6886,7 +7252,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4371845772035358662}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5409968010689015895}
+        m_TargetAssemblyTypeName: NPCScreenController, Assembly-CSharp
+        m_MethodName: ScreenChange
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5413234534847570838}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6999132408335891428
 GameObject:
   m_ObjectHideFlags: 0
@@ -7149,7 +7527,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8194401609768198391}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5409968010689015895}
+        m_TargetAssemblyTypeName: NPCScreenController, Assembly-CSharp
+        m_MethodName: UpgradeRackButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7118248325873706797
 GameObject:
   m_ObjectHideFlags: 0
@@ -7494,9 +7884,9 @@ RectTransform:
   - {fileID: 8586236319361767040}
   m_Father: {fileID: 7788359059959911501}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 159.9602, y: -150.9225}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 287.235, y: 111.075}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3051523556957940396
@@ -7580,7 +7970,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5945201930161551130}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5409968010689015895}
+        m_TargetAssemblyTypeName: NPCScreenController, Assembly-CSharp
+        m_MethodName: SelectRack
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7871565799127943847
 GameObject:
   m_ObjectHideFlags: 0
@@ -7615,9 +8017,9 @@ RectTransform:
   - {fileID: 6545639996473511656}
   m_Father: {fileID: 7788359059959911501}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1439.6418, y: -150.9225}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 287.235, y: 111.075}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &375782964552255790
@@ -7701,7 +8103,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3815979317055597344}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5409968010689015895}
+        m_TargetAssemblyTypeName: NPCScreenController, Assembly-CSharp
+        m_MethodName: SelectRack
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 9
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7913154253587599737
 GameObject:
   m_ObjectHideFlags: 0
@@ -7961,9 +8375,9 @@ RectTransform:
   - {fileID: 6754564901513726046}
   m_Father: {fileID: 2422088198744295846}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1439.6418, y: -150.9225}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 287.235, y: 111.075}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4005530635186508014
@@ -8047,7 +8461,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1222618775510993643}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5409968010689015895}
+        m_TargetAssemblyTypeName: NPCScreenController, Assembly-CSharp
+        m_MethodName: SelectRack
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8106361844298925175
 GameObject:
   m_ObjectHideFlags: 0
@@ -8102,8 +8528,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionScreen: {fileID: 5413234534847570838}
+  TalkDialog: {fileID: 0}
   itemDataText: {fileID: 4252400650489190969}
   BuyDialog: {fileID: 2568342079833786639}
+  bedButtonText: {fileID: 403782129874832415}
+  rackButton: {fileID: 3023816521819959684}
+  rackButtonText: {fileID: 2451560997603608016}
+  retentionUpgradeText: {fileID: 6855872331148922026}
 --- !u!1 &8233665017747897528
 GameObject:
   m_ObjectHideFlags: 0
@@ -8436,7 +8867,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5701352226578110703}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5409968010689015895}
+        m_TargetAssemblyTypeName: NPCScreenController, Assembly-CSharp
+        m_MethodName: BuyShipUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8521460898352644386
 GameObject:
   m_ObjectHideFlags: 0
@@ -8712,9 +9155,9 @@ RectTransform:
   - {fileID: 6305393277112938546}
   m_Father: {fileID: 2422088198744295846}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 159.9602, y: -150.9225}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 287.235, y: 111.075}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4181756894711028915
@@ -8798,7 +9241,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1466929829734318356}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5409968010689015895}
+        m_TargetAssemblyTypeName: NPCScreenController, Assembly-CSharp
+        m_MethodName: SelectRack
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8785750051507898065
 GameObject:
   m_ObjectHideFlags: 0
@@ -8833,9 +9288,9 @@ RectTransform:
   - {fileID: 4703241084230729590}
   m_Father: {fileID: 7788359059959911501}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1119.7214, y: -150.9225}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 287.235, y: 111.075}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1177628081001304917
@@ -8919,7 +9374,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7930082101329767214}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5409968010689015895}
+        m_TargetAssemblyTypeName: NPCScreenController, Assembly-CSharp
+        m_MethodName: SelectRack
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 8
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8929940337058783530
 GameObject:
   m_ObjectHideFlags: 0
@@ -8954,9 +9421,9 @@ RectTransform:
   - {fileID: 4207361361905907151}
   m_Father: {fileID: 2844220845903150499}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 293.2025, y: -327.19666}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 575.089, y: 90.51401}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1582972387862409242

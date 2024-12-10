@@ -20,6 +20,8 @@ public class RackController: MonoBehaviourPun
     private float tankLevel;
     [SerializeField] private float tankMax = 20;
     [SerializeField] private float fillRate = 5;
+    [HideInInspector] public float retention = 1;
+    [HideInInspector] public int retentionTier = 1;
     public float tempQuality; //this willl be replaced by the quality of nutrient the player has
     public PlantData tempSeed; //this will be replaced by the index of the plant type the player's seed is
     //this tuple effectivley represents every crop as 3 integers, so they are easy to move around and identify
@@ -149,7 +151,7 @@ public class RackController: MonoBehaviourPun
             {
                 crops[i].stage++;
                 crops[i].value = (int)(crops[i].value * nutrientQuality);
-                tankLevel -= 1;
+                tankLevel -= 1 / retention;
 
                 //updating the mesh
                 Vector3 spawnPos = cropObjects[i].transform.position;
