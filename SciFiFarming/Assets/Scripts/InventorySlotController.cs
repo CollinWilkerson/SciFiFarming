@@ -37,6 +37,7 @@ public class InventorySlotController : MonoBehaviour
         //Debug.Log("Initialized");
         itemImage = gameObject.GetComponent<Image>();
         button = gameObject.GetComponent<Button>();
+        //theres a better way to do this i just dont have time
         if(gameObject.GetComponent<WeaponData>() != null)
         {
             SetInventorySlot(ItemType.weapon, gameObject.GetComponent<WeaponData>().weaponIndex, 1);
@@ -44,6 +45,19 @@ public class InventorySlotController : MonoBehaviour
         else if(gameObject.GetComponent<HelmetData>() != null)
         {
             SetInventorySlot(ItemType.helmet, gameObject.GetComponent<HelmetData>().equipmentIndex, 1);
+        }
+        else if(gameObject.GetComponent<ChestArmorData>() != null)
+        {
+            SetInventorySlot(ItemType.chestArmr, gameObject.GetComponent<ChestArmorData>().equipmentIndex, 1);
+        }
+        else if(gameObject.GetComponent<LegArmorData>() != null)
+        {
+            SetInventorySlot(ItemType.LegArmr, gameObject.GetComponent<LegArmorData>().equipmentIndex, 1);
+        }
+        else if(gameObject.GetComponent<BootsData>() != null)
+        {
+            SetInventorySlot(ItemType.boots, gameObject.GetComponent<BootsData>().equipmentIndex, 1);
+
         }
     }
 
@@ -68,17 +82,33 @@ public class InventorySlotController : MonoBehaviour
         {
             itemImage.sprite = PlantLibrary.library[libraryIndex].inventorySprite;
         }
-        if (type == ItemType.seed)
+        else if (type == ItemType.seed)
         {
             itemImage.sprite = PlantLibrary.library[libraryIndex].seedSprite;
         }
-        if (type == ItemType.weapon)
+        else if (type == ItemType.weapon)
         {
             itemImage.sprite = WeaponLibrary.library[libraryIndex].inventroySprite;
         }
-        if(type == ItemType.helmet)
+        else if (type == ItemType.helmet)
         {
             itemImage.sprite = EquipmentLibrary.helmetLibrary[libraryIndex].inventroySprite;
+        }
+        else if (type == ItemType.chestArmr)
+        {
+            itemImage.sprite = EquipmentLibrary.chestArmorLibrary[libraryIndex].inventroySprite;
+        }
+        else if (type == ItemType.belt)
+        {
+            itemImage.sprite = EquipmentLibrary.beltLibrary[libraryIndex].inventroySprite;
+        }
+        else if (type == ItemType.LegArmr)
+        {
+            itemImage.sprite = EquipmentLibrary.legArmorLibrary[libraryIndex].inventroySprite;
+        }
+        else if (type == ItemType.boots)
+        {
+            itemImage.sprite = EquipmentLibrary.bootsLibrary[libraryIndex].inventroySprite;
         }
     }
 
@@ -107,13 +137,29 @@ public class InventorySlotController : MonoBehaviour
         {
             itemImage.sprite = PlantLibrary.library[libraryIndex].seedSprite;
         }
-        if (type == ItemType.weapon)
+        else if (type == ItemType.weapon)
         {
             itemImage.sprite = WeaponLibrary.library[libraryIndex].inventroySprite;
         }
-        if (type == ItemType.helmet)
+        else if (type == ItemType.helmet)
         {
             itemImage.sprite = EquipmentLibrary.helmetLibrary[libraryIndex].inventroySprite;
+        }
+        else if (type == ItemType.chestArmr)
+        {
+            itemImage.sprite = EquipmentLibrary.chestArmorLibrary[libraryIndex].inventroySprite;
+        }
+        else if (type == ItemType.belt)
+        {
+            itemImage.sprite = EquipmentLibrary.beltLibrary[libraryIndex].inventroySprite;
+        }
+        else if (type == ItemType.LegArmr)
+        {
+            itemImage.sprite = EquipmentLibrary.legArmorLibrary[libraryIndex].inventroySprite;
+        }
+        else if (type == ItemType.boots)
+        {
+            itemImage.sprite = EquipmentLibrary.bootsLibrary[libraryIndex].inventroySprite;
         }
     }
 

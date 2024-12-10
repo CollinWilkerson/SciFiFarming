@@ -17,7 +17,6 @@ public class NPCScreenController : MonoBehaviour
         GameManager.toolbar.gameObject.SetActive(false);
 
         currentScreen = interactionScreen;
-        ScreenChange(interactionScreen);
         InventoryController.hand = null;
     }
 
