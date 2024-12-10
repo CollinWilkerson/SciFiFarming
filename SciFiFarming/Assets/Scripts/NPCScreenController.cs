@@ -11,12 +11,16 @@ public class NPCScreenController : MonoBehaviour
     private float affinity; //from 0 - 100 how much the NPC likes the player
     private RackController[] racks;
 
+    private void Awake()
+    {
+        currentScreen = interactionScreen;
+    }
+
     private void OnEnable()
     {
         Cursor.lockState = CursorLockMode.None;
         GameManager.toolbar.gameObject.SetActive(false);
 
-        currentScreen = interactionScreen;
         InventoryController.hand = null;
     }
 

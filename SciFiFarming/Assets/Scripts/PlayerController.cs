@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [Header("Stats")]
     [SerializeField] private float maxHealth = 100f;
     public float health;
+    public float defence;
     public int money;
 
     private Rigidbody rb;

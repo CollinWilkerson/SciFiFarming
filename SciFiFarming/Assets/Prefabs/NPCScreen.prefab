@@ -8536,7 +8536,17 @@ MonoBehaviour:
   rackButton: {fileID: 3023816521819959684}
   rackButtonText: {fileID: 2451560997603608016}
   retentionUpgradeText: {fileID: 6855872331148922026}
-  rackButtons: []
+  rackButtons:
+  - {fileID: 965696266270637496}
+  - {fileID: 3209177736987825877}
+  - {fileID: 9218847492732228263}
+  - {fileID: 6516082121607337618}
+  - {fileID: 8150474989480708348}
+  - {fileID: 7926356255246968802}
+  - {fileID: 3772068239440431948}
+  - {fileID: 1389838397950685085}
+  - {fileID: 5709458519572623823}
+  - {fileID: 3654826899941276787}
 --- !u!1 &8233665017747897528
 GameObject:
   m_ObjectHideFlags: 0
@@ -9517,6 +9527,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 7118248325873706797}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5409968010689015895}
+        m_TargetAssemblyTypeName: NPCScreenController, Assembly-CSharp
+        m_MethodName: RackUpgradesScreenActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

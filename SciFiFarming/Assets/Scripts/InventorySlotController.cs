@@ -30,6 +30,7 @@ public class InventorySlotController : MonoBehaviour
 
     [Header("For armor slots only")]
     [SerializeField] private bool isArmor;
+    private static bool armorInHand;
     [SerializeField] private ItemType slotType;
 
     private void Awake()
@@ -38,23 +39,23 @@ public class InventorySlotController : MonoBehaviour
         itemImage = gameObject.GetComponent<Image>();
         button = gameObject.GetComponent<Button>();
         //theres a better way to do this i just dont have time
-        if(gameObject.GetComponent<WeaponData>() != null)
+        if (gameObject.GetComponent<WeaponData>() != null)
         {
             SetInventorySlot(ItemType.weapon, gameObject.GetComponent<WeaponData>().weaponIndex, 1);
         }
-        else if(gameObject.GetComponent<HelmetData>() != null)
+        else if (gameObject.GetComponent<HelmetData>() != null)
         {
             SetInventorySlot(ItemType.helmet, gameObject.GetComponent<HelmetData>().equipmentIndex, 1);
         }
-        else if(gameObject.GetComponent<ChestArmorData>() != null)
+        else if (gameObject.GetComponent<ChestArmorData>() != null)
         {
             SetInventorySlot(ItemType.chestArmr, gameObject.GetComponent<ChestArmorData>().equipmentIndex, 1);
         }
-        else if(gameObject.GetComponent<LegArmorData>() != null)
+        else if (gameObject.GetComponent<LegArmorData>() != null)
         {
             SetInventorySlot(ItemType.LegArmr, gameObject.GetComponent<LegArmorData>().equipmentIndex, 1);
         }
-        else if(gameObject.GetComponent<BootsData>() != null)
+        else if (gameObject.GetComponent<BootsData>() != null)
         {
             SetInventorySlot(ItemType.boots, gameObject.GetComponent<BootsData>().equipmentIndex, 1);
 
@@ -70,7 +71,7 @@ public class InventorySlotController : MonoBehaviour
     public void SetInventorySlot(ItemType addType, int addIndex, int addQuantity)
     {
         //checks for invalid idex
-        if(addIndex < 0)
+        if (addIndex < 0)
         {
             return;
         }
@@ -78,7 +79,7 @@ public class InventorySlotController : MonoBehaviour
         libraryIndex = addIndex;
         quantity = addQuantity;
         isFilled = true;
-        if(type == ItemType.plant)
+        if (type == ItemType.plant)
         {
             itemImage.sprite = PlantLibrary.library[libraryIndex].inventorySprite;
         }
@@ -119,7 +120,7 @@ public class InventorySlotController : MonoBehaviour
     public void SetInventorySlot(InventorySlotController other)
     {
         //Debug.Log(other.libraryIndex);
-        if(other.libraryIndex == -1)
+        if (other.libraryIndex == -1)
         {
             return;
         }
@@ -185,7 +186,7 @@ public class InventorySlotController : MonoBehaviour
         libraryIndex = -1;
         isFilled = false;
         //Debug.Log(itemImage.sprite);
-        itemImage.sprite = null; 
+        itemImage.sprite = null;
     }
 
     public void OnItemSelect()
@@ -196,32 +197,91 @@ public class InventorySlotController : MonoBehaviour
             InventoryController.hand = this;
             if (isArmor)
             {
-                //update defence
+                //update defence when player moves item
+                armorInHand = true;
             }
         }
-        else if(InventoryController.hand != null)
+        else if (InventoryController.hand != null)
         {
             //if the player selects an empty slot, place the item there
             if (!isFilled)
             {
                 if (isArmor)
                 {
-                    if(slotType != InventoryController.hand.type)
+                    if (slotType != InventoryController.hand.type)
                     {
                         return;
                     }
-                    else
+                }
+
+                SetInventorySlot(InventoryController.hand);
+                //armor Management
+                if (isArmor)
+                {
+                    Debug.Log("Armor Gained");
+                    //update player defence
+                    if (type == ItemType.helmet)
                     {
-                        //update player defence
+                        PlayerController.clientPlayer.defence += EquipmentLibrary.helmetLibrary[libraryIndex].defence;
+                    }
+                    else if (type == ItemType.chestArmr)
+                    {
+                        PlayerController.clientPlayer.defence += EquipmentLibrary.chestArmorLibrary[libraryIndex].defence;
+                    }
+                    else if (type == ItemType.belt)
+                    {
+                        PlayerController.clientPlayer.defence += EquipmentLibrary.beltLibrary[libraryIndex].defence;
+                    }
+                    else if (type == ItemType.LegArmr)
+                    {
+                        PlayerController.clientPlayer.defence += EquipmentLibrary.legArmorLibrary[libraryIndex].defence;
+                    }
+                    else if (type == ItemType.boots)
+                    {
+                        PlayerController.clientPlayer.defence += EquipmentLibrary.bootsLibrary[libraryIndex].defence;
                     }
                 }
-                SetInventorySlot(InventoryController.hand);
+                if (armorInHand)
+                {
+                    Debug.Log("Armor Reduced");
+                    if (type == ItemType.helmet)
+                    {
+                        PlayerController.clientPlayer.defence -= EquipmentLibrary.helmetLibrary[libraryIndex].defence;
+                    }
+                    else if (type == ItemType.chestArmr)
+                    {
+                        PlayerController.clientPlayer.defence -= EquipmentLibrary.chestArmorLibrary[libraryIndex].defence;
+                    }
+                    else if (type == ItemType.belt)
+                    {
+                        PlayerController.clientPlayer.defence -= EquipmentLibrary.beltLibrary[libraryIndex].defence;
+                    }
+                    else if (type == ItemType.LegArmr)
+                    {
+                        PlayerController.clientPlayer.defence -= EquipmentLibrary.legArmorLibrary[libraryIndex].defence;
+                    }
+                    else if (type == ItemType.boots)
+                    {
+                        PlayerController.clientPlayer.defence -= EquipmentLibrary.bootsLibrary[libraryIndex].defence;
+                    }
+                    armorInHand = false;
+                }
+
                 InventoryController.hand.EmptyInventorySlot();
                 InventoryController.hand = null;
             }
             else
             {
                 InventoryController.hand = this;
+                if (isArmor)
+                {
+                    //update defence when player moves item
+                    armorInHand = true;
+                }
+                else
+                {
+                    armorInHand = false;
+                }
             }
         }
     }
