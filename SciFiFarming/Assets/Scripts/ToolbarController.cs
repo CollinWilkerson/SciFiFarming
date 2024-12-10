@@ -14,6 +14,9 @@ public class ToolbarController : MonoBehaviour
     private PlantData activePlant;
     private int activeIndex;
 
+    //weaponStuff
+    private float lastAttackTime;
+
     private void Awake()
     {
         if(instance != null && instance != this)
@@ -83,16 +86,27 @@ public class ToolbarController : MonoBehaviour
                 case ItemType.plant:
                     break;
                 case ItemType.weapon:
-                    RaycastHit hit;
-
-                    if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, activeWeapon.range, GameManager.destructables))
-                    {
-                        if (hit.collider.gameObject.CompareTag("Enemy"))
-                        {
-                            hit.collider.gameObject.GetComponent<BugEnemy>().TakeDamage(activeWeapon.damage);
-                        }
-                    }
+                    Attack();
                     break;
+            }
+        }
+    }
+
+    private void Attack()
+    {
+        RaycastHit hit;
+
+        if (Time.time - lastAttackTime < activeWeapon.rateOfFire)
+        {
+            return;
+        }
+        lastAttackTime = Time.time;
+        Debug.Log("Firing: " + activeWeapon.type);
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, activeWeapon.range, GameManager.destructables))
+        {
+            if (hit.collider.gameObject.CompareTag("Enemy"))
+            {
+                hit.collider.gameObject.GetComponent<BugEnemy>().TakeDamage(activeWeapon.damage);
             }
         }
     }

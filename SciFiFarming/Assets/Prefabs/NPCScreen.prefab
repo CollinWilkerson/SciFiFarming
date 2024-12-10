@@ -10383,6 +10383,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1495356569141967590, guid: ed87d8b57dbe37148b613281d0071833,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5bab1956900e3f840ae25fd8b3193a9b,
+        type: 3}
     - target: {fileID: 1567111318429336940, guid: ed87d8b57dbe37148b613281d0071833,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -10798,6 +10804,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2376327156174345243, guid: ed87d8b57dbe37148b613281d0071833,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6ae3bcd728d51d3468368cff97c3e450,
+        type: 3}
     - target: {fileID: 2485785132864405126, guid: ed87d8b57dbe37148b613281d0071833,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -11023,6 +11035,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2953399710848990768, guid: ed87d8b57dbe37148b613281d0071833,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5bab1956900e3f840ae25fd8b3193a9b,
+        type: 3}
     - target: {fileID: 3014464377686824949, guid: ed87d8b57dbe37148b613281d0071833,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -12330,6 +12348,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5093263450789025755, guid: ed87d8b57dbe37148b613281d0071833,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5bab1956900e3f840ae25fd8b3193a9b,
+        type: 3}
     - target: {fileID: 5104218626676789743, guid: ed87d8b57dbe37148b613281d0071833,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -12600,6 +12624,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5667803810857582064, guid: ed87d8b57dbe37148b613281d0071833,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6ae3bcd728d51d3468368cff97c3e450,
+        type: 3}
     - target: {fileID: 5679934522784185284, guid: ed87d8b57dbe37148b613281d0071833,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -12835,6 +12865,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6216056409731015291, guid: ed87d8b57dbe37148b613281d0071833,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5bab1956900e3f840ae25fd8b3193a9b,
+        type: 3}
     - target: {fileID: 6223640373248606603, guid: ed87d8b57dbe37148b613281d0071833,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -13100,6 +13136,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6792874955744299088, guid: ed87d8b57dbe37148b613281d0071833,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6ae3bcd728d51d3468368cff97c3e450,
+        type: 3}
     - target: {fileID: 6945487873531881801, guid: ed87d8b57dbe37148b613281d0071833,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -14423,17 +14465,198 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1127944155877403345}
+    - targetCorrespondingSourceObject: {fileID: 8166112022081587022, guid: ed87d8b57dbe37148b613281d0071833,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8080918728857478942}
+    - targetCorrespondingSourceObject: {fileID: 1147451035784305413, guid: ed87d8b57dbe37148b613281d0071833,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5334529776814036004}
+    - targetCorrespondingSourceObject: {fileID: 2234250381609660069, guid: ed87d8b57dbe37148b613281d0071833,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6864672376489925318}
+    - targetCorrespondingSourceObject: {fileID: 5579920483007955864, guid: ed87d8b57dbe37148b613281d0071833,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7991844599620770335}
     - targetCorrespondingSourceObject: {fileID: 7055737833669712703, guid: ed87d8b57dbe37148b613281d0071833,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2705457300380702920}
+    - targetCorrespondingSourceObject: {fileID: 8742936070250802533, guid: ed87d8b57dbe37148b613281d0071833,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7099620969187661147}
+    - targetCorrespondingSourceObject: {fileID: 570388380707467566, guid: ed87d8b57dbe37148b613281d0071833,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6879650503821148604}
+    - targetCorrespondingSourceObject: {fileID: 1659395543733372046, guid: ed87d8b57dbe37148b613281d0071833,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4473997110891687103}
   m_SourcePrefab: {fileID: 100100000, guid: ed87d8b57dbe37148b613281d0071833, type: 3}
+--- !u!1 &2338250697866524110 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1659395543733372046, guid: ed87d8b57dbe37148b613281d0071833,
+    type: 3}
+  m_PrefabInstance: {fileID: 3995952821827318080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4473997110891687103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2338250697866524110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4b9ea96e9ff3c04099a389b74a8101c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentIndex: 3
+  value: 10000
+  type: XP300 Respirator
+  model: Rust Bucket
+  inventroySprite: {fileID: 21300000, guid: 6ae3bcd728d51d3468368cff97c3e450, type: 3}
+  defence: 16
+--- !u!1 &2915481567484927973 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2234250381609660069, guid: ed87d8b57dbe37148b613281d0071833,
+    type: 3}
+  m_PrefabInstance: {fileID: 3995952821827318080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6864672376489925318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2915481567484927973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29bf6f18913832439a10ddcf7974281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponIndex: 3
+  value: 10000
+  type: Slide Rifle
+  model: P-Shooter
+  inventroySprite: {fileID: 21300000, guid: 5bab1956900e3f840ae25fd8b3193a9b, type: 3}
+  damage: 5
+  range: 8
+  rateOfFire: 0.2
+  weaponType: 2
+--- !u!1 &3503260505268060270 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 570388380707467566, guid: ed87d8b57dbe37148b613281d0071833,
+    type: 3}
+  m_PrefabInstance: {fileID: 3995952821827318080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6879650503821148604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3503260505268060270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4b9ea96e9ff3c04099a389b74a8101c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentIndex: 2
+  value: 5000
+  type: Plakonic Mask
+  model: Rust Bucket
+  inventroySprite: {fileID: 21300000, guid: 6ae3bcd728d51d3468368cff97c3e450, type: 3}
+  defence: 8
+--- !u!1 &4078265961204902469 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1147451035784305413, guid: ed87d8b57dbe37148b613281d0071833,
+    type: 3}
+  m_PrefabInstance: {fileID: 3995952821827318080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5334529776814036004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4078265961204902469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29bf6f18913832439a10ddcf7974281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponIndex: 2
+  value: 5000
+  type: Spitzer
+  model: P-Shooter
+  inventroySprite: {fileID: 21300000, guid: 5bab1956900e3f840ae25fd8b3193a9b, type: 3}
+  damage: 20
+  range: 8
+  rateOfFire: 1
+  weaponType: 0
 --- !u!224 &4966088028331417859 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8331500068553035843, guid: ed87d8b57dbe37148b613281d0071833,
     type: 3}
   m_PrefabInstance: {fileID: 3995952821827318080}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5055187733430203918 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8166112022081587022, guid: ed87d8b57dbe37148b613281d0071833,
+    type: 3}
+  m_PrefabInstance: {fileID: 3995952821827318080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8080918728857478942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5055187733430203918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29bf6f18913832439a10ddcf7974281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponIndex: 1
+  value: 2000
+  type: G-607
+  model: P-Shooter
+  inventroySprite: {fileID: 21300000, guid: 5bab1956900e3f840ae25fd8b3193a9b, type: 3}
+  damage: 5
+  range: 8
+  rateOfFire: 1
+  weaponType: 0
+--- !u!1 &5629886438507224101 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8742936070250802533, guid: ed87d8b57dbe37148b613281d0071833,
+    type: 3}
+  m_PrefabInstance: {fileID: 3995952821827318080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7099620969187661147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5629886438507224101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4b9ea96e9ff3c04099a389b74a8101c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentIndex: 1
+  value: 2000
+  type: Velagon Cap
+  model: Rust Bucket
+  inventroySprite: {fileID: 21300000, guid: 6ae3bcd728d51d3468368cff97c3e450, type: 3}
+  defence: 4
 --- !u!1 &6241845901138487935 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7055737833669712703, guid: ed87d8b57dbe37148b613281d0071833,
@@ -14485,3 +14708,30 @@ MonoBehaviour:
   range: 8
   rateOfFire: 1
   weaponType: 0
+--- !u!1 &8798808773459260120 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5579920483007955864, guid: ed87d8b57dbe37148b613281d0071833,
+    type: 3}
+  m_PrefabInstance: {fileID: 3995952821827318080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7991844599620770335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8798808773459260120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29bf6f18913832439a10ddcf7974281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponIndex: 4
+  value: 10000
+  type: Heaven's Gate
+  model: P-Shooter
+  inventroySprite: {fileID: 21300000, guid: 5bab1956900e3f840ae25fd8b3193a9b, type: 3}
+  damage: 100
+  range: 8
+  rateOfFire: 2
+  weaponType: 1

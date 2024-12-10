@@ -11,6 +11,22 @@ GameObject:
   - component: {fileID: 2261681112215878435}
   - component: {fileID: 9075270194559393328}
   - component: {fileID: 4383215555632444553}
+  - component: {fileID: 2732169690264783274}
+  - component: {fileID: 9140495522203958265}
+  - component: {fileID: 3564214721285829370}
+  - component: {fileID: 2278705978844937018}
+  - component: {fileID: 4971302001324262611}
+  - component: {fileID: 2872088044444147382}
+  - component: {fileID: 3210637488834730263}
+  - component: {fileID: 7641749359518435735}
+  - component: {fileID: 6608250674993435130}
+  - component: {fileID: 1778087606116748594}
+  - component: {fileID: 4367804323145416523}
+  - component: {fileID: 1830858539740589734}
+  - component: {fileID: 7998416255547058872}
+  - component: {fileID: 2342813582168710498}
+  - component: {fileID: 2550805849994228953}
+  - component: {fileID: 6420346530135026219}
   m_Layer: 0
   m_Name: EquipmentLibrary
   m_TagString: Untagged
@@ -63,3 +79,291 @@ MonoBehaviour:
   model: Rust Bucket
   inventroySprite: {fileID: 21300000, guid: 6ae3bcd728d51d3468368cff97c3e450, type: 3}
   defence: 2
+--- !u!114 &2732169690264783274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576869200634912561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4b9ea96e9ff3c04099a389b74a8101c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentIndex: 1
+  value: 2000
+  type: Velagon Cap
+  model: Rust Bucket
+  inventroySprite: {fileID: 21300000, guid: 6ae3bcd728d51d3468368cff97c3e450, type: 3}
+  defence: 4
+--- !u!114 &9140495522203958265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576869200634912561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4b9ea96e9ff3c04099a389b74a8101c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentIndex: 2
+  value: 5000
+  type: Plakonic Mask
+  model: Rust Bucket
+  inventroySprite: {fileID: 21300000, guid: 6ae3bcd728d51d3468368cff97c3e450, type: 3}
+  defence: 8
+--- !u!114 &3564214721285829370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576869200634912561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4b9ea96e9ff3c04099a389b74a8101c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentIndex: 3
+  value: 10000
+  type: XP300 Respirator
+  model: Rust Bucket
+  inventroySprite: {fileID: 21300000, guid: 6ae3bcd728d51d3468368cff97c3e450, type: 3}
+  defence: 16
+--- !u!114 &2278705978844937018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576869200634912561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 914738c8bc451df4d8238d52e67cd0b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentIndex: 0
+  value: 1500
+  type: Washboard
+  model: 
+  inventroySprite: {fileID: 21300000, guid: c269e99f1e3b0bd45a401423059b0b72, type: 3}
+  defence: 3
+--- !u!114 &4971302001324262611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576869200634912561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 914738c8bc451df4d8238d52e67cd0b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentIndex: 1
+  value: 3000
+  type: Velagon Vest
+  model: 
+  inventroySprite: {fileID: 21300000, guid: c269e99f1e3b0bd45a401423059b0b72, type: 3}
+  defence: 6
+--- !u!114 &2872088044444147382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576869200634912561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 914738c8bc451df4d8238d52e67cd0b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentIndex: 2
+  value: 6000
+  type: Plakonic Skin
+  model: 
+  inventroySprite: {fileID: 21300000, guid: c269e99f1e3b0bd45a401423059b0b72, type: 3}
+  defence: 12
+--- !u!114 &3210637488834730263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576869200634912561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 914738c8bc451df4d8238d52e67cd0b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentIndex: 3
+  value: 12000
+  type: XP300 Exosuit
+  model: 
+  inventroySprite: {fileID: 21300000, guid: c269e99f1e3b0bd45a401423059b0b72, type: 3}
+  defence: 24
+--- !u!114 &7641749359518435735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576869200634912561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89366976a675e9446990e1dec581e082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentIndex: 0
+  value: 1000
+  type: Jorts
+  model: 
+  inventroySprite: {fileID: 21300000, guid: 0968950bc7e47d94c902c83bb9534276, type: 3}
+  defence: 2
+--- !u!114 &6608250674993435130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576869200634912561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89366976a675e9446990e1dec581e082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentIndex: 1
+  value: 2000
+  type: Velagon Chaps
+  model: 
+  inventroySprite: {fileID: 21300000, guid: 0968950bc7e47d94c902c83bb9534276, type: 3}
+  defence: 4
+--- !u!114 &1778087606116748594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576869200634912561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89366976a675e9446990e1dec581e082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentIndex: 2
+  value: 5000
+  type: Plakonic Fibermesh
+  model: 
+  inventroySprite: {fileID: 21300000, guid: 0968950bc7e47d94c902c83bb9534276, type: 3}
+  defence: 8
+--- !u!114 &4367804323145416523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576869200634912561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89366976a675e9446990e1dec581e082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentIndex: 3
+  value: 10000
+  type: XP300 Brace
+  model: 
+  inventroySprite: {fileID: 21300000, guid: 0968950bc7e47d94c902c83bb9534276, type: 3}
+  defence: 16
+--- !u!114 &1830858539740589734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576869200634912561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61882f1d5c0689345a66dc8105ffe37a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentIndex: 0
+  value: 500
+  type: Flip Flops
+  model: 
+  inventroySprite: {fileID: 21300000, guid: a957be2c86c41cf488b9567a2aa0e8f0, type: 3}
+  defence: 1
+--- !u!114 &7998416255547058872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576869200634912561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61882f1d5c0689345a66dc8105ffe37a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentIndex: 1
+  value: 1500
+  type: Velagon Spurs
+  model: 
+  inventroySprite: {fileID: 21300000, guid: a957be2c86c41cf488b9567a2aa0e8f0, type: 3}
+  defence: 3
+--- !u!114 &2342813582168710498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576869200634912561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61882f1d5c0689345a66dc8105ffe37a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentIndex: 2
+  value: 3000
+  type: Plakonic Soles
+  model: 
+  inventroySprite: {fileID: 0}
+  defence: 6
+--- !u!114 &2550805849994228953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576869200634912561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61882f1d5c0689345a66dc8105ffe37a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentIndex: 3
+  value: 8000
+  type: XP300 Treads
+  model: 
+  inventroySprite: {fileID: 21300000, guid: a957be2c86c41cf488b9567a2aa0e8f0, type: 3}
+  defence: 12
+--- !u!114 &6420346530135026219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576869200634912561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61882f1d5c0689345a66dc8105ffe37a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentIndex: 4
+  value: 500000
+  type: With The Fur
+  model: 
+  inventroySprite: {fileID: 21300000, guid: 9f15062d080ebfd42ae429651fd83874, type: 3}
+  defence: 0
