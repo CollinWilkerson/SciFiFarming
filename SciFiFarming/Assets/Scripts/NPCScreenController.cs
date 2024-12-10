@@ -17,6 +17,7 @@ public class NPCScreenController : MonoBehaviour
         GameManager.toolbar.gameObject.SetActive(false);
 
         currentScreen = interactionScreen;
+        ScreenChange(interactionScreen);
         InventoryController.hand = null;
     }
 
@@ -30,18 +31,23 @@ public class NPCScreenController : MonoBehaviour
     public void ScreenChange(GameObject screen)
     {
         Debug.Log("Clicked");
-        screen.SetActive(true);
         currentScreen.SetActive(false);
+        screen.SetActive(true);
         currentScreen = screen;
     }
     //TALK SCREEN CODE
     [Header("Talk Screen")]
-    [SerializeField] private TextMeshProUGUI TalkDialog;
+    [SerializeField] private TextMeshProUGUI talkDialog;
+    [HideInInspector] public bool talked = false;
 
     public void Chat()
     {
-        TalkDialog.text = "Captain: Less talking, more working";
-        affinity += 0.01f;
+        if (!talked)
+        {
+            talkDialog.text = "Captain: Less talking, more working";
+            affinity = Mathf.Clamp(affinity + 0.001f, affinity, 50f);
+            talked = true; //talked should be set false by the cycle advance code
+        }
     }
 
     public void Gift()
@@ -213,7 +219,24 @@ public class NPCScreenController : MonoBehaviour
     //RACK UPGRADES
     [Header("Rack Upgrades")]
     [SerializeField] private TextMeshProUGUI retentionUpgradeText;
+    [SerializeField] private Button[] rackButtons;
     private int selectedRack = -1;
+
+    public void RackUpgradesScreenActive()
+    {
+        for(int i = 0; i < rackButtons.Length; i++)
+        {
+            if(i < activeRacks)
+            {
+                rackButtons[i].interactable = true;
+            }
+            else
+            {
+                rackButtons[i].interactable = false;
+            }
+        }
+    }
+
     public void SelectRack(int rackNum)
     {
         selectedRack = rackNum;
