@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class NPCScreenController : MonoBehaviour
@@ -113,7 +114,7 @@ public class NPCScreenController : MonoBehaviour
     /// </summary>
     public void BuyItem()
     {
-        if(InventoryController.hand != null && PersistentData.money > cost)
+        if(InventoryController.hand != null && PersistentData.money >= cost)
         {
             //only adds 1 for now
             PlayerController.clientPlayer.inventory.AddItem(InventoryController.hand.type,
@@ -124,7 +125,14 @@ public class NPCScreenController : MonoBehaviour
     }
 
     //SHIP UPGRADES
-    
+    [Header("Ship Upgrades")]
+    [SerializeField] private TextMeshProUGUI bedButtonText;
+    [SerializeField] private Button rackButton;
+    [SerializeField] private TextMeshProUGUI rackButtonText;
+    private int activeRacks = 1;
+    private bool upgradeRack = false;
+    private bool upgradeBed = false;
+
     public void SetRacks(RackController[] setRacks)
     {
         racks = setRacks; 
@@ -134,5 +142,49 @@ public class NPCScreenController : MonoBehaviour
             rack.gameObject.SetActive(false);
         }
         racks[0].gameObject.SetActive(true);
+    }
+
+    //attached to the buy button on the ship upgrade screen
+    public void BuyShipUpgrade()
+    {
+        if (upgradeRack && PersistentData.money >= Mathf.Pow(2, activeRacks) * 2500)
+        {
+            BuyRack();
+        }
+        else if (upgradeBed)
+        {
+            BedUpgrade();
+        }
+    }
+
+    //sets a new rack active and increases the price of a new rack
+    private void BuyRack()
+    {
+        racks[activeRacks].gameObject.SetActive(true);
+        PersistentData.money -= (int)(Mathf.Pow(2, activeRacks) * 2500);
+        activeRacks++;
+        rackButtonText.text = "New\nHydroponics\n" + (int)(Mathf.Pow(2, activeRacks) * 2500) + "D";
+        upgradeRack = false;
+        if(activeRacks > racks.Length - 1)
+        {
+            rackButton.interactable = false;
+        }
+    }
+
+    private void BedUpgrade()
+    {
+        Debug.LogError("NOT IMPLEMENTED");
+    }
+
+    public void BedButton()
+    {
+        upgradeBed = true;
+        upgradeRack = false;
+    }
+
+    public void UpgradeRackButton()
+    {
+        upgradeRack = true;
+        upgradeBed = false;
     }
 }
