@@ -37,7 +37,14 @@ public class InventorySlotController : MonoBehaviour
         //Debug.Log("Initialized");
         itemImage = gameObject.GetComponent<Image>();
         button = gameObject.GetComponent<Button>();
-        
+        if(gameObject.GetComponent<WeaponData>() != null)
+        {
+            SetInventorySlot(ItemType.weapon, gameObject.GetComponent<WeaponData>().weaponIndex, 1);
+        }
+        else if(gameObject.GetComponent<HelmetData>() != null)
+        {
+            SetInventorySlot(ItemType.helmet, gameObject.GetComponent<HelmetData>().equipmentIndex, 1);
+        }
     }
 
     /// <summary>

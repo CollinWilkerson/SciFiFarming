@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 	public static GameManager instance;
 	[SerializeField] private GameObject playerInventory;
 	[SerializeField] private GameObject sellScreen;
+    [SerializeField] private NPCScreenController npcScreen;
     [SerializeField] private LayerMask initInteractables;
     public static LayerMask interactables;
     [SerializeField] private LayerMask initDestructables;
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
         playerInventory.GetComponent<InventoryController>().ClearInventory();
         PersistentData.SetInventoryFromList(playerInventory.GetComponent<InventoryController>());
         toolbar = ToolbarController.instance;
+        npcScreen.SetRacks(FindObjectsByType<RackController>(FindObjectsSortMode.InstanceID));
     }
     public static T CopyComponent<T>(T original, GameObject destination) where T : Component
 	{
