@@ -268,20 +268,20 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
     void CheckInteractable()
     {
         if(currentInteractable != null) {
-
+            Debug.Log(clientPlayer);
             Debug.Log(currentInteractable.name);
         }
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 4, GameManager.interactables))
         {
             //Debug.Log("Bingus");
-            currentInteractable = hit.collider.gameObject; // track the interactable
+            clientPlayer.currentInteractable = hit.collider.gameObject; // track the interactable
             toolTip.SetActive(true);
             //toolTip.transform.position = hit.collider.bounds.center + Vector3.up * 0.5f; // position tooltip
         }
         else
         {
-            currentInteractable = null;
+            clientPlayer.currentInteractable = null;
             toolTip.SetActive(false);
         }
     }
