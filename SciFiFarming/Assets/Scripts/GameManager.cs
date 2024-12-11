@@ -56,6 +56,12 @@ public class GameManager : MonoBehaviourPun
             sellScreen.SetActive(true);
             sellScreen.SetActive(false);
         }
+        if(FindAnyObjectByType<Leaderboard>() != null)
+        {
+            GameObject temp = FindAnyObjectByType<Leaderboard>().gameObject;
+            temp.SetActive(true);
+            temp.SetActive(false);
+        }
         playerInventory.GetComponent<InventoryController>().ClearInventory();
         PersistentData.SetInventoryFromList(playerInventory.GetComponent<InventoryController>());
         toolbar = ToolbarController.instance;

@@ -37,7 +37,7 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     private void Start()
     {
         //disable menus that aren't start
-        mainScreen.SetActive(true);
+        mainScreen.SetActive(false);
         createRoomScreen.SetActive(false);
         lobbyScreen.SetActive(false);
         lobbyBrowserScreen.SetActive(false);
@@ -98,11 +98,13 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
     public void OnCreateRoomButton()
     {
+        PhotonNetwork.NickName = PlayerInfo.instance.profile.DisplayName;
         SetScreen(createRoomScreen);
     }
 
     public void OnFindRoomButton()
     {
+        PhotonNetwork.NickName = PlayerInfo.instance.profile.DisplayName;
         SetScreen(lobbyBrowserScreen);
     }
 

@@ -85,7 +85,7 @@ public class RackController: MonoBehaviourPun
                 //CycleAdvance();
                 photonView.RPC("CycleAdvance", RpcTarget.All);
             }
-            if (Input.GetKeyDown(KeyCode.U))
+            if (Input.GetKeyDown(KeyCode.R))
             {
                 //Harvest();
                 photonView.RPC("Harvest", RpcTarget.All, PlayerController.clientPlayer.id);

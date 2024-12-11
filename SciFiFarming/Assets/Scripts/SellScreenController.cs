@@ -128,6 +128,7 @@ public class SellScreenController : MonoBehaviour
         PersistentData.money += total;
         total = 0;
         sellItems.Clear();
+        Leaderboard.instance.SetLeaderboardEntry(PersistentData.money);
         ScreenUpdate();
         foreach(InventorySlotController s in sellInventory.slots)
         {
