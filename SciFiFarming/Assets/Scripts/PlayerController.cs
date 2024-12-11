@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
             health = PersistentData.health;
             headerInfo.UpdateHealthBar(health / maxHealth);
         }
-        clientPlayer = this; //this is an identifier for other scripts, it will need to be initialized for multiplayer
+        //clientPlayer = this; //this is an identifier for other scripts, it will need to be initialized for multiplayer
     }
 
     void Update()
@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 
         if (player.IsLocal)
         {
-            Debug.Log("ClientPlayerSet");
+            //Debug.Log("ClientPlayerSet");
             ToolbarController.instance.SetHandSpawnPos(handSpawnPos);
             clientPlayer = this;
             playerPhotonView = photonView;
@@ -267,21 +267,23 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 
     void CheckInteractable()
     {
+        /*
         if(currentInteractable != null) {
             Debug.Log(clientPlayer);
             Debug.Log(currentInteractable.name);
         }
+        */
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 4, GameManager.interactables))
         {
             //Debug.Log("Bingus");
-            clientPlayer.currentInteractable = hit.collider.gameObject; // track the interactable
+            currentInteractable = hit.collider.gameObject; // track the interactable
             toolTip.SetActive(true);
             //toolTip.transform.position = hit.collider.bounds.center + Vector3.up * 0.5f; // position tooltip
         }
         else
         {
-            clientPlayer.currentInteractable = null;
+            currentInteractable = null;
             toolTip.SetActive(false);
         }
     }
@@ -339,12 +341,12 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (stream.IsWriting)
         {
-            //Debug.Log("Write");
+            //Debug.Log("Write Defence");
             stream.SendNext(defence);
         }
         else //if (stream.IsReading)
         {
-            //Debug.Log("Read");
+            //Debug.Log("Read Defence");
             defence = (float)stream.ReceiveNext();
         }
     }

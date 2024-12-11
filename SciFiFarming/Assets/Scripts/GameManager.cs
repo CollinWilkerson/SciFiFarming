@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviourPun
         toolbar = ToolbarController.instance;
         if (npcScreen != null)
         {
-            npcScreen.SetRacks(FindObjectsByType<RackController>(FindObjectsSortMode.InstanceID));
+            npcScreen.SetRacks(FindObjectsByType<RackController>(FindObjectsSortMode.None));
         }
 
         //photon

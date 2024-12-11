@@ -59,7 +59,7 @@ public class ToolbarController : MonoBehaviourPun
                 return;
             }
 
-            GameObject spawnObj;
+            //GameObject spawnObj;
             switch (activeTool.type)
             {
                 case ItemType.plant:

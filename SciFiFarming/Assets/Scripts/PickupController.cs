@@ -11,12 +11,14 @@ public class PickupController : MonoBehaviourPun
 
     private void Update()
     {
+        /*
         Debug.Log(Input.GetKeyDown(KeyCode.E));
         if (PlayerController.clientPlayer != null)
         {
             Debug.Log("Current Interactable: " + PlayerController.clientPlayer.currentInteractable);
             Debug.Log("Player is gameobject: " + (PlayerController.clientPlayer.currentInteractable == gameObject));
         }
+        */
         if (Input.GetKeyDown(KeyCode.E) && PlayerController.clientPlayer.currentInteractable == gameObject)
         {
             Pickup();

@@ -167,10 +167,11 @@ public class NPCScreenController : MonoBehaviourPun
 
     public void SetRacks(RackController[] setRacks)
     {
-        racks = setRacks; 
-        foreach (RackController rack in racks)
+        racks = new RackController[setRacks.Length];
+        foreach (RackController rack in setRacks)
         {
-            Debug.Log("Rack Hidden");
+            //Debug.Log("Rack Hidden");
+            racks[rack.rackID] = rack;
             rack.gameObject.SetActive(false);
         }
         racks[0].gameObject.SetActive(true);

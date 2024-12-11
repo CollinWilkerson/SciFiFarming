@@ -14,6 +14,8 @@ public class RackController: MonoBehaviourPun
     [SerializeField] private GameObject rack;
     [SerializeField] private GameObject tankConnection;
     [SerializeField] private Transform[] rackPositions;
+    public int rackID;
+    private bool gooChange = false;
 
     [Header("Nutrient Tank")]
     private float nutrientQuality;
@@ -95,13 +97,19 @@ public class RackController: MonoBehaviourPun
         {
             FillTank(tempQuality);
         }
+
+        //if the player has changed the goo level and is not currently filling the tank
+        if (gooChange && Input.GetKey(KeyCode.E))
+        {
+            //this solution has the chance to create write conflicts
+            photonView.RPC("WriteGoo", RpcTarget.All, tankLevel);
+        }
     }
 
     /// <summary>
     /// Fills a Hydroponic nutrient solution tank with the solution quality supplied
     /// </summary>
     /// <param name="quality"></param>
-    [PunRPC]
     private void FillTank(float quality)
     {
         if(tankLevel >= tankMax)
@@ -109,18 +117,25 @@ public class RackController: MonoBehaviourPun
             tankLevel = tankMax;
             return;
         }
-        if (PersistentData.goo > 0 && tankLevel < tankMax)
+        else if (PersistentData.goo > 0 && tankLevel < tankMax)
         {
             //(c1V1 + c2V2)/(V1 + V2) = c3
             nutrientQuality = (tankLevel * nutrientQuality + fillRate * quality * Time.deltaTime) / (tankLevel + fillRate * Time.deltaTime);
             tankLevel += fillRate * Time.deltaTime;
             PersistentData.goo = Mathf.Clamp(PersistentData.goo - fillRate * Time.deltaTime, 0, PersistentData.goo);
+            gooChange = true;
         }
         else
         {
             Debug.Log("No goo");
         }
         
+    }
+
+    [PunRPC]
+    private void WriteGoo(float newGoo)
+    {
+        tankLevel = newGoo;
     }
 
     [PunRPC]
@@ -202,20 +217,24 @@ public class RackController: MonoBehaviourPun
     [PunRPC]
     private void SetIsUp(bool up)
     {
+        Debug.Log("Set: " + up);
         isUp = up;
     }
 
+    /*
+     *This only Reads from master client
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
         {
-            //Debug.Log("Write");
+            Debug.Log("Write: " + gameObject.name);
             stream.SendNext(tankLevel);
         }
         else //if (stream.IsReading)
         {
-            //Debug.Log("Read");
+            Debug.Log("Read");
             tankLevel = (float)stream.ReceiveNext();
         }
     }
+    */
 }
