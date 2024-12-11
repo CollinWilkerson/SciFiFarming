@@ -49,19 +49,24 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
     public Player photonPlayer;
     public static PhotonView playerPhotonView;
 
-    void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        rb.mass = 2f;
-        jumpCount = 0;
-        isDashing = false;
-        dashCooldownTimer = 0f;
 
         playerCamera = GetComponentInChildren<Camera>();
         if (playerCamera != null)
         {
             playerCamera.fieldOfView = fieldOfView;
         }
+    }
+
+    void Start()
+    {
+        rb.mass = 2f;
+        jumpCount = 0;
+        isDashing = false;
+        dashCooldownTimer = 0f;
+
 
         Cursor.lockState = CursorLockMode.Locked;
         if (PersistentData.health == 0)
@@ -150,6 +155,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 
         if (player.IsLocal)
         {
+            Debug.Log("ClientPlayerSet");
             ToolbarController.instance.SetHandSpawnPos(handSpawnPos);
             clientPlayer = this;
             playerPhotonView = photonView;
@@ -161,6 +167,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         else
         {
             rb.isKinematic = true;
+            playerCamera.gameObject.SetActive(false);
         }
     }
 
@@ -260,13 +267,17 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 
     void CheckInteractable()
     {
+        if(currentInteractable != null) {
+
+            Debug.Log(currentInteractable.name);
+        }
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 4, GameManager.interactables))
         {
             //Debug.Log("Bingus");
             currentInteractable = hit.collider.gameObject; // track the interactable
             toolTip.SetActive(true);
-            toolTip.transform.position = hit.collider.bounds.center + Vector3.up * 0.5f; // position tooltip
+            //toolTip.transform.position = hit.collider.bounds.center + Vector3.up * 0.5f; // position tooltip
         }
         else
         {

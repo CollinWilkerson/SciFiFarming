@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class PickupController : MonoBehaviour
+public class PickupController : MonoBehaviourPun
 {
     [SerializeField] private ItemType type = ItemType.plant;
     [SerializeField] private int libraryIndex = 0;
@@ -11,6 +11,8 @@ public class PickupController : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(Input.GetKeyDown(KeyCode.E));
+        Debug.Log(PlayerController.clientPlayer.currentInteractable == gameObject);
         if (Input.GetKeyDown(KeyCode.E) && PlayerController.clientPlayer.currentInteractable == gameObject)
         {
             Pickup();
@@ -20,6 +22,14 @@ public class PickupController : MonoBehaviour
     public void Pickup()
     {
         PlayerController.clientPlayer.inventory.AddItem(type, libraryIndex, quantity);
-        PhotonNetwork.Destroy(gameObject);
+        photonView.RPC("MasterDestroy", RpcTarget.MasterClient);
+    }
+
+
+
+    [PunRPC]
+    private void MasterDestroy()
+    {
+            PhotonNetwork.Destroy(gameObject);
     }
 }

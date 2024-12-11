@@ -174,6 +174,8 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
     private void UpdateLobbyBrowserUI()
     {
+
+        Debug.Log("Update Lobby");
         foreach (GameObject button in roomButtons)
         {
             button.SetActive(false);
@@ -181,6 +183,7 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
         for(int x = 0; x < roomList.Count; x++)
         {
+            Debug.Log("Room spawn");
             //lambda calc
             GameObject button = x >= roomButtons.Count ? CreateRoomButton() : roomButtons[x];
             button.SetActive(true);
