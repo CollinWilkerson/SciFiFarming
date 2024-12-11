@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Android;
+using Photon.Pun;
+using System.Linq;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviourPun
 {
 	public int gold; 
 	public static GameManager instance;
@@ -15,6 +16,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LayerMask initDestructables;
     public static LayerMask destructables;
     public static ToolbarController toolbar;
+
+    //photon
+    [Header("Players")]
+    public PlayerController[] players;
+    private int playersInGame;
+    public string playerPrefabLocation;
+    public Transform[] spawnPoints;
+
+    [Header("For Initialization")]
+    [SerializeField] private HeaderInfo playerHeaderInfo;
+    [SerializeField] private GameObject playerToolTip;
+    [SerializeField] private GameObject damageFilter;
 
     private void Awake()
     {
@@ -46,8 +59,64 @@ public class GameManager : MonoBehaviour
         playerInventory.GetComponent<InventoryController>().ClearInventory();
         PersistentData.SetInventoryFromList(playerInventory.GetComponent<InventoryController>());
         toolbar = ToolbarController.instance;
-        npcScreen.SetRacks(FindObjectsByType<RackController>(FindObjectsSortMode.InstanceID));
+        if (npcScreen != null)
+        {
+            npcScreen.SetRacks(FindObjectsByType<RackController>(FindObjectsSortMode.InstanceID));
+        }
+
+        //photon
+        players = new PlayerController[PhotonNetwork.PlayerList.Length];
+
+        photonView.RPC("ImInGame", RpcTarget.AllBuffered);
     }
+
+    [PunRPC]
+    private void ImInGame()
+    {
+        playersInGame++;
+
+        if (playersInGame == PhotonNetwork.PlayerList.Length)
+        {
+            SpawnPlayer();
+        }
+    }
+
+    private void SpawnPlayer()
+    {
+        GameObject playerObj = PhotonNetwork.Instantiate(playerPrefabLocation,
+            spawnPoints[Random.Range(0, spawnPoints.Length)].position, Quaternion.identity);
+
+        playerObj.GetComponent<PhotonView>().RPC("Initialize", RpcTarget.All, PhotonNetwork.LocalPlayer);
+    }
+
+    public InventoryController GetPlayerInventory()
+    {
+        return playerInventory.GetComponent<InventoryController>();
+    }
+
+    public HeaderInfo GetHeader()
+    {
+        return playerHeaderInfo;
+    }
+    public GameObject GetToolTip()
+    {
+        return playerToolTip;
+    }
+    public GameObject GetDamageFilter()
+    {
+        return damageFilter;
+    }
+
+    public PlayerController GetPlayer(int playerId)
+    {
+        return players.FirstOrDefault(x => x.id == playerId);
+    }
+
+    public PlayerController GetPlayer(GameObject playerObj)
+    {
+        return players.FirstOrDefault(x => x.gameObject == playerObj);
+    }
+
     public static T CopyComponent<T>(T original, GameObject destination) where T : Component
 	{
 		System.Type type = original.GetType();

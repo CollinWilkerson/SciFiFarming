@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PickupController : MonoBehaviour
 {
@@ -10,23 +11,15 @@ public class PickupController : MonoBehaviour
 
     private void Update()
     {
-        RaycastHit hit;
-
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && PlayerController.clientPlayer.currentInteractable == gameObject)
         {
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 4, GameManager.interactables))
-            {
-                if (hit.collider.gameObject.CompareTag("Pickup"))
-                {
-                    Pickup();
-                }
-            }
+            Pickup();
         }
     }
 
     public void Pickup()
     {
         PlayerController.clientPlayer.inventory.AddItem(type, libraryIndex, quantity);
-        Destroy(gameObject);
+        PhotonNetwork.Destroy(gameObject);
     }
 }

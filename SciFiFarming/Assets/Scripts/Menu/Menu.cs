@@ -21,6 +21,7 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
     //lobby text to change
     [Header("Lobby")]
+    public string sceneToLoad;
     public TextMeshProUGUI playerListText;
     public TextMeshProUGUI roomInfoText;
     public Button startGameButton;
@@ -158,7 +159,7 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         PhotonNetwork.CurrentRoom.IsVisible = false;
 
         //rpc the scene change
-        NetworkManager.instance.photonView.RPC("ChangeScene", RpcTarget.All, "Ship");
+        NetworkManager.instance.photonView.RPC("ChangeScene", RpcTarget.All, sceneToLoad);
     }
 
     public void OnLeaveLobbyButton()

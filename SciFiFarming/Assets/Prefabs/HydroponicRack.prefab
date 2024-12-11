@@ -257,6 +257,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6095062476721812660}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b202e8e6257dce840b75532672febbe6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1589440337791358208}
     - targetCorrespondingSourceObject: {fileID: 6443467366044031324, guid: b202e8e6257dce840b75532672febbe6,
         type: 3}
       insertIndex: -1
@@ -322,8 +326,32 @@ MonoBehaviour:
   - {fileID: 1561208922582851709}
   tankMax: 20
   fillRate: 5
+  retention: 1
+  retentionTier: 1
   tempQuality: 1
   tempSeed: {fileID: 0}
+--- !u!114 &1589440337791358208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5561572129265620198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!4 &7518618537627180156 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3006357307433252299, guid: b202e8e6257dce840b75532672febbe6,

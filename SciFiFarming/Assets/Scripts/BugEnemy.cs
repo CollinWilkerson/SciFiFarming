@@ -1,12 +1,14 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using Photon.Pun;
 
-public class BugEnemy : MonoBehaviour
+public class BugEnemy : MonoBehaviourPun
 {
-    public Transform player; // Assign this in the Inspector
+    public Transform player; 
     public NavMeshAgent agent;
     public Animator anim;
+    public LayerMask targetMask;
 
     public float maxHealth = 100f;
     public float currentHealth;
@@ -31,6 +33,8 @@ public class BugEnemy : MonoBehaviour
             enabled = false;
         }
 
+        StartCoroutine(FOVRoutine());
+        /*
         if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player")?.transform;
@@ -40,11 +44,15 @@ public class BugEnemy : MonoBehaviour
                 enabled = false;
             }
         }
+        */
     }
 
     void Update()
     {
-        if (player == null) return;
+        if(player == null)
+        {
+            return;
+        }
 
         distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
@@ -134,6 +142,7 @@ public class BugEnemy : MonoBehaviour
         }
     }
 
+    [PunRPC]
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
@@ -167,9 +176,55 @@ public class BugEnemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if(collision.gameObject != PlayerController.clientPlayer.gameObject)
         {
-            collision.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
+            return;
+        }
+        else
+        {
+            //collision.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
+            collision.gameObject.GetComponent<PlayerController>().photonView.RPC("TakeDamage", RpcTarget.All, damage);
+        }
+    }
+
+    //this is to slow the checks so it doesn't bog down the system
+    private IEnumerator FOVRoutine()
+    {
+        //how often the coroutine runs
+        WaitForSeconds wait = new WaitForSeconds(0.2f);
+
+        while (true)
+        {
+            yield return wait;
+            FeildOfViewCheck();
+        }
+    }
+
+    //this can have actuall sight facing and obstruction if that's something we want
+    private void FeildOfViewCheck()
+    {
+        if (isAggro)
+        {
+            return;
+        }
+        //checks for any player on the target mask in the detection radius
+        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, detectionRadius, targetMask);
+
+        //if we have at least one player
+        if(rangeChecks.Length != 0)
+        {
+            Transform target = null;
+            float newDistance;
+            float targetDistance = detectionRadius * 2; //make targetDistance large so it chooses someone
+            foreach(Collider collider in rangeChecks)
+            {
+                newDistance = Vector3.Distance(transform.position, collider.transform.position);
+                if(newDistance < targetDistance)
+                {
+                    target = collider.transform;
+                }
+            }
+            player = target;
         }
     }
 }

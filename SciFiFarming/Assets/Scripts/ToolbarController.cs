@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class ToolbarController : MonoBehaviour
+public class ToolbarController : MonoBehaviourPun
 {
     [SerializeField] private Transform handSpawnPos;
     private GameObject handObject;
@@ -43,8 +44,10 @@ public class ToolbarController : MonoBehaviour
         {
             if(handObject != null)
             {
-                Destroy(handObject);
+                //Destroy(handObject);
+                PhotonNetwork.Destroy(handObject);
             }
+            //change the aperance of the toolbar
             activeTool.SetColor(Color.white);
             activeIndex = (activeIndex - (int) Input.mouseScrollDelta.y) % toolbar.Length;
             activeIndex = activeIndex < 0 ? 5 : activeIndex; //wraps scroll
@@ -61,13 +64,23 @@ public class ToolbarController : MonoBehaviour
             {
                 case ItemType.plant:
                     activePlant = PlantLibrary.library[activeTool.GetLibraryIndex()];
+                    /*
                     spawnObj = Resources.Load(activePlant.stageModels[activePlant.harvestStage]) as GameObject;
                     handObject = Instantiate(spawnObj, handSpawnPos.position, PlayerController.clientPlayer.transform.rotation, PlayerController.clientPlayer.transform);
+                    */
+                    handObject = PhotonNetwork.Instantiate(activePlant.stageModels[activePlant.harvestStage], handSpawnPos.position, PlayerController.clientPlayer.transform.rotation);
+                    handObject.transform.parent = PlayerController.clientPlayer.transform;
                     break;
                 case ItemType.weapon:
                     activeWeapon = WeaponLibrary.library[activeTool.GetLibraryIndex()];
-                    spawnObj = Resources.Load(WeaponLibrary.library[activeWeapon.weaponIndex].model) as GameObject;
+                    /*
+                    spawnObj = Resources.Load(activeWeapon.model) as GameObject;
                     handObject = Instantiate(spawnObj, handSpawnPos.position, PlayerController.clientPlayer.transform.rotation, PlayerController.clientPlayer.transform);
+                    */
+                    //this is worth a go but there is no way to parent the object on instantiation so it might suck
+                    // could maybe parent client side and transform view the prefab.
+                    handObject = PhotonNetwork.Instantiate(activeWeapon.model, handSpawnPos.position, PlayerController.clientPlayer.transform.rotation);
+                    handObject.transform.parent = PlayerController.clientPlayer.transform;
                     break;
             }
         }
@@ -106,8 +119,15 @@ public class ToolbarController : MonoBehaviour
         {
             if (hit.collider.gameObject.CompareTag("Enemy"))
             {
-                hit.collider.gameObject.GetComponent<BugEnemy>().TakeDamage(activeWeapon.damage);
+                Debug.Log("Enemy hit");
+                //hit.collider.gameObject.GetComponent<BugEnemy>().TakeDamage(activeWeapon.damage);
+                hit.collider.gameObject.GetComponent<BugEnemy>().photonView.RPC("TakeDamage", RpcTarget.All, activeWeapon.damage);
             }
         }
+    }
+
+    public void SetHandSpawnPos(Transform t) 
+    {
+        handSpawnPos = t;
     }
 }

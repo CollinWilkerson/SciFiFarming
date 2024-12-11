@@ -6,10 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Ship.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/Title.unity
+    guid: f19604ef7b4a87f4192169b7220c2a7f
   - enabled: 1
     path: Assets/Scenes/Planet.unity
     guid: 448b51a25caa3e542862a472804bf433
+  - enabled: 1
+    path: Assets/Scenes/Ship.unity
+    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Temp.unity
+    guid: 07abdf259d31ebe448d18fa3c181d558
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

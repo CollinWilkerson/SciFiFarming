@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 using TMPro;
-using System;
 
-public class PlayerController : MonoBehaviour
+
+public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 {
     [Header("Movement Settings")]
     public float speed = 10f;
@@ -37,8 +39,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject damageFilter;
     [SerializeField] private Vector3 spawnPoint;
     [SerializeField] private HeaderInfo headerInfo;
+    [SerializeField] private Transform handSpawnPos;
     public InventoryController inventory;
     public static PlayerController clientPlayer;
+
+    //photon
+    [HideInInspector]
+    public int id;
+    public Player photonPlayer;
+    public static PhotonView playerPhotonView;
 
     void Start()
     {
@@ -69,6 +78,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
         //if the player is not in menu: look around
         if (Cursor.lockState == CursorLockMode.Locked)
         {
@@ -116,6 +130,37 @@ public class PlayerController : MonoBehaviour
         {
             HandleMovement();
             ApplyCustomGravity();
+        }
+    }
+
+    [PunRPC]
+    public void Initialize(Player player)
+    {
+        //this allows up to referance this instance of this script to photon
+        id = player.ActorNumber;
+        photonPlayer = player;
+
+        GameManager.instance.players[id - 1] = this;
+
+        //headerInfo.Initialize(player.NickName, maxHp);
+        headerInfo = GameManager.instance.GetHeader();
+        inventory = GameManager.instance.GetPlayerInventory();
+        damageFilter = GameManager.instance.GetDamageFilter();
+        toolTip = GameManager.instance.GetToolTip();
+
+        if (player.IsLocal)
+        {
+            ToolbarController.instance.SetHandSpawnPos(handSpawnPos);
+            clientPlayer = this;
+            playerPhotonView = photonView;
+            if (player.NickName == "ProfS")
+            {
+                PersistentData.money += 10000;
+            }
+        }
+        else
+        {
+            rb.isKinematic = true;
         }
     }
 
@@ -240,6 +285,7 @@ public class PlayerController : MonoBehaviour
     }
     */
 
+    [PunRPC]
     public void TakeDamage(float damage)
     {
         //modify damage based on armor value
@@ -252,6 +298,10 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            if (!photonView.IsMine)
+            {
+                return;
+            }
             //update healthbar
             headerInfo.UpdateHealthBar(health / maxHealth);
             StartCoroutine(DamageFlash());
@@ -272,5 +322,19 @@ public class PlayerController : MonoBehaviour
         transform.position = spawnPoint;
         health = maxHealth;
         headerInfo.UpdateHealthBar(health / maxHealth);
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            //Debug.Log("Write");
+            stream.SendNext(defence);
+        }
+        else //if (stream.IsReading)
+        {
+            //Debug.Log("Read");
+            defence = (float)stream.ReceiveNext();
+        }
     }
 }

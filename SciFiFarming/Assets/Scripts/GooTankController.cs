@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class GooTankController : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class GooTankController : MonoBehaviour
                 if (hit.collider.gameObject.CompareTag("Goo"))
                 {
                     PersistentData.goo += gooPerBlob;
-                    Destroy(hit.collider.gameObject);
+                    PhotonNetwork.Destroy(hit.collider.gameObject);
                 }
             }
         }

@@ -55,8 +55,8 @@ public class RackController: MonoBehaviourPun
             //rack changes position on interaction with top
             if (Input.GetKeyDown(KeyCode.E) && PlayerController.clientPlayer.currentInteractable == rack)
             {
-                //this prevents the rack from going up and down in one frame
-                isUp = true;
+                //isUp = true;
+                photonView.RPC("SetIsUp", RpcTarget.All, true);
             }
         }
         else if (isUp)
@@ -67,22 +67,26 @@ public class RackController: MonoBehaviourPun
             if (Input.GetKeyDown(KeyCode.E) && PlayerController.clientPlayer.currentInteractable == rack &&
                 ToolbarController.instance.activeTool.type != ItemType.seed)
             {
-                isUp = false;
+                //isUp = false
+                photonView.RPC("SetIsUp", RpcTarget.All, false);
             }
             if (Input.GetKeyDown(KeyCode.E) && PlayerController.clientPlayer.currentInteractable == rack &&
                 ToolbarController.instance.activeTool.type == ItemType.seed)
             {
                 InventorySlotController s = ToolbarController.instance.activeTool;
-                PlantSeeds(s.GetLibraryIndex());
+                //PlantSeeds(s.GetLibraryIndex());
+                photonView.RPC("PlantSeeds", RpcTarget.All, s.GetLibraryIndex());
                 s.Use(1);
             }
             if (Input.GetKeyDown(KeyCode.Y))
             {
-                CycleAdvance();
+                //CycleAdvance();
+                photonView.RPC("CycleAdvance", RpcTarget.All);
             }
             if (Input.GetKeyDown(KeyCode.U))
             {
-                Harvest();
+                //Harvest();
+                photonView.RPC("Harvest", RpcTarget.All, PlayerController.clientPlayer.id);
             }
         }
 
@@ -97,6 +101,7 @@ public class RackController: MonoBehaviourPun
     /// Fills a Hydroponic nutrient solution tank with the solution quality supplied
     /// </summary>
     /// <param name="quality"></param>
+    [PunRPC]
     private void FillTank(float quality)
     {
         if(tankLevel >= tankMax)
@@ -142,7 +147,8 @@ public class RackController: MonoBehaviourPun
     /// <summary>
     /// The behavior of the stand after the day ends
     /// </summary>
-    private void CycleAdvance()
+    [PunRPC] //this should be removed once a master cycle advance has been created
+    public void CycleAdvance()
     {
         for (int i = 0; i < crops.Length; i++)
         {
@@ -165,18 +171,17 @@ public class RackController: MonoBehaviourPun
     /// <summary>
     /// remove all fully grown crops from the array
     /// </summary>
-    private void Harvest() // this could be moved to the plant behavior for a more interactive harvest mechanic
+    [PunRPC]
+    private void Harvest(int collectorID) // this could be moved to the plant behavior for a more interactive harvest mechanic
     {
         int quantity = 0;
         int type = 0;
-        int value = 0;
         for (int i = 0; i < crops.Length; i++)
         {
             if(crops[i].type != -1 && crops[i].stage == PlantLibrary.library[crops[i].type].harvestStage) // if the crop is fully grown remove it from the rack and place into the players inventory
             {
                 //add to inventory
                 quantity++;
-                value = crops[i].value;
                 type = crops[i].type;
                 //remove crop
                 crops[i].type = -1;
@@ -187,7 +192,30 @@ public class RackController: MonoBehaviourPun
         }
         if (quantity != 0)
         {
-            PlayerController.clientPlayer.inventory.AddItem(ItemType.plant, type, quantity);
+            if (PlayerController.clientPlayer.id == collectorID)
+            {
+                PlayerController.clientPlayer.inventory.AddItem(ItemType.plant, type, quantity);
+            }
+        }
+    }
+
+    [PunRPC]
+    private void SetIsUp(bool up)
+    {
+        isUp = up;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            //Debug.Log("Write");
+            stream.SendNext(tankLevel);
+        }
+        else //if (stream.IsReading)
+        {
+            //Debug.Log("Read");
+            tankLevel = (float)stream.ReceiveNext();
         }
     }
 }

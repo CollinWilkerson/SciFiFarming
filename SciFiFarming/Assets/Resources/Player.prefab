@@ -46,7 +46,9 @@ GameObject:
   - component: {fileID: 8648060516010696274}
   - component: {fileID: 976653992664403882}
   - component: {fileID: 7172089207631024979}
-  m_Layer: 0
+  - component: {fileID: 3077314596900730273}
+  - component: {fileID: 7383579202865570588}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -166,8 +168,18 @@ MonoBehaviour:
   dashCooldown: 0.5
   mouseSensitivity: 1500
   fieldOfView: 60
+  maxHealth: 100
+  health: 0
+  defence: 0
+  money: 0
   toolTip: {fileID: 0}
+  damageFilter: {fileID: 0}
+  spawnPoint: {x: 0, y: 0, z: 0}
+  headerInfo: {fileID: 0}
+  handSpawnPos: {fileID: 4974604183465114911}
   inventory: {fileID: 0}
+  id: 0
+  currentInteractable: {fileID: 0}
 --- !u!54 &976653992664403882
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -208,6 +220,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gooPerBlob: 100
+--- !u!114 &3077314596900730273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5398794455061367547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 8648060516010696274}
+  - {fileID: 7383579202865570588}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &7383579202865570588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5398794455061367547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7336329573265008261
 GameObject:
   m_ObjectHideFlags: 0

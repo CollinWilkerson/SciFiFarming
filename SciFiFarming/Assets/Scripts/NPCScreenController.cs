@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 using TMPro;
 
-public class NPCScreenController : MonoBehaviour
+public class NPCScreenController : MonoBehaviourPun
 {
     [SerializeField] private GameObject interactionScreen;
     private GameObject currentScreen;
@@ -180,7 +181,9 @@ public class NPCScreenController : MonoBehaviour
     {
         if (upgradeRack && PersistentData.money >= Mathf.Pow(2, activeRacks) * 2500)
         {
-            BuyRack();
+            PersistentData.money -= (int)(Mathf.Pow(2, activeRacks) * 2500);
+            //BuyRack();
+            photonView.RPC("BuyRack", RpcTarget.All);
         }
         else if (upgradeBed)
         {
@@ -189,10 +192,10 @@ public class NPCScreenController : MonoBehaviour
     }
 
     //sets a new rack active and increases the price of a new rack
+    [PunRPC]
     private void BuyRack()
     {
         racks[activeRacks].gameObject.SetActive(true);
-        PersistentData.money -= (int)(Mathf.Pow(2, activeRacks) * 2500);
         activeRacks++;
         rackButtonText.text = "New\nHydroponics\n" + (int)(Mathf.Pow(2, activeRacks) * 2500) + "D";
         upgradeRack = false;
@@ -202,6 +205,7 @@ public class NPCScreenController : MonoBehaviour
         }
     }
 
+    [PunRPC]
     private void BedUpgrade()
     {
         Debug.LogError("NOT IMPLEMENTED");
@@ -250,10 +254,17 @@ public class NPCScreenController : MonoBehaviour
     {
         if(selectedRack > -1 && selectedRack < activeRacks && PersistentData.money >= 500 * racks[selectedRack].retentionTier)
         {
-            racks[selectedRack].retention += 0.2f;
             PersistentData.money -= 500 * racks[selectedRack].retentionTier;
-            racks[selectedRack].retentionTier++;
-            selectedRack = -1;
+            //NetworkUpgradeRetention()
+            photonView.RPC("NetworkUpgradeRetention", RpcTarget.All);
         }
+    }
+
+    [PunRPC]
+    private void NetworkUpgradeRetention()
+    {
+        racks[selectedRack].retention += 0.2f;
+        racks[selectedRack].retentionTier++;
+        selectedRack = -1;
     }
 }
