@@ -911,7 +911,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 2
+  sceneViewId: 999
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1001 &2146999593
@@ -925,7 +925,7 @@ PrefabInstance:
     - target: {fileID: 1039253635085707270, guid: 7c1616d8ad9bdb74295c4ffeabf3ba8e,
         type: 3}
       propertyPath: sceneToLoad
-      value: Temp
+      value: Ship
       objectReference: {fileID: 0}
     - target: {fileID: 1456569425908445884, guid: 7c1616d8ad9bdb74295c4ffeabf3ba8e,
         type: 3}
