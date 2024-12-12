@@ -309,7 +309,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         }
         else if (currentInteractable.CompareTag("GooSlot"))
         {
-            toolTipText.text = "E to fill tank";
+            toolTipText.text = "Hold E to fill tank";
         }
         else if (currentInteractable.CompareTag("Rack"))
         {
