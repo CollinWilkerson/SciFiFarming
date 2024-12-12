@@ -8,11 +8,13 @@ public class BedController : MonoBehaviourPun
     private static int playersInBed = 0;
     private GameObject[] goos;
     private GameObject[] pickups;
+    private GameObject[] spiders;
 
     private void Start()
     {
         goos = GameObject.FindGameObjectsWithTag("Goo");
         pickups = GameObject.FindGameObjectsWithTag("Pickup");
+        spiders = GameObject.FindGameObjectsWithTag("Enemy");
     }
 
     private void Update()
@@ -64,6 +66,11 @@ public class BedController : MonoBehaviourPun
 
         //spawns all pickups, could be check a layer or bool or something
         foreach (GameObject g in pickups)
+        {
+            g.SetActive(true);
+        }
+
+        foreach (GameObject g in spiders)
         {
             g.SetActive(true);
         }

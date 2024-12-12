@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 9162581081212045124}
   - component: {fileID: 3546720891783203911}
   - component: {fileID: 2815108368187114596}
+  - component: {fileID: 8990532144477934425}
+  - component: {fileID: 8542787738551715875}
+  - component: {fileID: 1811747797433654051}
   m_Layer: 0
   m_Name: PlantLibrary
   m_TagString: Untagged
@@ -60,12 +63,84 @@ MonoBehaviour:
   plantIndex: 0
   value: 100
   harvestStage: 4
-  type: Onion
+  type: Oonion
   stageModels:
-  - Onion1
-  - Onion1
-  - Onion1
-  - Onion1
-  - OnionHarvest
+  - Sprout
+  - Sprout
+  - Sprout
+  - Sprout
+  - Oonion
   inventorySprite: {fileID: 21300000, guid: 7e2f8f42eadb3484680a142b281f61c4, type: 3}
+  seedSprite: {fileID: 21300000, guid: 400b06bfde0fe714cb39c681b68a06e8, type: 3}
+--- !u!114 &8990532144477934425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6645281306172058045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbbd752854c4d664ab365f8ff79bcaae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plantIndex: 1
+  value: 300
+  harvestStage: 5
+  type: Vletga
+  stageModels:
+  - Sprout
+  - Sprout
+  - Sprout
+  - Sprout
+  - Sprout
+  - Vletga
+  inventorySprite: {fileID: 21300000, guid: fce045685c1e18a49bbc9823f5c52bed, type: 3}
+  seedSprite: {fileID: 21300000, guid: 400b06bfde0fe714cb39c681b68a06e8, type: 3}
+--- !u!114 &8542787738551715875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6645281306172058045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbbd752854c4d664ab365f8ff79bcaae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plantIndex: 2
+  value: 50
+  harvestStage: 1
+  type: Uumar Root
+  stageModels:
+  - Sprout
+  - Uumar
+  inventorySprite: {fileID: 21300000, guid: 94a8910a0ef3ecd49adaccc4c6fd00d6, type: 3}
+  seedSprite: {fileID: 21300000, guid: 400b06bfde0fe714cb39c681b68a06e8, type: 3}
+--- !u!114 &1811747797433654051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6645281306172058045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbbd752854c4d664ab365f8ff79bcaae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plantIndex: 3
+  value: 1000
+  harvestStage: 6
+  type: Ialga
+  stageModels:
+  - Sprout
+  - Sprout
+  - Sprout
+  - Sprout
+  - Sprout
+  - Sprout
+  - Ialga
+  inventorySprite: {fileID: 21300000, guid: cab2abe0446accd44a6c1a4e83227b93, type: 3}
   seedSprite: {fileID: 21300000, guid: 400b06bfde0fe714cb39c681b68a06e8, type: 3}

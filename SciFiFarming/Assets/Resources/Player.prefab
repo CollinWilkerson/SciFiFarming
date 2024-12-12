@@ -174,7 +174,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   toolTip: {fileID: 0}
   damageFilter: {fileID: 0}
-  spawnPoint: {x: 0, y: 0, z: 0}
+  spawnPoint: {x: 22, y: 3, z: -84}
   headerInfo: {fileID: 0}
   handSpawnPos: {fileID: 4974604183465114911}
   inventory: {fileID: 0}

@@ -162,7 +162,7 @@ public class BugEnemy : MonoBehaviourPun
         Debug.Log($"{gameObject.name} has died.");
         if (anim != null) anim.SetTrigger("Die");
         agent.enabled = false;
-        Destroy(gameObject, 2f); // Delay to allow death animation
+        gameObject.SetActive(false);
     }
 
     private void OnDrawGizmosSelected()

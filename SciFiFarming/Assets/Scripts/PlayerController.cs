@@ -340,6 +340,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
     {
         //modify damage based on armor value
         //take damage
+        damage = Mathf.Clamp(damage - Mathf.Sqrt(defence), 0, damage);
         health -= damage;
 
         if (health <= 0)
