@@ -5,7 +5,6 @@ using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
 
-
 public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 {
     [Header("Movement Settings")]
@@ -279,12 +278,50 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
             //Debug.Log("Bingus");
             currentInteractable = hit.collider.gameObject; // track the interactable
             toolTip.SetActive(true);
+            SetToolTip();
             //toolTip.transform.position = hit.collider.bounds.center + Vector3.up * 0.5f; // position tooltip
         }
         else
         {
             currentInteractable = null;
             toolTip.SetActive(false);
+        }
+    }
+
+    private void SetToolTip()
+    {
+        TextMeshProUGUI toolTipText = toolTip.GetComponent<TextMeshProUGUI>();
+        if (currentInteractable.CompareTag("Pickup"))
+        {
+            toolTipText.text = "E to pickup";
+        }
+        else if (currentInteractable.CompareTag("Goo"))
+        {
+            toolTipText.text = "E to collect goo";
+        }
+        else if (currentInteractable.CompareTag("NPC"))
+        {
+            toolTipText.text = "E to talk";
+        }
+        else if (currentInteractable.CompareTag("Bed"))
+        {
+            toolTipText.text = "E to sleep\n(All players must sleep to advance)";
+        }
+        else if (currentInteractable.CompareTag("GooSlot"))
+        {
+            toolTipText.text = "E to fill tank";
+        }
+        else if (currentInteractable.CompareTag("Rack"))
+        {
+            toolTipText.text = "E to open/close\nE with seed in hand to plant\nR to harvest";
+        }
+        else if (currentInteractable.CompareTag("SeedMaker"))
+        {
+            toolTipText.text = "E with plant in hand to make seeds";
+        }
+        else
+        {
+            toolTipText.text = "E";
         }
     }
 

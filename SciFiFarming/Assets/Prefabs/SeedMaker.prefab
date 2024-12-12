@@ -11,17 +11,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: de29b688df8bad7438ba67c1b2cb67f6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.657378
+      value: 4.9412174
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de29b688df8bad7438ba67c1b2cb67f6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.97
+      value: 0.96
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de29b688df8bad7438ba67c1b2cb67f6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: -13.485227
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de29b688df8bad7438ba67c1b2cb67f6,
         type: 3}
@@ -73,6 +73,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de29b688df8bad7438ba67c1b2cb67f6,
+        type: 3}
+      propertyPath: m_TagString
+      value: SeedMaker
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

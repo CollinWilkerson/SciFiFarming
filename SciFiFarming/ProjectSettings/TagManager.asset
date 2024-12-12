@@ -9,6 +9,11 @@ TagManager:
   - Pickup
   - Enemy
   - Teleport
+  - Bed
+  - NPC
+  - Rack
+  - GooSlot
+  - SeedMaker
   layers:
   - Default
   - TransparentFX
