@@ -8,6 +8,7 @@ TagManager:
   - Goo
   - Pickup
   - Enemy
+  - Teleport
   layers:
   - Default
   - TransparentFX
