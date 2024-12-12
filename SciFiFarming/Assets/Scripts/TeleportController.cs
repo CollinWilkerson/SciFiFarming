@@ -8,39 +8,10 @@ public class TeleportController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && PlayerController.clientPlayer.currentInteractable == gameObject)
         {
-            CheckInteractable();
+            PlayerController.clientPlayer.transform.position = teleportLocation.position;
         }
     }
 
-    void CheckInteractable()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 4f, LayerMask.GetMask("Interactable")))
-        {
-            if (hit.collider != null && hit.collider.CompareTag("Teleport"))
-            {
-                TeleportPlayer();
-            }
-        }
-    }
-
-    void TeleportPlayer()
-    {
-        if (teleportLocation != null)
-        {
-            Debug.Log($"Teleporting to: {teleportLocation.name} at position {teleportLocation.position}");
-            GameObject player = GameObject.FindWithTag("Player");
-            if (player != null)
-            {
-                player.transform.position = teleportLocation.position;
-                player.transform.rotation = teleportLocation.rotation;
-            }
-        }
-        else
-        {
-            Debug.LogError("Teleport location is null!");
-        }
-    }
 }
