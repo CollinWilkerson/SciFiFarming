@@ -30,12 +30,17 @@ public class TeleportController : MonoBehaviour
     {
         if (teleportLocation != null)
         {
+            Debug.Log($"Teleporting to: {teleportLocation.name} at position {teleportLocation.position}");
             GameObject player = GameObject.FindWithTag("Player");
             if (player != null)
             {
                 player.transform.position = teleportLocation.position;
                 player.transform.rotation = teleportLocation.rotation;
             }
+        }
+        else
+        {
+            Debug.LogError("Teleport location is null!");
         }
     }
 }
