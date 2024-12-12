@@ -15,10 +15,8 @@ GameObject:
   - component: {fileID: 4368199583832452928}
   - component: {fileID: 7638730169131099767}
   - component: {fileID: 3564777924858885730}
-  - component: {fileID: 7974909274648407129}
-  - component: {fileID: 8341468990619318741}
-  - component: {fileID: 1218103296113226783}
-  - component: {fileID: 2154619329761111781}
+  - component: {fileID: 7926863622450252326}
+  - component: {fileID: 4627808846279804260}
   m_Layer: 0
   m_Name: WeaponLibrary
   m_TagString: Untagged
@@ -134,7 +132,7 @@ MonoBehaviour:
   model: P-Shooter
   inventroySprite: {fileID: 21300000, guid: 5bab1956900e3f840ae25fd8b3193a9b, type: 3}
   damage: 5
-  range: 8
+  range: 10
   rateOfFire: 0.2
   weaponType: 2
 --- !u!114 &3564777924858885730
@@ -158,7 +156,7 @@ MonoBehaviour:
   range: 8
   rateOfFire: 2
   weaponType: 1
---- !u!114 &7974909274648407129
+--- !u!114 &7926863622450252326
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,58 +168,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c29bf6f18913832439a10ddcf7974281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponIndex: 1
-  value: 2000
-  type: G-607
+  weaponIndex: 5
+  value: 100000
+  type: immolation
   model: P-Shooter
   inventroySprite: {fileID: 21300000, guid: 5bab1956900e3f840ae25fd8b3193a9b, type: 3}
-  damage: 5
-  range: 8
-  rateOfFire: 1
-  weaponType: 0
---- !u!114 &8341468990619318741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7669722518027238806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c29bf6f18913832439a10ddcf7974281, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponIndex: 2
-  value: 5000
-  type: Spitzer
-  model: P-Shooter
-  inventroySprite: {fileID: 21300000, guid: 5bab1956900e3f840ae25fd8b3193a9b, type: 3}
-  damage: 20
-  range: 8
-  rateOfFire: 1
-  weaponType: 0
---- !u!114 &1218103296113226783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7669722518027238806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c29bf6f18913832439a10ddcf7974281, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponIndex: 3
-  value: 10000
-  type: Slide Rifle
-  model: P-Shooter
-  inventroySprite: {fileID: 21300000, guid: 5bab1956900e3f840ae25fd8b3193a9b, type: 3}
-  damage: 5
-  range: 8
-  rateOfFire: 0.2
+  damage: 100
+  range: 10
+  rateOfFire: 0.1
   weaponType: 2
---- !u!114 &2154619329761111781
+--- !u!114 &4627808846279804260
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -234,11 +190,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponIndex: 4
-  value: 10000
-  type: Heaven's Gate
+  value: 500000
+  type: 
   model: P-Shooter
   inventroySprite: {fileID: 21300000, guid: 5bab1956900e3f840ae25fd8b3193a9b, type: 3}
-  damage: 100
-  range: 8
-  rateOfFire: 2
-  weaponType: 1
+  damage: 1000
+  range: 20
+  rateOfFire: 0.05
+  weaponType: 2

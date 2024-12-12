@@ -5,9 +5,12 @@ using Photon.Pun;
 
 public class BugEnemy : MonoBehaviourPun
 {
-    public Transform player; 
+    public Transform player;
     public NavMeshAgent agent;
     public Animator anim;
+    private Renderer meshRenderer;
+    private Material startMat;
+    [SerializeField] private Material damageMat;
     public LayerMask targetMask;
 
     public float maxHealth = 100f;
@@ -22,6 +25,12 @@ public class BugEnemy : MonoBehaviourPun
     private float distanceToPlayer;
     private bool canAttack = true;
     private bool isAggro = false;
+
+    private void Awake()
+    {
+        meshRenderer = gameObject.GetComponent<Renderer>();
+        startMat = meshRenderer.material;
+    }
 
     void Start()
     {
@@ -49,7 +58,7 @@ public class BugEnemy : MonoBehaviourPun
 
     void Update()
     {
-        if(player == null)
+        if (player == null)
         {
             return;
         }
@@ -154,6 +163,19 @@ public class BugEnemy : MonoBehaviourPun
         else
         {
             isAggro = true;
+
+            if(damageMat == null)
+            {
+                return;
+            }
+            StartCoroutine(DamageFlash());
+
+            IEnumerator DamageFlash()
+            {
+                meshRenderer.material = damageMat;
+                yield return new WaitForSeconds(0.05f);
+                meshRenderer.material = startMat;
+            }
         }
     }
 
@@ -176,7 +198,7 @@ public class BugEnemy : MonoBehaviourPun
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject != PlayerController.clientPlayer.gameObject)
+        if (collision.gameObject != PlayerController.clientPlayer.gameObject)
         {
             return;
         }
@@ -211,20 +233,26 @@ public class BugEnemy : MonoBehaviourPun
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, detectionRadius, targetMask);
 
         //if we have at least one player
-        if(rangeChecks.Length != 0)
+        if (rangeChecks.Length != 0)
         {
             Transform target = null;
             float newDistance;
             float targetDistance = detectionRadius * 2; //make targetDistance large so it chooses someone
-            foreach(Collider collider in rangeChecks)
+            foreach (Collider collider in rangeChecks)
             {
                 newDistance = Vector3.Distance(transform.position, collider.transform.position);
-                if(newDistance < targetDistance)
+                if (newDistance < targetDistance)
                 {
                     target = collider.transform;
                 }
             }
             player = target;
         }
+    }
+
+    public void Revive()
+    {
+        currentHealth = maxHealth;
+        agent.enabled = true;
     }
 }

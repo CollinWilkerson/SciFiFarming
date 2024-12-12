@@ -94,7 +94,7 @@ public class NPCScreenController : MonoBehaviourPun
                     itemDataText.text = "Name: " + tempWeapon.type +
                         "\nType: " + (tempWeapon.weaponType) +
                         "\nDamage: " + tempWeapon.damage +
-                        "\nRate of Fire: " + tempWeapon.rateOfFire + "/s" +
+                        "\nRate: " + tempWeapon.rateOfFire + " rounds/s" +
                         "\n<b>Price: " + cost + "</b>";
                     break;
                 case ItemType.helmet:
@@ -151,7 +151,14 @@ public class NPCScreenController : MonoBehaviourPun
             //only adds 1 for now
             PlayerController.clientPlayer.inventory.AddItem(InventoryController.hand.type,
                 InventoryController.hand.GetLibraryIndex(), 1);
-            BuyDialog.text = "Captain: Thanks, now go be useful.";
+            StartCoroutine(Thanks());
+
+            IEnumerator Thanks()
+            {
+                BuyDialog.text = "Captain: Thanks, now go be useful.";
+                yield return new WaitForSeconds(2f);
+                BuyDialog.text = "Captain: Well, What'll it be then?";
+            }
             PersistentData.money -= cost;
             GameManager.moneyText.text = PersistentData.money + "D";
         }

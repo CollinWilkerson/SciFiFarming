@@ -72,7 +72,9 @@ public class BedController : MonoBehaviourPun
 
         foreach (GameObject g in spiders)
         {
+            Debug.Log("Spider");
             g.SetActive(true);
+            g.GetComponent<BugEnemy>().Revive();
         }
 
         PlayerController.clientPlayer.photonView.RPC("Heal", RpcTarget.All, 10000f);

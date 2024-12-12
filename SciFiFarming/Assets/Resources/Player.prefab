@@ -165,7 +165,7 @@ MonoBehaviour:
   dashForce: 40
   dashDuration: 0.2
   dashCooldown: 0.5
-  mouseSensitivity: 1500
+  mouseSensitivity: 300
   fieldOfView: 60
   maxHealth: 100
   health: 0
@@ -178,6 +178,7 @@ MonoBehaviour:
   headerInfo: {fileID: 0}
   handSpawnPos: {fileID: 4974604183465114911}
   inventory: {fileID: 0}
+  damageMat: {fileID: 2100000, guid: 597984a4de3c02049ad69208901060e4, type: 2}
   id: 0
   currentInteractable: {fileID: 0}
 --- !u!54 &976653992664403882

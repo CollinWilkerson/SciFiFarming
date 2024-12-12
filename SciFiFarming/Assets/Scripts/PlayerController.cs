@@ -41,6 +41,9 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
     [SerializeField] private Transform handSpawnPos;
     public InventoryController inventory;
     public static PlayerController clientPlayer;
+    private Renderer pRenderer;
+    private Material startMat;
+    [SerializeField] private Material damageMat;
 
     //photon
     [HideInInspector]
@@ -57,6 +60,9 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         {
             playerCamera.fieldOfView = fieldOfView;
         }
+
+        pRenderer = gameObject.GetComponent<Renderer>();
+        startMat = pRenderer.material;
     }
 
     void Start()
@@ -351,6 +357,18 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         {
             if (!photonView.IsMine)
             {
+                if (damageMat == null)
+                {
+                    return;
+                }
+                StartCoroutine(OtherDamageFlash());
+
+                IEnumerator OtherDamageFlash()
+                {
+                    pRenderer.material = damageMat;
+                    yield return new WaitForSeconds(0.05f);
+                    pRenderer.material = startMat;
+                }
                 return;
             }
             //update healthbar
