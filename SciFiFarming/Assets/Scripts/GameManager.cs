@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using Photon.Pun;
 using System.Linq;
 
 public class GameManager : MonoBehaviourPun
 {
-	public int gold; 
 	public static GameManager instance;
 	[SerializeField] private GameObject playerInventory;
 	[SerializeField] private GameObject sellScreen;
@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviourPun
     [SerializeField] private LayerMask initDestructables;
     public static LayerMask destructables;
     public static ToolbarController toolbar;
+    [SerializeField] private TextMeshProUGUI initMoneyText;
+    public static TextMeshProUGUI moneyText;
 
     //photon
     [Header("Players")]
@@ -41,6 +43,7 @@ public class GameManager : MonoBehaviourPun
         }
         interactables = initInteractables;
         destructables = initDestructables;
+        moneyText = initMoneyText;
     }
 
     private void Start()

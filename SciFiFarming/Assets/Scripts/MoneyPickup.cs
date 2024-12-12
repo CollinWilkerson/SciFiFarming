@@ -23,6 +23,6 @@ public class MoneyPickup : MonoBehaviour
     public void Pickup()
     {
         PersistentData.money += 1000;
-        Debug.Log(PersistentData.money);
+        GameManager.moneyText.text = PersistentData.money + "D";
     }
 }
