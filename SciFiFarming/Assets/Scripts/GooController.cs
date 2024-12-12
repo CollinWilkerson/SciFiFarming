@@ -18,7 +18,7 @@ public class GooController : MonoBehaviourPun
             if (Input.GetKeyDown(KeyCode.E) && PlayerController.clientPlayer.currentInteractable == gameObject)
             {
                 PersistentData.goo += gooPerBlob;
-                photonView.RPC("MasterDestroy", RpcTarget.MasterClient);
+                photonView.RPC("MasterDestroy", RpcTarget.All);
             }
         }
     }
@@ -26,6 +26,6 @@ public class GooController : MonoBehaviourPun
     [PunRPC]
     private void MasterDestroy()
     {
-            PhotonNetwork.Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

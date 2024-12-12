@@ -28,7 +28,7 @@ public class PickupController : MonoBehaviourPun
     public void Pickup()
     {
         PlayerController.clientPlayer.inventory.AddItem(type, libraryIndex, quantity);
-        photonView.RPC("MasterDestroy", RpcTarget.MasterClient);
+        photonView.RPC("MasterDestroy", RpcTarget.All);
     }
 
 
@@ -36,6 +36,6 @@ public class PickupController : MonoBehaviourPun
     [PunRPC]
     private void MasterDestroy()
     {
-            PhotonNetwork.Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

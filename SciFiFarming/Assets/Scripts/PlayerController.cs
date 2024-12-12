@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
     public float defence;
     public int money;
 
-    private Rigidbody rb;
+    public Rigidbody rb;
     private int jumpCount;
     private bool isGrounded;
     private bool isDashing;
@@ -335,6 +335,17 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         transform.position = spawnPoint;
         health = maxHealth;
         headerInfo.UpdateHealthBar(health / maxHealth);
+    }
+
+    [PunRPC]
+    private void Heal(float healAmount)
+    {
+        health = Mathf.Clamp(health + healAmount, 0, maxHealth);
+
+        if (photonView.IsMine)
+        {
+            headerInfo.UpdateHealthBar(health / maxHealth);
+        }
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

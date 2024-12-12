@@ -8,6 +8,11 @@ public class SellObjController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(PlayerController.clientPlayer == null)
+        {
+            return;
+        }
+
         if (PlayerController.clientPlayer.currentInteractable == gameObject && Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log(!shippingScreen.activeSelf);

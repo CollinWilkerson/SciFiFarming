@@ -171,6 +171,7 @@ MonoBehaviour:
   health: 0
   defence: 0
   money: 0
+  rb: {fileID: 0}
   toolTip: {fileID: 0}
   damageFilter: {fileID: 0}
   spawnPoint: {x: 0, y: 0, z: 0}

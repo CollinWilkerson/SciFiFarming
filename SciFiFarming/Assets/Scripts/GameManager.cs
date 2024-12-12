@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviourPun
 	public static GameManager instance;
 	[SerializeField] private GameObject playerInventory;
 	[SerializeField] private GameObject sellScreen;
-    [SerializeField] private NPCScreenController npcScreen;
+    public NPCScreenController npcScreen;
     [SerializeField] private LayerMask initInteractables;
     public static LayerMask interactables;
     [SerializeField] private LayerMask initDestructables;
@@ -56,9 +56,9 @@ public class GameManager : MonoBehaviourPun
             sellScreen.SetActive(true);
             sellScreen.SetActive(false);
         }
-        if(FindAnyObjectByType<Leaderboard>() != null)
+        if(FindAnyObjectByType<Leaderboard>(FindObjectsInactive.Include) != null)
         {
-            GameObject temp = FindAnyObjectByType<Leaderboard>().gameObject;
+            GameObject temp = FindAnyObjectByType<Leaderboard>(FindObjectsInactive.Include).gameObject;
             temp.SetActive(true);
             temp.SetActive(false);
         }
