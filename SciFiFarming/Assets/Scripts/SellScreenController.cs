@@ -126,6 +126,7 @@ public class SellScreenController : MonoBehaviour
     public void Sell()
     {
         PersistentData.money += total;
+        GameManager.moneyText.text = PersistentData.money + "D";
         total = 0;
         sellItems.Clear();
         Leaderboard.instance.SetLeaderboardEntry(PersistentData.money);

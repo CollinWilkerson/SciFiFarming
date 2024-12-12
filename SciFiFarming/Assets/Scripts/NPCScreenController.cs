@@ -153,6 +153,7 @@ public class NPCScreenController : MonoBehaviourPun
                 InventoryController.hand.GetLibraryIndex(), 1);
             BuyDialog.text = "Captain: Thanks, now go be useful.";
             PersistentData.money -= cost;
+            GameManager.moneyText.text = PersistentData.money + "D";
         }
     }
 
@@ -183,6 +184,7 @@ public class NPCScreenController : MonoBehaviourPun
         if (upgradeRack && PersistentData.money >= Mathf.Pow(2, activeRacks) * 2500)
         {
             PersistentData.money -= (int)(Mathf.Pow(2, activeRacks) * 2500);
+            GameManager.moneyText.text = PersistentData.money + "D";
             //BuyRack();
             photonView.RPC("BuyRack", RpcTarget.All);
         }
@@ -256,6 +258,7 @@ public class NPCScreenController : MonoBehaviourPun
         if(selectedRack > -1 && selectedRack < activeRacks && PersistentData.money >= 500 * racks[selectedRack].retentionTier)
         {
             PersistentData.money -= 500 * racks[selectedRack].retentionTier;
+            GameManager.moneyText.text = PersistentData.money + "D";
             //NetworkUpgradeRetention()
             photonView.RPC("NetworkUpgradeRetention", RpcTarget.All);
         }
