@@ -10,6 +10,7 @@ public class PersistentData
     public static int money;
     public static float health = 0;
     public static string lastScene;
+    public static bool guestUser = false;
 
     /// <summary>
     /// store all items from an inventory to be accessed later in a new scene

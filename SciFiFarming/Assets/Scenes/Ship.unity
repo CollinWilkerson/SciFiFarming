@@ -20499,7 +20499,7 @@ GameObject:
   - component: {fileID: 1415151428}
   - component: {fileID: 1415151427}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Killbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28100,6 +28100,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2196245887471923887, guid: d4e8b9e01a3c36d4aa1fea49b6b9f53e,
+        type: 3}
+      propertyPath: leaderboardObject
+      value: 
+      objectReference: {fileID: 2027223074}
     - target: {fileID: 2499814275896620795, guid: d4e8b9e01a3c36d4aa1fea49b6b9f53e,
         type: 3}
       propertyPath: m_AnchorMax.y

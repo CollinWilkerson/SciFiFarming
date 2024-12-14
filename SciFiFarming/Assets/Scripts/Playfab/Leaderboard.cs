@@ -10,10 +10,16 @@ public class Leaderboard : MonoBehaviour
 {
     public GameObject leaderboardCanvas;
     public GameObject[] leaderboardEntries;
+    [SerializeField] GameObject leaderboardObject;
 
     public static Leaderboard instance;
     private void Awake()
     {
+        if (PersistentData.guestUser)
+        {
+            Destroy(leaderboardObject);
+            Destroy(this);
+        }
         if (instance == null)
         {
             instance = this;

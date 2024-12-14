@@ -11,6 +11,7 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     //UI Containers
     [Header("Screens")]
     public GameObject mainScreen;
+    public GameObject guestScreen;
     public GameObject createRoomScreen;
     public GameObject lobbyScreen;
     public GameObject lobbyBrowserScreen;
@@ -38,6 +39,7 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     {
         //disable menus that aren't start
         mainScreen.SetActive(false);
+        guestScreen.SetActive(false);
         createRoomScreen.SetActive(false);
         lobbyScreen.SetActive(false);
         lobbyBrowserScreen.SetActive(false);
@@ -57,6 +59,13 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         }
     }
 
+    public void PlayAsGuest(GameObject currentSceen)
+    {
+        guestScreen.SetActive(true);
+        currentSceen.SetActive(false);
+        PersistentData.guestUser = true;
+    }
+
     /// <summary>
     /// disables all screens then renables passed screen
     /// </summary>
@@ -65,6 +74,7 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     {
         
         mainScreen.SetActive(false);
+        guestScreen.SetActive(false);
         createRoomScreen.SetActive(false);
         lobbyScreen.SetActive(false);
         lobbyBrowserScreen.SetActive(false);

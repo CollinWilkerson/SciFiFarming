@@ -6071,6 +6071,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2196245887471923887, guid: d4e8b9e01a3c36d4aa1fea49b6b9f53e,
+        type: 3}
+      propertyPath: leaderboardObject
+      value: 
+      objectReference: {fileID: 1045607369}
     - target: {fileID: 2499814275896620795, guid: d4e8b9e01a3c36d4aa1fea49b6b9f53e,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -6451,6 +6456,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 123793790}
     m_Modifications:
+    - target: {fileID: 2799419931125695393, guid: 04f111616d1059442bfbcbba8cba5c52,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8106361844298925175, guid: 04f111616d1059442bfbcbba8cba5c52,
         type: 3}
       propertyPath: m_Name
