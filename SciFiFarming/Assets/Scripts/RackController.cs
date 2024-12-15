@@ -30,6 +30,8 @@ public class RackController: MonoBehaviourPun
     private (int type, int value, int stage) [] crops;
     private GameObject[] cropObjects;
 
+    [SerializeField] private RackDisplayController display;
+
     private void Awake()
     {
         isUp = false;
@@ -123,6 +125,7 @@ public class RackController: MonoBehaviourPun
             nutrientQuality = (tankLevel * nutrientQuality + fillRate * quality * Time.deltaTime) / (tankLevel + fillRate * Time.deltaTime);
             tankLevel += fillRate * Time.deltaTime;
             PersistentData.goo = Mathf.Clamp(PersistentData.goo - fillRate * Time.deltaTime, 0, PersistentData.goo);
+            display.SetFill(tankLevel / tankMax);
             gooChange = true;
         }
         else
@@ -136,12 +139,18 @@ public class RackController: MonoBehaviourPun
     private void WriteGoo(float newGoo)
     {
         tankLevel = newGoo;
+        display.SetFill(tankLevel / tankMax);
     }
 
     [PunRPC]
     private void PlantSeeds(int seed)//seed should be a growth stage 0 crop
     {
         Debug.Log("plant");
+        if(seed == -1)
+        {
+            return;
+        }
+
         for (int i = 0; i < crops.Length; i++)
         {
             if (crops[i].type == -1) // if there is no crop
@@ -158,6 +167,7 @@ public class RackController: MonoBehaviourPun
                 cropObjects[i].transform.localScale = cropObjects[i].transform.localScale * 0.01f;
             }
         }
+        display.SetPlantDisplays(crops);
     }
 
     /// <summary>
@@ -183,6 +193,8 @@ public class RackController: MonoBehaviourPun
                 cropObjects[i].transform.localScale = cropObjects[i].transform.localScale * 0.01f;
             }
         }
+        display.SetPlantDisplays(crops);
+        display.SetFill(tankLevel / tankMax);
     }
 
     /// <summary>
