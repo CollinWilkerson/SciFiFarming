@@ -165,7 +165,7 @@ MonoBehaviour:
   dashForce: 40
   dashDuration: 0.2
   dashCooldown: 0.5
-  mouseSensitivity: 300
+  mouseSensitivity: 100
   fieldOfView: 60
   maxHealth: 100
   health: 0
