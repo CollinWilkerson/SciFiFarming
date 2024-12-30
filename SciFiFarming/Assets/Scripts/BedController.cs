@@ -1,41 +1,54 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using Photon.Pun;
 
 public class BedController : MonoBehaviourPun
 {
     private static int playersInBed = 0;
+    private TextMeshProUGUI sleepText;
     private GameObject[] goos;
     private GameObject[] pickups;
     private GameObject[] spiders;
 
     private void Start()
     {
+        GameManager.instance.SleepScreen.SetActive(false);
         goos = GameObject.FindGameObjectsWithTag("Goo");
         pickups = GameObject.FindGameObjectsWithTag("Pickup");
         spiders = GameObject.FindGameObjectsWithTag("Enemy");
+        sleepText = GameManager.instance.SleepScreen.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E) && PlayerController.clientPlayer.currentInteractable == gameObject && !PlayerController.clientPlayer.rb.isKinematic)
+{
+        //Debug.Log(GameManager.instance.SleepScreen.activeSelf);
+        //this did not work, check return values
+        if (Input.GetKeyDown(KeyCode.E) && PlayerController.clientPlayer.currentInteractable.CompareTag("Bed") && !PlayerController.clientPlayer.rb.isKinematic)
         {
+            //Debug.Log("bed");
             PlayerController.clientPlayer.rb.isKinematic = true;
+            GameManager.instance.SleepScreen.SetActive(true);
+            //Debug.Log("Set Screen: " + GameManager.instance.SleepScreen.activeSelf);
             photonView.RPC("GetInBed", RpcTarget.All);
         }
         else if (Input.GetKeyDown(KeyCode.E) && PlayerController.clientPlayer.rb.isKinematic)
         {
+            //Debug.Log("unbed");
             PlayerController.clientPlayer.rb.isKinematic = false;
             photonView.RPC("GetOutBed", RpcTarget.All);
+            GameManager.instance.SleepScreen.SetActive(false);
+            //Debug.Log("Set Screen: " + GameManager.instance.SleepScreen.activeSelf);
         }
     }
 
     [PunRPC]
     private void GetInBed()
     {
-        Debug.Log("eepy: " + playersInBed);
+        //Debug.Log("eepy: " + playersInBed);
         playersInBed ++;
+        sleepText.text = playersInBed + "/4 Players Sleeping";
         if(playersInBed == PhotonNetwork.PlayerList.Length)
         {
             CycleAdvance();
@@ -46,11 +59,12 @@ public class BedController : MonoBehaviourPun
     private void GetOutBed()
     {
         playersInBed--;
+        sleepText.text = playersInBed + "/4 Players Sleeping";
     }
 
     private void CycleAdvance()
     {
-        Debug.Log("Cycle Advance");
+        //Debug.Log("Cycle Advance");
         foreach(RackController r in FindObjectsByType<RackController>(FindObjectsSortMode.None))
         {
             r.CycleAdvance();
@@ -72,7 +86,7 @@ public class BedController : MonoBehaviourPun
 
         foreach (GameObject g in spiders)
         {
-            Debug.Log("Spider");
+            //Debug.Log("Spider");
             g.SetActive(true);
             g.GetComponent<BugEnemy>().Revive();
         }
@@ -80,7 +94,9 @@ public class BedController : MonoBehaviourPun
         PlayerController.clientPlayer.photonView.RPC("Heal", RpcTarget.All, 10000f);
 
         //reset bed
-        playersInBed = 0;
-        PlayerController.clientPlayer.rb.isKinematic = false;
+        //playersInBed = 0;
+        //PlayerController.clientPlayer.rb.isKinematic = false;
+        sleepText.text = "You got a good night of rest.\nPress E to wake up";
+        //Debug.Log("Set Screen: " + GameManager.instance.SleepScreen.activeSelf);
     }
 }

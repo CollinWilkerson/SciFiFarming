@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviourPun
     [SerializeField] private HeaderInfo playerHeaderInfo;
     [SerializeField] private GameObject playerToolTip;
     [SerializeField] private GameObject damageFilter;
+    public GameObject SleepScreen;
 
     private void Awake()
     {

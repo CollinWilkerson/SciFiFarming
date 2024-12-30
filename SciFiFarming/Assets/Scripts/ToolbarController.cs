@@ -42,11 +42,8 @@ public class ToolbarController : MonoBehaviourPun
         //switching items
         if(Input.mouseScrollDelta.y != 0)
         {
-            if(handObject != null)
-            {
-                Destroy(handObject);
-                //PhotonNetwork.Destroy(handObject);
-            }
+            //this removes the gameobject
+            ClearHand();
             //change the aperance of the toolbar
             activeTool.SetColor(Color.white);
             activeIndex = (activeIndex - (int) Input.mouseScrollDelta.y) % toolbar.Length;
@@ -126,8 +123,17 @@ public class ToolbarController : MonoBehaviourPun
         }
     }
 
-    public void SetHandSpawnPos(Transform t) 
+    public void SetHandSpawnPos(Transform t)
     {
         handSpawnPos = t;
+    }
+
+    public void ClearHand()
+    {
+        if (handObject != null)
+        {
+            Destroy(handObject);
+            //PhotonNetwork.Destroy(handObject);
+        }
     }
 }

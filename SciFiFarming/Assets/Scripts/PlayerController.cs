@@ -132,6 +132,14 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
                 Cursor.lockState = CursorLockMode.Locked;
             }
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (inventory.gameObject.activeSelf)
+            {
+                inventory.gameObject.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+        }
     }
 
     void FixedUpdate()

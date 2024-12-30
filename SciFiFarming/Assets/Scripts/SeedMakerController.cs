@@ -18,5 +18,6 @@ public class SeedMakerController : MonoBehaviour
         //makes a seed from the plant the player was carrying and empties the toolbar slot
         PlayerController.clientPlayer.inventory.AddItem(ItemType.seed, s.GetLibraryIndex(), s.GetQuantity());
         s.EmptyInventorySlot();
+        ToolbarController.instance.ClearHand();
     }
 }
