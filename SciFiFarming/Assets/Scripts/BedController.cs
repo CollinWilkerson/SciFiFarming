@@ -25,7 +25,9 @@ public class BedController : MonoBehaviourPun
 {
         //Debug.Log(GameManager.instance.SleepScreen.activeSelf);
         //this did not work, check return values
-        if (Input.GetKeyDown(KeyCode.E) && PlayerController.clientPlayer.currentInteractable.CompareTag("Bed") && !PlayerController.clientPlayer.rb.isKinematic)
+        if (Input.GetKeyDown(KeyCode.E) && PlayerController.clientPlayer.currentInteractable != null && 
+            PlayerController.clientPlayer.currentInteractable.CompareTag("Bed") && 
+            !PlayerController.clientPlayer.rb.isKinematic)
         {
             //Debug.Log("bed");
             PlayerController.clientPlayer.rb.isKinematic = true;

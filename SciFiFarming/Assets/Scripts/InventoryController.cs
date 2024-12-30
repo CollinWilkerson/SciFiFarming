@@ -26,6 +26,11 @@ public class InventoryController : MonoBehaviour
                 slots[i].SetInventorySlot(addType, addIndex, addQuantity);
                 return;
             }
+            else if(slots[i].type == addType && slots[i].GetLibraryIndex() == addIndex)
+            {
+                slots[i].AddToSlot(addQuantity);
+                return;
+            }
         }
         Debug.Log("Inventory Full");
     }

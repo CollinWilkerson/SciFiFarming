@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public enum ItemType
 {
@@ -25,6 +26,7 @@ public class InventorySlotController : MonoBehaviour
     public ItemType type;
     private int libraryIndex = -1;
     private int quantity;
+    private TextMeshProUGUI quantityText;
 
     private Image itemImage;
 
@@ -38,6 +40,8 @@ public class InventorySlotController : MonoBehaviour
         //Debug.Log("Initialized");
         itemImage = gameObject.GetComponent<Image>();
         button = gameObject.GetComponent<Button>();
+        quantityText = GetComponentInChildren<TextMeshProUGUI>();
+        quantityText.text = "";
         //theres a better way to do this i just dont have time
         if (gameObject.GetComponent<WeaponData>() != null)
         {
@@ -78,6 +82,7 @@ public class InventorySlotController : MonoBehaviour
         type = addType;
         libraryIndex = addIndex;
         quantity = addQuantity;
+        quantityText.text = "" + quantity;
         isFilled = true;
         if (type == ItemType.plant)
         {
@@ -127,6 +132,7 @@ public class InventorySlotController : MonoBehaviour
         type = other.type;
         libraryIndex = other.libraryIndex;
         quantity = other.quantity;
+        quantityText.text = "" + quantity;
         isFilled = true;
         if (type == ItemType.plant)
         {
@@ -169,6 +175,7 @@ public class InventorySlotController : MonoBehaviour
         if (quantity - amount > 0)
         {
             quantity -= amount;
+            quantityText.text = "" + quantity;
             return amount;
         }
         else
@@ -176,6 +183,16 @@ public class InventorySlotController : MonoBehaviour
             EmptyInventorySlot();
             return quantity;
         }
+    }
+
+    public void AddToSlot(int amount)
+    {
+        if (!isFilled)
+        {
+            return;
+        }
+        quantity += amount;
+        quantityText.text = "" + quantity;
     }
 
     /// <summary>
@@ -187,6 +204,7 @@ public class InventorySlotController : MonoBehaviour
         isFilled = false;
         //Debug.Log(itemImage.sprite);
         itemImage.sprite = null;
+        quantityText.text = "";
     }
 
     public void OnItemSelect()
@@ -213,8 +231,20 @@ public class InventorySlotController : MonoBehaviour
                         return;
                     }
                 }
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    SetInventorySlot(InventoryController.hand);
+                    InventoryController.hand.Use((int) Mathf.Ceil(quantity / (float) 2));
+                    Use(quantity / 2);
+                    InventoryController.hand = null;
+                }
+                else
+                {
+                    SetInventorySlot(InventoryController.hand);
 
-                SetInventorySlot(InventoryController.hand);
+                    InventoryController.hand.EmptyInventorySlot();
+                    InventoryController.hand = null;
+                }
                 //armor Management
                 if (isArmor)
                 {
@@ -266,21 +296,27 @@ public class InventorySlotController : MonoBehaviour
                     }
                     armorInHand = false;
                 }
-
-                InventoryController.hand.EmptyInventorySlot();
-                InventoryController.hand = null;
             }
-            else
+            else //hand is filled and slot is filled
             {
-                InventoryController.hand = this;
-                if (isArmor)
+                if (InventoryController.hand != this && type == InventoryController.hand.type && libraryIndex == InventoryController.hand.libraryIndex)
                 {
-                    //update defence when player moves item
-                    armorInHand = true;
+                    AddToSlot(InventoryController.hand.quantity);
+                    InventoryController.hand.EmptyInventorySlot();
+                    InventoryController.hand = null;
                 }
                 else
                 {
-                    armorInHand = false;
+                    InventoryController.hand = this;
+                    if (isArmor)
+                    {
+                        //update defence when player moves item
+                        armorInHand = true;
+                    }
+                    else
+                    {
+                        armorInHand = false;
+                    }
                 }
             }
         }
