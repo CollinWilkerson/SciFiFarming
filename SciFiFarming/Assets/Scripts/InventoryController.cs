@@ -42,4 +42,24 @@ public class InventoryController : MonoBehaviour
             slot.EmptyInventorySlot();
         }
     }
+
+    public int[] WriteInventory()
+    {
+        int[] inventoryAsInts = new int[slots.Length*3];
+        foreach(InventorySlotController s in slots)
+        {
+            inventoryAsInts[s.controllerIndex * 3] = (int) s.type;
+            inventoryAsInts[s.controllerIndex * 3 + 1] = s.GetLibraryIndex();
+            inventoryAsInts[s.controllerIndex * 3 + 2] = s.GetQuantity();
+        }
+        return inventoryAsInts;
+    }
+
+    public void ReadInventory(int[] inventoryAsInts)
+    {
+        for(int i = 0; i < inventoryAsInts.Length; i += 3)
+        {
+            AddItem((ItemType)inventoryAsInts[i], inventoryAsInts[i + 1], inventoryAsInts[i + 2]);
+        }
+    }
 }
