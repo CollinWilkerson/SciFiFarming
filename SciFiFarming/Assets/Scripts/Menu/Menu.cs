@@ -120,7 +120,14 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
     public void OnBackButton()
     {
-        SetScreen(mainScreen);
+        if (PersistentData.guestUser)
+        {
+            SetScreen(guestScreen);
+        }
+        else
+        {
+            SetScreen(mainScreen);
+        }
     }
 
     /// <summary>
