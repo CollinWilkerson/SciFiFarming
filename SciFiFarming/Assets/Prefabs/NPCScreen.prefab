@@ -802,7 +802,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &666497791033713412
@@ -1624,7 +1624,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1489394090327162114
@@ -2291,6 +2291,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2772431660279485661}
+  - component: {fileID: 1345240253573335613}
+  - component: {fileID: 9128401912161130049}
   m_Layer: 5
   m_Name: TalkScreen
   m_TagString: Untagged
@@ -2319,6 +2321,49 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1345240253573335613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978555278904211083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d9cf6866f225a4e86e7289eb768a6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dutyButton: {fileID: 4607524876592220541}
+  dialogue: {fileID: 3376082940753970912}
+--- !u!114 &9128401912161130049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978555278904211083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 114c272e4bf1c8d448b6d0458eb53828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  cashReward: 0
+  reward: 0
+  rewardType: 1
+  rewardIndex: 0
+  rewardQuantity: 5
+  acceptText:
+  - So you're the green that the Admiral says is going to solve all of my problems
+  - Well first thing to do is see if you're not completely useless
+  - get me an oonion seed and ill tell you what to do from there
+  missText: Oonion, the red thing? just slam it in the seed maker
+  completedText: Well you're not braindead, here's a few more to get you started
+  shortText: Get Oonion Seed
+  desiredType: 1
+  desiredIndex: 0
+  elimType: 
+  killCount: 0
 --- !u!1 &2034465050675644559
 GameObject:
   m_ObjectHideFlags: 0
@@ -3385,7 +3430,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &3139633505258791112
@@ -4314,7 +4359,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 8205539690761379003}
   m_OnClick:
     m_PersistentCalls:
@@ -6340,7 +6385,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &6420489219004868732
@@ -7861,7 +7906,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &7764335848980594200

@@ -37446,11 +37446,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2131838875}
     m_Modifications:
-    - target: {fileID: 2143759777771847537, guid: 04f111616d1059442bfbcbba8cba5c52,
-        type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2799419931125695393, guid: 04f111616d1059442bfbcbba8cba5c52,
         type: 3}
       propertyPath: sceneViewId
@@ -37496,10 +37491,40 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -46.742374
       objectReference: {fileID: 0}
-    - target: {fileID: 5154965579302603972, guid: 04f111616d1059442bfbcbba8cba5c52,
+    - target: {fileID: 4607524876592220541, guid: 04f111616d1059442bfbcbba8cba5c52,
         type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607524876592220541, guid: 04f111616d1059442bfbcbba8cba5c52,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607524876592220541, guid: 04f111616d1059442bfbcbba8cba5c52,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2037164832}
+    - target: {fileID: 4607524876592220541, guid: 04f111616d1059442bfbcbba8cba5c52,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607524876592220541, guid: 04f111616d1059442bfbcbba8cba5c52,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnTurnIn
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607524876592220541, guid: 04f111616d1059442bfbcbba8cba5c52,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: QuestController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607524876592220541, guid: 04f111616d1059442bfbcbba8cba5c52,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6043489832043735842, guid: 04f111616d1059442bfbcbba8cba5c52,
         type: 3}
@@ -37520,16 +37545,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -327.19666
-      objectReference: {fileID: 0}
-    - target: {fileID: 6855872331148922026, guid: 04f111616d1059442bfbcbba8cba5c52,
-        type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6909969178458828951, guid: 04f111616d1059442bfbcbba8cba5c52,
-        type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7321289234446777421, guid: 04f111616d1059442bfbcbba8cba5c52,
         type: 3}
@@ -37661,11 +37676,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8681849745755882295, guid: 04f111616d1059442bfbcbba8cba5c52,
-        type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -37695,6 +37705,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2037164828}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2037164832 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1345240253573335613, guid: 04f111616d1059442bfbcbba8cba5c52,
+    type: 3}
+  m_PrefabInstance: {fileID: 2037164828}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d9cf6866f225a4e86e7289eb768a6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2037767479 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3520827589811673763, guid: c9045a90e6a312f41bf5d1288204d4de,
