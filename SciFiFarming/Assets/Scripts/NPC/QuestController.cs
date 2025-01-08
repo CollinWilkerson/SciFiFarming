@@ -26,12 +26,26 @@ public class QuestController : MonoBehaviour
         if (interactions + 1 < quests[currentQuest].acceptText.Length)
         {
             interactions++;
-            dialogue.text = quests[currentQuest].acceptText[interactions];
+            dialogue.text = "Capitan: " + quests[currentQuest].acceptText[interactions];
+            if(interactions == quests[currentQuest].acceptText.Length - 1)
+            {
+                GameManager.instance.questShortText.text = "-" + quests[currentQuest].shortText;
+            }
             return;
         }
         else
         {
             foreach (InventorySlotController s in PlayerController.clientPlayer.inventory.slots)
+            {
+                if (s.isFilled && s.type == quests[currentQuest].desiredType &&
+                s.GetLibraryIndex() == quests[currentQuest].desiredIndex)
+                {
+                    s.Use(1);
+                    SubmitQuest();
+                    return;
+                }
+            }
+            foreach (InventorySlotController s in ToolbarController.instance.toolbar)
             {
                 if (s.isFilled && s.type == quests[currentQuest].desiredType &&
                 s.GetLibraryIndex() == quests[currentQuest].desiredIndex)
@@ -50,6 +64,7 @@ public class QuestController : MonoBehaviour
         if (quests[currentQuest].cashReward)
         {
             PersistentData.money += quests[currentQuest].reward;
+            GameManager.moneyText.text = PersistentData.money + "D";
         }
         else
         {

@@ -9,7 +9,7 @@ public class ToolbarController : MonoBehaviourPun
     private GameObject handObject;
 
     public static ToolbarController instance;
-    private InventorySlotController[] toolbar;
+    public InventorySlotController[] toolbar;
     public InventorySlotController activeTool;
     private WeaponData activeWeapon;
     private PlantData activePlant;

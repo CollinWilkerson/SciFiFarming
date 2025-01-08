@@ -32,6 +32,10 @@ public class GameManager : MonoBehaviourPun
     [SerializeField] private GameObject damageFilter;
     public GameObject SleepScreen;
 
+    [Header("Quests")]
+    public TextMeshProUGUI questShortText;
+    public static int kills = 0;
+
     private void Awake()
     {
         if(instance != null && instance != this)
