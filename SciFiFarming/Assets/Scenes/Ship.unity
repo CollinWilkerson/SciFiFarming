@@ -2771,6 +2771,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 908956595}
     m_Modifications:
+    - target: {fileID: 3924847036877672823, guid: 521bf43698e17274a92873c540860bca,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 85
+      objectReference: {fileID: 0}
     - target: {fileID: 6190905283829083674, guid: 521bf43698e17274a92873c540860bca,
         type: 3}
       propertyPath: m_Speed
@@ -3378,6 +3383,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 908956595}
     m_Modifications:
+    - target: {fileID: 3924847036877672823, guid: 521bf43698e17274a92873c540860bca,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 84
+      objectReference: {fileID: 0}
     - target: {fileID: 6190905283829083674, guid: 521bf43698e17274a92873c540860bca,
         type: 3}
       propertyPath: m_Speed
@@ -9046,6 +9056,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 908956595}
     m_Modifications:
+    - target: {fileID: 3924847036877672823, guid: 521bf43698e17274a92873c540860bca,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 68
+      objectReference: {fileID: 0}
     - target: {fileID: 6190905283829083674, guid: 521bf43698e17274a92873c540860bca,
         type: 3}
       propertyPath: m_Speed
@@ -15547,6 +15562,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 908956595}
     m_Modifications:
+    - target: {fileID: 3924847036877672823, guid: 521bf43698e17274a92873c540860bca,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6190905283829083674, guid: 521bf43698e17274a92873c540860bca,
         type: 3}
       propertyPath: m_Speed
@@ -16645,35 +16665,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 908956595}
     m_Modifications:
-    - target: {fileID: 6190905283829083674, guid: 521bf43698e17274a92873c540860bca,
-        type: 3}
-      propertyPath: m_Speed
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6457247039560795906, guid: 521bf43698e17274a92873c540860bca,
-        type: 3}
-      propertyPath: damageMat
-      value: 
-      objectReference: {fileID: 2100000, guid: 597984a4de3c02049ad69208901060e4, type: 2}
     - target: {fileID: 7073419862230580500, guid: 521bf43698e17274a92873c540860bca,
         type: 3}
       propertyPath: m_Name
       value: spooter
-      objectReference: {fileID: 0}
-    - target: {fileID: 7593637761811376046, guid: 521bf43698e17274a92873c540860bca,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7593637761811376046, guid: 521bf43698e17274a92873c540860bca,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7593637761811376046, guid: 521bf43698e17274a92873c540860bca,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7593637761811376046, guid: 521bf43698e17274a92873c540860bca,
         type: 3}
@@ -16728,11 +16723,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7073419862230580500, guid: 521bf43698e17274a92873c540860bca,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1033864078}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 521bf43698e17274a92873c540860bca, type: 3}
 --- !u!4 &1033864076 stripped
 Transform:
@@ -16740,34 +16731,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1033864075}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1033864077 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7073419862230580500, guid: 521bf43698e17274a92873c540860bca,
-    type: 3}
-  m_PrefabInstance: {fileID: 1033864075}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1033864078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1033864077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents: []
-  sceneViewId: 79
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!1 &1035695111 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6249389821202917648, guid: c9045a90e6a312f41bf5d1288204d4de,
@@ -19212,6 +19175,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 908956595}
     m_Modifications:
+    - target: {fileID: 3924847036877672823, guid: 521bf43698e17274a92873c540860bca,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 83
+      objectReference: {fileID: 0}
     - target: {fileID: 6190905283829083674, guid: 521bf43698e17274a92873c540860bca,
         type: 3}
       propertyPath: m_Speed
@@ -22834,6 +22802,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 908956595}
     m_Modifications:
+    - target: {fileID: 3924847036877672823, guid: 521bf43698e17274a92873c540860bca,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6190905283829083674, guid: 521bf43698e17274a92873c540860bca,
         type: 3}
       propertyPath: m_Speed
@@ -35459,6 +35432,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 908956595}
     m_Modifications:
+    - target: {fileID: 3924847036877672823, guid: 521bf43698e17274a92873c540860bca,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 6190905283829083674, guid: 521bf43698e17274a92873c540860bca,
         type: 3}
       propertyPath: m_Speed
@@ -38193,11 +38171,12 @@ MonoBehaviour:
   - Next up is to grow those seeds into plants
   - There should be an old hydroponics rack by the seed maker
   - after you plant the seeds you'll need to go planetside to get substate
-  - Watch out for spiders, there no joke best to avoid them alltogether until you've
-    got a decent weapon
-  missText: 
-  completedText: 
-  shortText: 
+  - Watch out for spiders, they're no joke. best to avoid them alltogether until
+    you've got a decent weapon
+  missText: If you cant grow food you're useless to me.
+  completedText: Well I guess you can do the important stuff. Here's some cash to
+    get you started, anything else you ship at the shipping terminal.
+  shortText: Grow an Oonion
   desiredType: 0
   desiredIndex: 0
   elimType: 

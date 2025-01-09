@@ -75,7 +75,7 @@ public class QuestController : MonoBehaviour
         interactions = -1;
         currentQuest += 1;
 
-        if (currentQuest > quests.Length)
+        if (currentQuest + 1 > quests.Length)
         {
             dutyButton.enabled = false;
         }

@@ -20,7 +20,9 @@ public class BugEnemy : MonoBehaviourPun
     public float attackRange = 1.5f;
     public float detectionRadius = 10f; // Added for detection logic
     public float deAggroRadius = 15f; // Adjusted to match detection logic
-    public float pauseBeforeAttack = 1f; // Pause duration before attacking
+    public float pauseBeforeAttack = 0.2f; // Pause duration before attacking
+    public float jumpDuration = 0.5f;
+    public float jumpDistance = 5f;
 
     private float distanceToPlayer;
     private bool canAttack = true;
@@ -120,10 +122,9 @@ public class BugEnemy : MonoBehaviourPun
             Debug.Log($"{gameObject.name} performs a jump attack!");
 
             Vector3 jumpDirection = (player.position - transform.position).normalized;
-            Vector3 jumpTarget = transform.position + jumpDirection * 3f; // Jump forward 3 units
+            Vector3 jumpTarget = transform.position + jumpDirection * jumpDistance; // Jump forward jumpDistance units
 
             float elapsedTime = 0f;
-            float jumpDuration = 0.5f;
             Vector3 initialPosition = transform.position;
 
             while (elapsedTime < jumpDuration)
@@ -132,7 +133,7 @@ public class BugEnemy : MonoBehaviourPun
                 float lerpFactor = elapsedTime / jumpDuration;
 
                 // Apply parabolic arc for the jump
-                float height = Mathf.Sin(Mathf.PI * lerpFactor) * 2f; // Jump height
+                float height = Mathf.Sin(Mathf.PI * lerpFactor); // Jump height
                 transform.position = Vector3.Lerp(initialPosition, jumpTarget, lerpFactor) + new Vector3(0, height, 0);
 
                 yield return null;
