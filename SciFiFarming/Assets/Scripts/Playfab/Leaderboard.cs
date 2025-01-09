@@ -150,4 +150,20 @@ public class Leaderboard : MonoBehaviour
         );
         DisplayLeaderboard();
     }
+
+    public void UpdateCurrentGold(int newScore)
+    {
+        PlayFabClientAPI.UpdatePlayerStatistics(new UpdatePlayerStatisticsRequest
+        {
+            // request.Statistics is a list, so multiple StatisticUpdate objects can be defined if required.
+            // probably for adjusting players that move on the statistics
+            Statistics = new List<StatisticUpdate>
+                    {
+                        new StatisticUpdate { StatisticName = "CurrentGold", Value = newScore },
+                    }
+        },
+            result => { Debug.Log("User statistics updated"); },
+            error => { Debug.LogError(error.GenerateErrorReport()); }
+        );
+    }
 }
