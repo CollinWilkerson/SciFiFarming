@@ -60,7 +60,7 @@ public class PauseMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        
+        GameManager.SaveGame();
         Photon.Pun.PhotonNetwork.Disconnect();
         Debug.Log("Quitting Game");
         Application.Quit();

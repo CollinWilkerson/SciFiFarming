@@ -172,6 +172,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
             ToolbarController.instance.SetHandSpawnPos(handSpawnPos);
             clientPlayer = this;
             playerPhotonView = photonView;
+            GameManager.TryLoad();
             if (player.NickName == "ProfS")
             {
                 PersistentData.money += 10000;

@@ -94,7 +94,7 @@ public class BedController : MonoBehaviourPun
         }
 
         PlayerController.clientPlayer.photonView.RPC("Heal", RpcTarget.All, 10000f);
-
+        GameManager.SaveGame();
         //reset bed
         //playersInBed = 0;
         //PlayerController.clientPlayer.rb.isKinematic = false;

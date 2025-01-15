@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using TMPro;
 using Photon.Pun;
 using System.Linq;
+using System.IO;
 
 public class GameManager : MonoBehaviourPun
 {
@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviourPun
     private void SpawnPlayer()
     {
         GameObject playerObj = PhotonNetwork.Instantiate(playerPrefabLocation,
-            spawnPoints[Random.Range(0, spawnPoints.Length)].position, Quaternion.identity);
+            spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)].position, Quaternion.identity);
 
         playerObj.GetComponent<PhotonView>().RPC("Initialize", RpcTarget.All, PhotonNetwork.LocalPlayer);
     }
@@ -142,4 +142,42 @@ public class GameManager : MonoBehaviourPun
 		}
 		return copy as T;
 	}
+
+    public static void SaveGame()
+    {
+        using (StreamWriter sw = File.CreateText(@"ABSaveData.txt"))
+        {
+            Debug.Log("Game Saved!");
+            string tempInv = "";
+            foreach(int i in PlayerController.clientPlayer.inventory.WriteInventory())
+            {
+                tempInv += i + ",";
+            }
+            sw.WriteLine(tempInv);
+            sw.WriteLine(PersistentData.money);
+            //sw.WriteLine();
+        }
+    }
+    public static void TryLoad()
+    {
+        if (!File.Exists(@"ABSaveData.txt"))
+        {
+            return;
+        }
+        using (StreamReader sr = File.OpenText(@"ABSaveData.txt"))
+        {
+            string tempInv = sr.ReadLine();
+            string[] parts = tempInv.Split(",");
+            int[] inv = new int[parts.Length - 1];
+            for(int i = 0; i < parts.Length - 1; i++)
+            {
+                Debug.Log(parts[i]);
+                inv[i] = Int32.Parse(parts[i]);
+            }
+            PlayerController.clientPlayer.inventory.ReadInventory(inv);
+
+            PersistentData.money = Int32.Parse(sr.ReadLine());
+            moneyText.text = PersistentData.money + "D";
+        }
+    }
 }
